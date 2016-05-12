@@ -3,7 +3,7 @@
 #git clone http://github.com/djamol/DjAmol-VPS-INSTALLER.git; cd DjAmol-VPS-INSTALLER
 # background run command 
 # command &</dev/null &
-yum remove libvpx libogg libvorbis libtheora libx264 x264 ffmpeg
+yum -y remove libvpx libogg libvorbis libtheora libx264 x264 ffmpeg
 yum update
 
 
