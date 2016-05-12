@@ -2,7 +2,7 @@
 Firstly remove old version using command :
 yum remove libvpx libogg libvorbis libtheora libx264 x264 ffmpeg ffmpeg-devel
 
-Login Root With Using Puty/Ssh Client
+Login Root With Using Puty/Ssh Client ( Copy And paste command in Putty application Using Shift+Insert )
 Commands To Start ( SSH Command ):
 
 git clone http://github.com/djamol/DjAmol-VPS-INSTALLER.git
