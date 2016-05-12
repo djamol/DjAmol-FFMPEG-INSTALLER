@@ -1,8 +1,14 @@
 # DjAmol-FFMPEG-INSTALLER
+Firstly remove old version using command :
+yum remove libvpx libogg libvorbis libtheora libx264 x264 ffmpeg ffmpeg-devel
+
 Login Root With Using Puty/Ssh Client
 Commands To Start ( SSH Command ):
 
 git clone http://github.com/djamol/DjAmol-VPS-INSTALLER.git
+
+cd DjAmol-VPS-INSTALLER
+
 # Install Webmin
 ./install &amp;&lt;/dev/null &amp;
 
