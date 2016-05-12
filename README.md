@@ -4,10 +4,10 @@ Commands To Start ( SSH Command ):
 
 git clone http://github.com/djamol/DjAmol-VPS-INSTALLER.git
 # Install Webmin
-install &amp;&lt;/dev/null &amp;
+./install &amp;&lt;/dev/null &amp;
 
 # Install ffmpeg
-
+./ffmpeg &amp;&lt;/dev/null &amp;
 
 testing commands
 ffmpeg -version
