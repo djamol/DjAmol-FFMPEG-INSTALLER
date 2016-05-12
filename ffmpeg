@@ -49,10 +49,9 @@ date +"%r" >> $BUILD;echo "Start :  libx265" >> $BUILD
 #H.265/HEVC video encoder. See the H.265 Encoding Guide for more information and usage examples.
 #Requires ffmpeg to be configured with --enable-gpl --enable-libx265. 
 cd ~/ffmpeg_sources
-hg clone https://bitbucket.org/multicoreware/x265
-cd ~/ffmpeg_sources/x265/build/linux
-#wget https://bitbucket.org/multicoreware/x265/downloads/x265_1.9.tar.gz
-#tar xvzf x265_1.9.tar.gz; cd cd ~/ffmpeg_sources/x265_1.9/build/linux
+#hg clone https://bitbucket.org/multicoreware/x265; cd ~/ffmpeg_sources/x265/build/linux
+wget https://bitbucket.org/multicoreware/x265/downloads/x265_1.9.tar.gz
+tar xvzf x265_1.9.tar.gz; cd ~/ffmpeg_sources/x265_1.9/build/linux
 cmake -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX="$HOME/ffmpeg_build" -DENABLE_SHARED:bool=off ../../source
 make
 make install
