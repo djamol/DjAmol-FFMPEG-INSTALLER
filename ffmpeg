@@ -1,6 +1,9 @@
 # MOre details https://trac.ffmpeg.org/wiki/CompilationGuide/Centos
 # background run command 
 # command &</dev/null &
+yum remove libvpx libogg libvorbis libtheora libx264 x264 ffmpeg
+yum update
+
 
 SCRIPT=$(readlink -f "$0")
 # Absolute path this script is in, thus /home/user/bin
