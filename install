@@ -1,1 +1,798 @@
-testing
+#
+# Run this file firstly download using wget urlfile after command : sh <filename with extension >
+#Create By DjAmol Group  www.djamol.com
+# Run This shell File
+# Command: sh install.sh or
+#Run With flag 
+# -a is webmin Login username set (default:admin)
+# -p is webmin Login username set (default:admin)
+# -w is webmin Login Port set (default:2083)
+
+# background run means if ssh login close or login session expire but install.sh script not stopped by this command:command &>/dev/null &
+# Command: sh install.sh &>/dev/null &
+# Absolute path to this script, e.g. /home/user/bin/install.sh
+
+
+
+
+#Installation with flag input grab
+
+while getopts ":a:p:w:t:" opt; do
+  case $opt in
+    a)
+      weba=${OPTARG}
+      echo "Webmin Admin Username: $OPTARG" >&2
+      ;;
+    p)
+      webp=${OPTARG}
+      echo "Webmin Admin Password: $OPTARG" >&2
+      ;;  
+    w)
+      webport=${OPTARG}
+      echo "Webmin Port : $OPTARG" >&2
+      ;;          
+    c)
+      copyen=${OPTARG}
+      echo "copy option conf file enabled : $OPTARG" >&2
+      ;;
+    t)
+      phptest=${OPTARG}
+      echo "PHP testing enabled : $OPTARG" >&2
+      ;;
+
+    \?)
+      echo "Invalid option: -$OPTARG" >&2
+      echo " -a is webmin Login username set (default:admin)" >&2
+	  echo " -p is webmin Login username set (default:admin)" >&2
+	  echo " -w is webmin Login Port set (default:2083)" >&2
+	  echo " -c is copy conf files if yes then put value 1 -c 1" >&2
+	  echo " -t is php testing function if yes then put value 1 -t 1" >&2
+
+	  echo "Example Command:sh install.sh -a username -p password -w 10000 -c 1" >&2
+	  echo 'OR Command:sh install.sh -a "username" -p "password" -w 10000 -c 1' >&2
+      exit 1
+      ;;
+    :)
+      echo "Option -$OPTARG requires an argument." >&2
+      #exit 1
+      ;;
+  esac
+done
+if [ ! $weba ]; then
+    echo 'webmin Username(default): admin';weba=admin;
+fi
+if [ ! $webp ]; then
+    echo 'webmin Password(default): admin';webp=admin;
+fi
+if [ ! $webport ]; then
+    echo 'Webmin Login Port (default): 2083!';webport=2083;
+fi
+if [ ! $webport ]; then
+    echo 'Server IP is';SERVERIP=178.156.202.53;
+fi
+if [ ! $copyen ]; then
+    echo 'do not copy conf files(default)';copyen=0;
+fi
+if [ ! $phptest ]; then
+    echo 'php testing disable (default)';phptest=0;
+fi
+
+##flag reader service close
+
+SCRIPT=$(readlink -f "$0")
+# Absolute path this script is in, thus /home/user/bin
+SCRIPTPATH=$(dirname "$SCRIPT")
+#echo $SCRIPTPATH
+
+mkdir $SCRIPTPATH/log
+BUILDDIR=$SCRIPTPATH/log/
+BUILDFILE=$RANDOM.txt
+BUILD=$BUILDDIR$BUILDFILE
+
+echo $BUILD
+#Change Time Zone
+timedatectl set-timezone Asia/Kolkata
+
+
+
+if yum -y install bind; then 
+echo -e "\033[33;32m yum -y BIND DNS Success "
+date +"%r" >> $BUILD;echo "Success : BIND DNS Install" >> $BUILD
+chkconfig named on
+service named start
+else
+echo -e "\033[33;31m yum -y BIND DNS Failed";date +"%r" >> $BUILD;echo "Failed : BIND DNS Install" >> $BUILD
+fi
+#
+if yum -y groupinstall "Development Tools"; then 
+echo -e "\033[33;32m yum -y groupinstall ----Development Tools Success ";date +"%r" >> $BUILD;echo "Success : Development Tools Install" >> $BUILD
+else
+echo -e "\033[33;31m yum -y groupinstall ----Development Tools Failed";date +"%r" >> $BUILD;echo "Failed : Development Tools Install" >> $BUILD
+fi
+if yum -y install sudo; then 
+echo -e "\033[33;32m Sudo Success";date +"%r" >> $BUILD;echo "Success : Sudo Install" >> $BUILD
+else
+echo -e "\033[33;31m Sudo Failed";date +"%r" >> $BUILD;echo "Failed : Sudo Install" >> $BUILD
+fi
+echo -e "\033[33;34m Blue"
+if mkdir $SCRIPTPATH/src; then 
+echo -e "\033[33;32m making dir src Success";date +"%r" >> $BUILD;echo "Success : src Making dir in $SCRIPTPATH/" >> $BUILD
+else
+echo -e "\033[33;31m making dir Failed";date +"%r" >> $BUILD;echo "Failed : src making dir $SCRIPTPATH/" >> $BUILD
+fi
+if cd $SCRIPTPATH/src; then 
+echo -e "\033[33;32m go to $SCRIPTPATH/src Success";date +"%r" >> $BUILD;echo "Success : Go To SRC dir $SCRIPTPATH/src" >> $BUILD
+else
+echo -e "\033[33;31m go to $SCRIPTPATH/src Failed";date +"%r" >> $BUILD;echo "Failed : Go To SRC dir $SCRIPTPATH/src" >> $BUILD
+fi
+
+FILE=openssl-1.0.1s.tar.gz
+if [ ! -f $FILE ]
+then
+   echo -e "\033[33;34m file " $FILE " does not exist.";
+		if wget http://openssl.org/source/openssl-1.0.1s.tar.gz; then 
+		echo -e "\033[33;32m openssl download Success";date +"%r" >> $BUILD;echo "Success : File Download $FILE" >> $BUILD
+		else
+		echo -e "\033[33;31m openssl download Failed";date +"%r" >> $BUILD;echo "Failed : File Download $FILE" >> $BUILD
+		fi
+else
+		echo -e "\033[33;32m file " $FILE " exists.";date +"%r" >> $BUILD;echo "Status : Already Exist $FILE" >> $BUILD
+fi
+		
+
+if tar -zxf openssl-1.0.1s.tar.gz; then 
+echo -e "\033[33;32m extract openssl Success";date +"%r" >> $BUILD;echo "Success : $FILE Extract" >> $BUILD
+else
+echo -e "\033[33;31m extract openssl Failed";date +"%r" >> $BUILD;echo "Failed : $FILE Extract" >> $BUILD
+fi
+if yum -y install zlib-devel; then 
+echo -e "\033[33;32m zlib install Success";date +"%r" >> $BUILD;echo "Success : Install zlib devel" >> $BUILD
+else
+echo -e "\033[33;31m zlib install Failed";date +"%r" >> $BUILD;echo "Failed : Install zlib devel" >> $BUILD
+fi
+if cd openssl-1.0.1s; then 
+echo -e "\033[33;32m goto openssl Success";date +"%r" >> $BUILD;echo "Success : goto dir openssl" >> $BUILD
+else
+echo -e "\033[33;31m goto openssl Failed";date +"%r" >> $BUILD;echo "Failed : goto dir openssl" >> $BUILD
+fi
+./config shared -fPIC --prefix=/opt/ssl --openssldir=/etc/pki/tls zlib-dynamic shared
+make
+make depend
+make install
+echo "/opt/ssl/lib" >> /etc/ld.so.conf.d/openssl102.conf
+ldconfig
+#ln -s /usr/local/ssl/bin/openssl /usr/bin/openssl
+cd $SCRIPTPATH/src
+FILE=curl-7.48.0.tar.gz
+if [ ! -f $FILE ]
+then
+   echo -e "\033[33;34m file " $FILE " does not exist.";
+		if wget http://curl.haxx.se/download/curl-7.48.0.tar.gz; then 
+		echo -e "\033[33;32m curl download Success";date +"%r" >> $BUILD;echo "Success : File Download $FILE" >> $BUILD
+		else
+		echo -e "\033[33;31m curl download Failed";date +"%r" >> $BUILD;echo "Failed : File Download $FILE" >> $BUILD
+		fi
+else
+		echo -e "\033[33;32m file " $FILE " exists.";date +"%r" >> $BUILD;echo "Status : Already Exist $FILE" >> $BUILD
+fi
+
+
+if tar -xzf curl-7.48.0.tar.gz; then 
+echo -e "\033[33;32m extract curl Success";date +"%r" >> $BUILD;echo "Success : Extract $FILE" >> $BUILD
+else
+echo -e "\033[33;31m extract curl Failed";date +"%r" >> $BUILD;echo "Failed : Extract $FILE" >> $BUILD
+fi
+if cd curl-7.48.0; then 
+echo -e "\033[33;32m curl goto Success";date +"%r" >> $BUILD;echo "Success : goto curl folder" >> $BUILD
+else
+echo -e "\033[33;31m curl goto Failed";date +"%r" >> $BUILD;echo "Failed : goto curl folder" >> $BUILD
+fi
+./configure --prefix=/opt/curl-ssl --with-ssl=/opt/ssl --enable-http --enable-ftp LDFLAGS=-L/opt/ssl/lib CPPFLAGS=-I/opt/ssl/include
+make
+make install
+#
+cd $SCRIPTPATH/src
+#
+#  Mysql / Mariadb Installation
+touch /etc/yum.repos.d/MariaDB.repo
+echo -e '[mariadb]\nname = MariaDB\nbaseurl = http://yum.mariadb.org/10.0/rhel7-amd64\ngpgkey=https://yum.mariadb.org/RPM-GPG-KEY-MariaDB\ngpgcheck=1' >> /etc/yum.repos.d/MariaDB.repo
+yum -y list|grep  MariaDB-server
+rpm --import https://yum.mariadb.org/RPM-GPG-KEY-MariaDB
+if yum -y install MariaDB-server MariaDB-client MariaDB-devel MariaDB-shared; then 
+echo -e "\033[33;32m extract MariaDB Success";date +"%r" >> $BUILD;echo "Success : Install MariaDB" >> $BUILD
+yum -y remove postfix
+else
+echo -e "\033[33;31m extract MariaDB Failed";date +"%r" >> $BUILD;echo "Failed : Install MariadB" >> $BUILD
+fi
+systemctl start mysql.service
+##mysql_secure_installation
+## MYSQL SECURE INSTALLATION Start
+yum -y install expect
+
+# Not required in actual script
+
+SECURE_MYSQL=$(expect -c "
+set timeout 10
+spawn mysql_secure_installation
+expect \"Enter current password for root (enter for none):\"
+send \"$MYSQL\r\"
+expect \"Change the root password?\"
+send \"n\r\"
+expect \"Remove anonymous users?\"
+send \"y\r\"
+expect \"Disallow root login remotely?\"
+send \"y\r\"
+expect \"Remove test database and access to it?\"
+send \"y\r\"
+expect \"Reload privilege tables now?\"
+send \"y\r\"
+expect eof
+")
+
+echo "$SECURE_MYSQL"
+
+echo "Status: MYSQL Secure Installation Automatic Program :$SECURE_MYSQL" >> $BUILD
+## MYSQL SECURE INSTALLATION End
+
+
+systemctl status mysql.service
+#
+FILE=pcre-8.37.tar.gz
+if [ ! -f $FILE ]
+then
+   echo -e "\033[33;34m file " $FILE " does not exist.";
+
+		if wget ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-8.37.tar.gz; then 
+		echo -e "\033[33;32m pcre download Success";date +"%r" >> $BUILD;echo "Success : File Download $FILE" >> $BUILD
+		else
+		echo -e "\033[33;31m pcre download Failed";date +"%r" >> $BUILD;echo "Failed : File Download $FILE" >> $BUILD
+		fi
+else
+		echo -e "\033[33;32m file " $FILE " exists.";date +"%r" >> $BUILD;echo "Status : Already Exist $FILE" >> $BUILD
+fi
+		
+
+if tar -xzf pcre-8.37.tar.gz; then 
+echo -e "\033[33;32m extract pcre Success";date +"%r" >> $BUILD;echo "Success : Extract $FILE" >> $BUILD
+else
+echo -e "\033[33;31m extract pcre Failed";date +"%r" >> $BUILD;echo "Failed : Extract $FILE" >> $BUILD
+fi
+cd pcre-8.37
+./configure --prefix=/usr/local/pcre
+make
+make install
+#
+#
+#openssl for httpd and php
+cd $SCRIPTPATH/src
+
+FILE=openssl-1.0.2g.tar.gz
+if [ ! -f $FILE ]
+then
+   echo -e "\033[33;34m file " $FILE " does not exist.";date +"%r" >> $BUILD;echo "Status : Download $FILE" >> $BUILD
+		wget https://www.openssl.org/source/openssl-1.0.2g.tar.gz
+else
+		echo -e "\033[33;32m file " $FILE " exists.";date +"%r" >> $BUILD;echo "Status : Already Exist $FILE" >> $BUILD
+fi
+		
+		
+tar -zxf openssl-1.0.2g.tar.gz
+cd openssl-1.0.2g
+./config -fPIC --prefix=/usr/local/ssl --openssldir=/usr/local/ssl
+make
+make install
+ln -s /usr/local/ssl/bin/openssl /usr/bin/openssl
+
+
+
+# Apache Install 
+cd $SCRIPTPATH/src
+# http://httpd.apache.org/download.cgi#apache24 and  Apache Portable Runtime Project  apr and apr-util
+#http://apr.apache.org/download.cgi
+FILE=httpd.tar.gz
+if [ ! -f $FILE ]
+then
+   echo -e "\033[33;34m file " $FILE " does not exist.";
+		if wget http://mirror.fibergrid.in/apache//httpd/httpd-2.4.18.tar.gz -O $FILE; then 
+		echo -e "\033[33;32m httpd download Success";date +"%r" >> $BUILD;echo "Success : File Download $FILE" >> $BUILD
+		else
+		echo -e "\033[33;31m httpd download Failed";date +"%r" >> $BUILD;echo "Failed : File Download $FILE" >> $BUILD
+		fi
+else
+		echo -e "\033[33;32m file " $FILE " exists.";date +"%r" >> $BUILD;echo "Status : Already Exist $FILE" >> $BUILD
+fi
+if tar -xzf $FILE; then 
+echo -e "\033[33;32m extract httpd Success";date +"%r" >> $BUILD;echo "Success : Extract $FILE" >> $BUILD
+else
+echo -e "\033[33;31m extract httpd Failed"date +"%r" >> $BUILD;echo "Failed : Extract $FILE" >> $BUILD
+tar -xzf httpd-2*
+fi
+
+
+FILE=apr-1.5.2.tar.gz
+if [ ! -f $FILE ]
+then
+   echo -e "\033[33;34m file " $FILE " does not exist.";
+		if wget http://redrockdigimark.com/apachemirror//apr/apr-1.5.2.tar.gz; then 
+		echo -e "\033[33;32m apr download Success";date +"%r" >> $BUILD;echo "Success : File Download $FILE" >> $BUILD
+		else
+		echo -e "\033[33;31m apr download Failed";date +"%r" >> $BUILD;echo "Failed : File Download $FILE" >> $BUILD
+		fi
+else
+		echo -e "\033[33;32m file " $FILE " exists.";date +"%r" >> $BUILD;echo "Status : Already Exist $FILE" >> $BUILD
+fi
+if tar -xzf $FILE; then 
+echo -e "\033[33;32m extract apr Success";date +"%r" >> $BUILD;echo "Success : Extract $FILE" >> $BUILD
+else
+echo -e "\033[33;31m extract apr Failed"date +"%r" >> $BUILD;echo "Failed : Extract $FILE" >> $BUILD
+fi
+
+
+
+FILE=apr-util-1.5.4.tar.gz
+if [ ! -f $FILE ]
+then
+   echo -e "\033[33;34m file " $FILE " does not exist.";
+		if wget http://redrockdigimark.com/apachemirror//apr/apr-util-1.5.4.tar.gz; then 
+		echo -e "\033[33;32m apr-util download Success";date +"%r" >> $BUILD;echo "Success : File Download $FILE" >> $BUILD
+		else
+		echo -e "\033[33;31m apr-util download Failed";date +"%r" >> $BUILD;echo "Failed : File Download $FILE" >> $BUILD
+		fi
+else
+		echo -e "\033[33;32m file " $FILE " exists.";date +"%r" >> $BUILD;echo "Status : File Exist $FILE" >> $BUILD
+fi
+if tar -xzf $FILE; then 
+echo -e "\033[33;32m extract apr-util Success";date +"%r" >> $BUILD;echo "Success : Extract $FILE" >> $BUILD
+else
+echo -e "\033[33;31m extract apr-util Failed"date +"%r" >> $BUILD;echo "Failed : Extract $FILE" >> $BUILD
+fi
+		
+		
+
+cp -r apr-1.5.2 httpd-2.4.18/srclib/apr
+cp -r apr-util-1.5.4 httpd-2.4.18/srclib/apr-util
+
+cd httpd-2.4.18
+#./configure  --enable-so --with-included-apr --with-mpm=event prefix=/usr/local/apache2 --with-pcre=/usr/local/pcre --with-ssl=/opt/ssl LDFLAGS=-L/opt/ssl/lib CPPFLAGS=-I/opt/ssl/include --disable-v4-mapped --enable-access-compat=static --enable-actions=static --enable-alias=static --enable-asis=static --enable-auth_basic=static --enable-authn_core=static --enable-authn_file=static --enable-authz_core=static --enable-authz_groupfile=static --enable-authz_host=static --enable-authz_user=static --enable-autoindex=static --enable-cgi=static --enable-deflate=static --enable-dir=static --enable-env=static --enable-expires=static --enable-filter=static --enable-headers=static --enable-include=static --enable-log_config=static --enable-logio=static --enable-mime=static --enable-modules=none --enable-negotiation=static --enable-proxy=static --enable-proxy-connect=static --enable-proxy-http=static --enable-rewrite=static --enable-setenvif=static --enable-slotmem_shm=static --enable-socache_dbm=static --enable-socache_shmcb=static --enable-ssl=static --enable-status=static  --enable-unique-id=static --enable-unixd=static --enable-userdir=static --enable-version=static
+./configure --enable-so --with-included-apr --with-mpm=event prefix=/usr/local/apache2 --with-pcre=/usr/local/pcre --with-ssl=/usr/local/ssl --enable-rewrite --enable-expires --enable-ssl --enable-deflate
+make
+make install
+date +"%r" >> $BUILD;echo "Apache Program Complete" >> $BUILD
+
+#read -p "Your Server IP is 69.4.92.76 (y/n)?" choice
+#case "$choice" in 
+#  y|Y ) echo "nameserver 69.4.92.76" >> /etc/resolv.conf; service network restart; echo "nameserver 69.4.92.76 Added in /etc/resolv.conf";;
+#  n|N ) echo "Please Add Manualy LINE :nameserver YOUR-Server-MAIN-IP in /etc/resolv.conf" echo"And Restart Service Network By Command service network restart";;
+#  * ) echo -e "\033[33;31m Invalid Entry Please Add Manualy LINE :nameserver YOUR-Server-MAIN-IP in /etc/resolv.conf " echo"And Restart Service Network By Command service network restart";;
+#esac
+
+cd $SCRIPTPATH/src
+FILE=php.tar.gz
+if [ ! -f $FILE ]
+then
+   echo -e "\033[33;34m file " $FILE " does not exist.";
+		if wget http://us2.php.net/get/php-5.6.20.tar.gz/from/this/mirror -O $FILE; then 
+		echo -e "\033[33;32m php download Success";date +"%r" >> $BUILD;echo "Success : Download File $FILE" >> $BUILD
+		else
+		echo -e "\033[33;31m php download Failed";date +"%r" >> $BUILD;echo "Failed : Download File $FILE" >> $BUILD
+		fi
+else
+		echo -e "\033[33;32m file " $FILE " exists.";date +"%r" >> $BUILD;echo "Status : Already Exist $FILE" >> $BUILD
+fi
+		
+		
+if tar -xzf $FILE; then 
+echo -e "\033[33;32m php extract Success";date +"%r" >> $BUILD;echo "Success : Extract $FILE" >> $BUILD
+else
+echo -e "\033[33;31m php extract Failed";date +"%r" >> $BUILD;echo "Failed : Extract $FILE" >> $BUILD
+tar -xzf php-*
+fi
+cd php-5.6.20
+if rpm -ivh http://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-6.noarch.rpm; then 
+echo -e "\033[33;32m Epel Fedoraproject update Success";date +"%r" >> $BUILD;echo "Success : Epel RPM " >> $BUILD
+else
+	if rpm -ivh $SCRIPTPATH/src/epel-release-7-6.noarch.rpm; then 
+	echo -e "\033[33;31m Epel Feoraproject update Failed";date +"%r" >> $BUILD;echo "Failed : Epel RPM " >> $BUILD
+	fi
+fi
+
+if yum -y install perl; then 
+echo -e "\033[33;32m perl Success";date +"%r" >> $BUILD;echo "Success : Perl Install" >> $BUILD
+else
+echo -e "\033[33;31m perl Failed";date +"%r" >> $BUILD;yum -y install perl;echo "Failed : Perl Install" >> $BUILD
+fi
+if yum -y install libxml2-devel; then 
+echo -e "\033[33;32m libxml2 Success";date +"%r" >> $BUILD;echo "Success : libxml2 devel Install" >> $BUILD
+else
+echo -e "\033[33;31m libxml2 Failed";date +"%r" >> $BUILD;echo "Failed : libxml2 devel Install" >> $BUILD
+fi
+if yum -y install bzip2-devel; then 
+echo -e "\033[33;32m bzip2 Success";date +"%r" >> $BUILD;echo "Success : bzip devel Install" >> $BUILD
+else
+echo -e "\033[33;31m bzip2 Failed";date +"%r" >> $BUILD;echo "Failed : bzip devel Install" >> $BUILD
+fi
+if yum -y install gmp-devel; then 
+echo -e "\033[33;32m gmp Success";date +"%r" >> $BUILD;echo "Success : gmp devel Install" >> $BUILD
+else
+echo -e "\033[33;31m gmp Failed";date +"%r" >> $BUILD;echo "Failed : gmp devel Install" >> $BUILD
+fi
+if yum -y install aspell-devel; then 
+echo -e "\033[33;32m aspell Success";date +"%r" >> $BUILD;echo "Success : aspell devel Install" >> $BUILD
+else
+echo -e "\033[33;31m aspell Failed";date +"%r" >> $BUILD;echo "Failed : aspell devel Install" >> $BUILD
+fi
+if yum -y install recode-devel; then 
+echo -e "\033[33;32m recode Success";date +"%r" >> $BUILD;echo "Success : recode devel Install" >> $BUILD
+else
+echo -e "\033[33;31m recode Failed";date +"%r" >> $BUILD;echo "Failed : recode devel Install" >> $BUILD
+fi
+if yum -y install libjpeg-devel; then 
+echo -e "\033[33;32m libjpeg Success";date +"%r" >> $BUILD;echo "Success : libjpeg devel Install" >> $BUILD
+else
+echo -e "\033[33;31m libjpeg Failed";date +"%r" >> $BUILD;echo "Failed : libjpeg devel Install" >> $BUILD
+fi
+if yum -y install libpng-devel; then 
+echo -e "\033[33;32m libpng Success";date +"%r" >> $BUILD;echo "Success : libpng devel Install" >> $BUILD
+else
+echo -e "\033[33;31m libpng Failed";date +"%r" >> $BUILD;echo "Failed : libpng devel Install" >> $BUILD
+fi
+if yum -y install libXpm-devel; then 
+echo -e "\033[33;32m libxpm Success";date +"%r" >> $BUILD;echo "Success : libxpm devel Install" >> $BUILD
+else
+echo -e "\033[33;31m libxpm Failed";date +"%r" >> $BUILD;echo "Failed : libXpm devel Install" >> $BUILD
+fi
+if yum -y install freetype-devel; then 
+echo -e "\033[33;32m freetype Success";date +"%r" >> $BUILD;echo "Success : freetype devel Install" >> $BUILD
+else
+echo -e "\033[33;31m freetype Failed";date +"%r" >> $BUILD;echo "Failed : freetype devel Install" >> $BUILD
+fi
+if yum -y install libicu-devel; then 
+echo -e "\033[33;32m libicu Success";date +"%r" >> $BUILD;echo "Success : libicu devel Install" >> $BUILD
+else
+echo -e "\033[33;31m libicu Failed";date +"%r" >> $BUILD;echo "Failed : libicu devel Install" >> $BUILD
+fi
+if yum -y install libmcrypt-devel; then 
+echo -e "\033[33;32m libmcrypt Success";date +"%r" >> $BUILD;echo "Success : libmcrypt devel Install" >> $BUILD
+else
+echo -e "\033[33;31m libmcrypt Failed";date +"%r" >> $BUILD;echo "Failed : libmcrypt devel Install" >> $BUILD
+fi
+./configure --prefix=/usr/local --disable-fileinfo --disable-opcache --enable-bcmath --enable-calendar --enable-ftp --enable-mbstring --enable-soap --enable-zip --enable-gd-native-ttf --enable-libxml --enable-pdo --enable-sockets --with-gettext --with-apxs2=/usr/local/apache2/bin/apxs --with-curl=/opt/curl-ssl --with-freetype-dir=/usr --with-gd --with-jpeg-dir==/usr --with-kerberos  --with-libxml-dir=/opt/libmcrypt/ --with-mysql --with-mysqli --with-mysql-sock=/var/lib/mysql/mysql.sock --with-openssl=/usr/local/ssl --with-pcre-regex=/usr/local/pcre --with-pdo-mysql --with-pdo-sqlite --with-pic --with-png-dir=/usr --with-xpm-dir=/usr --with-zlib --with-zlib-dir=/usr
+make
+if [ $phptest=1 ]; then  
+make test
+else
+date +"%r" >> $BUILD;echo "Status : Php Testing function Disable" >> $BUILD
+fi
+
+#Do you want to send this report now? [Yns]:
+
+PHPINSTALL=$(expect -c "
+spawn make install
+expect -nocase
+send \"n\r\"
+expect eof
+")
+echo "$PHPINSTALL"
+
+date +"%r" >> $BUILD;echo "PHP Program Complete" >> $BUILD
+
+
+wget https://curl.haxx.se/ca/cacert.pem
+if cp cacert.pem /usr/local/ssl/cert.pem; then 
+echo -e "\033[33;32m cronie For Cert.pem Success";date +"%r" >> $BUILD;echo "Success : cert.pem devel Install" >> $BUILD
+else
+cp $SCRIPTPATH/src/cacert.pem /usr/local/ssl/cert.pem; echo -e "\033[33;31m cronie For Cert.pem Failed";date +"%r" >> $BUILD;echo "Failed : cert.pem Certification from curl.haxx.se website Install" >> $BUILD
+fi
+cp php.ini-production /usr/local/lib/php.ini
+# openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /usr/share/ssl/certs/test.pem -out /usr/share/ssl/certs/test.pem
+#OR cp php.ini-development /usr/php.ini
+
+#start apache
+/usr/local/apache2/bin/apachectl start
+date +"%r" >> $BUILD;echo "Start Apache" >> $BUILD
+
+#Install CronJOB
+if yum -y install cronie; then 
+echo -e "\033[33;32m cronie For CronJOB Success";date +"%r" >> $BUILD;echo "Success : Cronie for cronjob Install" >> $BUILD
+else
+echo -e "\033[33;31m cronie For CronJoB Failed";date +"%r" >> $BUILD;echo "Failed : cronie for CronJOB Install" >> $BUILD
+fi
+chkconfig crond on
+service crond start
+service crond status
+date +"%r" >> $BUILD;echo "Cronjob Program Complete" >> $BUILD
+
+#Install CSF
+#cd $SCRIPTPATH
+#rm -fv csf.tgz
+cd $SCRIPTPATH/src
+FILE=csf.tgz
+if [ ! -f $FILE ]
+then
+		echo -e "\033[33;34m file " $FILE " does not exist.";date +"%r" >> $BUILD;echo "Status : Downloading $FILE" >> $BUILD
+		wget http://www.configserver.com/free/csf.tgz
+else
+		echo -e "\033[33;32m file " $FILE " exists.";date +"%r" >> $BUILD;echo "Status : Exist $FILE" >> $BUILD
+fi
+
+tar -xzf csf.tgz
+cd csf
+sh install.sh
+date +"%r" >> $BUILD;echo "CSF Program Complete" >> $BUILD
+
+
+# Wemin repo file installation
+#touch /etc/yum.repos.d/webmin.repo
+#vi /etc/yum.repos.d/webmin.repo
+#echo -e '[Webmin]\nname=Webmin Distribution Neutral\n#baseurl=http://download.webmin.com/download/yum\nmirrorlist=http://download.webmin.com/download/yum/mirrorlist\nenabled=1' >> /etc/yum.repos.d/webmin.repo
+#rpm --import http://www.webmin.com/jcameron-key.asc
+#if yum -y install webmin; then 
+#echo -e "\033[33;32m Webmin Success"
+#else
+#echo -e "\033[33;31m Webmin Failed"
+#fi
+cd $SCRIPTPATH/src
+
+# Wemin Manual/tar.gz file installation
+FILE=webmin-1.791.tar.gz
+if [ ! -f $FILE ]
+then
+   echo -e "\033[33;34m file " $FILE " does not exist.";
+		if wget http://prdownloads.sourceforge.net/webadmin/webmin-1.791.tar.gz; then 
+		echo -e "\033[33;32m Webmin Success";date +"%r" >> $BUILD;echo "Success : Download File $FILE" >> $BUILD
+		else
+		echo -e "\033[33;31m Webmin Failed";date +"%r" >> $BUILD;echo "Failed : Download File $FILE" >> $BUILD
+		fi
+else
+		echo -e "\033[33;32m file " $FILE " exists.";date +"%r" >> $BUILD;echo "Status : Exist $FILE" >> $BUILD
+fi
+
+
+tar xvzf webmin-1.791.tar.gz
+cd webmin-1.791
+## Webmin Setup with configure
+#./setup.sh /usr/local/webmin
+#Log file directory [/var/webmin]:#Full path to perl (default /usr/bin/perl):
+#Web server port (default 10000):#Login name (default admin):
+#Login password:#Password again:#Start Webmin at boot time (y/n):
+SECURE_WEBMIN=$(expect -c "
+set timeout 10
+
+spawn ./setup.sh /usr/local/webmin
+expect -nocase
+send \"\r\"
+expect -nocase
+send \"\r\"
+expect -nocase
+send \"\r\"
+expect -nocase
+send \"$webport\r\"
+expect -nocase
+send \"$weba\r\"
+expect -nocase
+send \"$webp\r\"
+expect -nocase
+send \"$webp\r\"
+expect -nocase
+send \"y\r\"
+expect eof
+")
+echo "$SECURE_WEBMIN"
+service webmin  start
+date +"%r" >> $BUILD;service webmin status >> $BUILD
+date +"%r" >> $BUILD;echo "Status : Webmin Automatic Program :$SECURE_WEBMIN" >> $BUILD
+date +"%r" >> $BUILD;echo "Webmin Program Complete" >> $BUILD
+
+
+## Pro ftpd installation
+rpm -ivh http://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-6.noarch.rpm
+yum -y install proftpd proftpd-utils
+systemctl start proftpd.service
+systemctl enable proftpd.service
+proftpd -v
+
+## INSTALLation End proftpd
+date +"%r" >> $BUILD;echo "PROFTPD Program Complete" >> $BUILD
+
+
+## Make Public folder And enable php allow to access makefolder/create file and more
+mkdir /home; mkdir /home/www
+echo "<html><body><h1>It works Apache!<br> <?php phpinfo(); ?></h1></body></html>" >> /home/www/index.php
+#First :We need to set the owner/group of the web root (and any directories/files therein):
+chown -R daemon:daemon /home/www
+#Second:We need to setup the proper permissions for users and groups.'go'-'group' and 'other'.rwx-Read,Write,execute
+chmod go-rwx /home/www/;chmod go+x /home/www/;chgrp -R www-data /home/www/;chmod -R go-rwx /home/www/
+chmod -R g+rx /home/www/;chmod -R g+rwx /home/www/
+
+#Auto Start Apache2 on boot/reboot server
+#touch /etc/init.d/apache2
+#echo -e '#!/bin/bash\n# apache2-Startup script for the Apache HTTP Server\n/usr/local/apache2/bin/apachectl $@' >> /etc/init.d/apache2
+cp -f $SCRIPTPATH/apache2 /etc/init.d/apache2
+chmod 755 /etc/init.d/apache2
+chkconfig --add apache2
+chkconfig --list apache2
+chkconfig apache2 on
+systemctl daemon-reload; /etc/init.d/apache2 restart
+date +"%r" >> $BUILD;echo "Apache Make Boot script complete start it from webmin.panel Startup and bootup option" >> $BUILD
+
+
+# sed '/pattern/a some text here\nNewline' filename
+#sed '/libphp5.so/a # grep PHP set php.ini file declare path\nPHPIniDir /usr/'
+# sed '/DirectoryIndex /c index.php index.cgi index.pl index.php index.xhtml index.htm ' filename.txt
+# now comment out all the stuff below up to the EOF
+
+##automatic setting
+##apache conf
+sed -i '/DirectoryIndex index/c\DirectoryIndex index.php index.html index.cgi index.pl index.php index.xhtml index.htm' /usr/local/apache2/conf/httpd.conf
+
+echo -e "\033[33;32m
+Edit /usr/local/apache2/conf/httpd.conf
+Required Module Enable
+Enable (Uncomment this line ): modules/mod_rewrite.so
+
+#Automatically Added ## LoadModule php5_module        modules/libphp5.so
+
+
+# grep PHP set php.ini file declare path 
+
+<IfModule dir_module>
+DirectoryIndex index.php index.html index.cgi index.pl index.php index.xhtml index.htm
+
+   AddType text/html .php .phps
+   AddType x-httpd-php .php
+    AddHandler php5-script .php
+
+Allow .htacces function (Required ) AllowOverride All
+Example: 
+<Directory /usr/local/apache2/htdocs>
+AllowOverride All
+</Directory>
+
+
+
+WebminPanel >>Server >> Apache WebServer >> Module Config
+
+File or directory to add virtual servers to :   /usr/local/apache2/conf/httpd.conf
+
+
+
+Apache server root directory : /usr/local/apache2/
+Path to httpd executable : /usr/local/apache2/bin/apachectl
+
+Path to the apachectl command : /usr/local/apache2/bin/apachectl
+Command to start apache:  /usr/local/apache2/bin/apachectl start
+
+Command to stop apache : /usr/local/apache2/bin/apachectl stop
+Command to apply configuration : /usr/local/apache2/bin/apachectl graceful
+
+path httpd PID : Set Automatic
+
+Edit named.conf 
+Change (any):(listen-on port 53 { any; };
+Change (any): allow-query {any;};
+
+
+Add Zone (DNS EXAMPLE ) "
+
+echo '
+HERE :vi /etc/named.conf
+zone "ns1.djamol.com" {
+	type master;
+	file "/var/named/ns1.djamol.com.db";
+};
+and add named file in folder /var/named/
+
+
+service named restart
+
+Disable Webmin SSL/https : vi /etc/webmin/miniserv.conf And Change ssl=0
+(vi save command Esc type :wq
+and Restart Webmin : /etc/webmin/restart    (restart/stop/reload/start )
+
+
+Go to   Webmin > Webmin Configuration > Webmin Modules >
+From local file > /etc/csf/csfwebmin.tgz > Install Module 
+To access CSF:
+Webmin > System > ConfigServer Security & Firewall
+ConfigServer Security & Firewall > Config > Set TESTING = 0 
+
+Install Webmin-Module:Openssl Certificate Manager 
+http://www.webmin.com/download/modules/certmgr.wbm.gz
+
+
+FTP  -Account Create
+Login Webmin >>System>>Users & Groups >> Create New Account With Password
+After Go to Webmin >>Cluster >> Cluster Shell Commands >> Type:
+chown -R <USERID>:<GROUPID> /home/www
+(Eg.:chown -R home@djamol.com:root /home/www)
+Pro FTP Login port change (default 21 )
+add example add : Port 77 #this line add in /etc/proftpd.conf conf file
+#   use port numbers outside the "ephemeral port" range of 32768-61000.
+Port                            77
+
+
+if unable to create MYSQL/MARIADB users then
+Go To Mysql Database Server(WEbmin) >> mysql(database) >>user(table) >>
+and set (Allow default value)
+ssl_cipher 	:Yes	
+x509_issuer :Yes 	
+x509_subject:Yes
+
+
+
+Change ssh/Sshd port for security (default port is 21)
+Login ssh :type:vi /etc/ssh/sshd_config 
+press i
+and change: #Port 21 To: Port 55
+and save file(type Esc then type :wq Enter 
+#55 or any another port between 10-61000)
+
+and restart sshd# : service sshd restart
+
+Check PHP use userid:groupid (phpcode)   $user = posix_getpwuid(posix_geteuid()); var_dump($user);
+
+and allow this user to public_html folder example #this is already run it in this script
+chown -R daemon:daemon /home/www
+chmod go-rwx /home/www/;chmod go+x /home/www/;chgrp -R www-data /home/www/;chmod -R go-rwx /home/www/
+chmod -R g+rx /home/www/;chmod -R g+rwx /home/www/
+
+#Auto Start Apache on Boot/Reboot Server
+Webmin>>Bootup and Shutdown>>select check at apache2 >> at footer click on Start On Boot
+
+'
+echo -e "\033[33;32m Setup Status Log File Save At $BUILD"
+echo -e "\033[33;32m Login With http://yourip:$webport (default username:$weba,password:$webp)"
+yum -y remove expect
+
+
+date +"%r" >> $BUILD;echo "task complete please check manauly option for setting" >> $BUILD
+# HTTPD Apache VERSION
+echo /usr/local/apache2/bin/httpd -v
+#PHP VERSION CHECK
+echo /usr/local/bin/php -v
+#MYSQL VERSION CHECK
+echo mysql -V
+#BIND DNS VERSION CHECK
+echo named -v
+#CURL VERSION
+echo curl -V
+#OPEN SSL VERSION
+echo openssl version
+if [ $copyen=1 ]; then  
+cp -f $SCRIPTPATH/php.ini /usr/local/lib/php.ini;
+cp -f $SCRIPTPATH/src/httpd.conf /usr/local/apache2/conf/httpd.conf
+cp -f $SCRIPTPATH/src/named.conf /etc/named.conf
+cp -f $SCRIPTPATH/src/proftpd.conf /etc/proftpd.conf
+cp -f $SCRIPTPATH/src/named/apvideo.info.db /var/named/apvideo.info.db
+cp -f $SCRIPTPATH/src/named/avpt.info.db /var/named/avpt.info.db
+cp -f $SCRIPTPATH/src/named/avptube.com.db /var/named/avptube.com.db
+cp -f $SCRIPTPATH/src/named/directapp.in.db /var/named/directapp.in.db
+cp -f $SCRIPTPATH/src/named/djamol.com.db /var/named/djamol.com.db
+cp -f $SCRIPTPATH/src/named/musicd.in.db /var/named/musicd.in.db
+cp -f $SCRIPTPATH/src/named/mvid.in.db /var/named/mvid.in.db
+cp -f $SCRIPTPATH/src/named/ns3.djamol.com.db /var/named/ns3.djamol.com.db
+cp -f $SCRIPTPATH/src/named/ns4.djamol.com.db /var/named/ns4.djamol.com.db
+cp -f $SCRIPTPATH/src/named/ns6.djamol.com.db /var/named/ns6.djamol.com.db
+cp -f $SCRIPTPATH/src/named/ns8.djamol.com.db /var/named/ns8.djamol.com.db
+cp -f $SCRIPTPATH/src/named/server2.djamol.com.db /var/named/server2.djamol.com.db
+date +"%r" >> $BUILD;echo "Status : Copy Files conf files enabled" >> $BUILD
+SERVERIP=198.50.200.123
+sed -i "s/178.156.202.53/$SERVERIP/g" /var/named/apvideo.info.db;sed -i "s/178.156.202.53/$SERVERIP/g" /var/named/avpt.info.db;
+sed -i "s/178.156.202.53/$SERVERIP/g" /var/named/avptube.com.db;sed -i "s/178.156.202.53/$SERVERIP/g" /var/named/directapp.in.db;
+sed -i "s/178.156.202.53/$SERVERIP/g" /var/named/djamol.com.db;sed -i "s/178.156.202.53/$SERVERIP/g" /var/named/musicd.in.db;
+sed -i "s/178.156.202.53/$SERVERIP/g" /var/named/mvid.in.db;sed -i "s/178.156.202.53/$SERVERIP/g" /var/named/ns3.djamol.com.db;
+sed -i "s/178.156.202.53/$SERVERIP/g" /var/named/ns4.djamol.com.db;sed -i "s/178.156.202.53/$SERVERIP/g" /var/named/ns6.djamol.com.db;
+sed -i "s/178.156.202.53/$SERVERIP/g" /var/named/ns8.djamol.com.db;sed -i "s/178.156.202.53/$SERVERIP/g" /var/named/server2.djamol.com.db;
+else
+date +"%r" >> $BUILD;echo "Status : Copy Files conf files Disable" >> $BUILD
+fi
+
+#sed -i '/DirectoryIndex index/c\DirectoryIndex index.php index.html index.cgi index.pl index.php index.xhtml index.htm' /usr/local/apache2/conf/httpd.conf
+#sed -i 's/localhost/any/g' /etc/named.conf;sed -i 's/127.0.0.1/any/g' /etc/named.conf;
+
+/etc/init.d/apache2 restart
+systemctl restart proftpd
+service named restart
+
+date +"%r" >> $BUILD;/usr/local/apache2/bin/httpd -v >> $BUILD;openssl version >> $BUILD;
+/usr/local/bin/php -v >> $BUILD;mysql -V >> $BUILD;named -v >> $BUILD;curl -V >> $BUILD;
