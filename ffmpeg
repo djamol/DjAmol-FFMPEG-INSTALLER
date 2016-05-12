@@ -1,7 +1,20 @@
 # MOre details https://trac.ffmpeg.org/wiki/CompilationGuide/Centos
 # background run command 
 # command &</dev/null &
+
+SCRIPT=$(readlink -f "$0")
+# Absolute path this script is in, thus /home/user/bin
+SCRIPTPATH=$(dirname "$SCRIPT")
+#echo $SCRIPTPATH
+
+mkdir $SCRIPTPATH/log
+BUILDDIR=$SCRIPTPATH/log/
+BUILDFILE=$RANDOM.txt
+BUILD=$BUILDDIR$BUILDFILE
+
+echo $BUILD
 mkdir ~/ffmpeg_sources
+date +"%r" >> $BUILD;echo "Start :  Yasm" >> $BUILD
 #Yasm
 #Yasm is an assembler used by x264 and FFmpeg. 
 cd ~/ffmpeg_sources
@@ -14,6 +27,7 @@ make
 make install
 make distclean
 
+date +"%r" >> $BUILD;echo "Start :  libx264" >> $BUILD
 #libx264
 #H.264 video encoder. See the H.264 Encoding Guide for more information and usage examples.
 #Requires ffmpeg to be configured with --enable-gpl --enable-libx264
@@ -29,6 +43,8 @@ make distclean
 yum -y install hg
 yum -y install cmake
 
+date +"%r" >> $BUILD;echo "Start :  libx265" >> $BUILD
+
 #libx265
 #H.265/HEVC video encoder. See the H.265 Encoding Guide for more information and usage examples.
 #Requires ffmpeg to be configured with --enable-gpl --enable-libx265. 
@@ -40,6 +56,8 @@ cd ~/ffmpeg_sources/x265/build/linux
 cmake -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX="$HOME/ffmpeg_build" -DENABLE_SHARED:bool=off ../../source
 make
 make install
+
+date +"%r" >> $BUILD;echo "Start :  libfdk_aac" >> $BUILD
 
 #libfdk_aac  
 #AAC audio encoder. 
@@ -54,6 +72,7 @@ make install
 make distclean
 
 
+date +"%r" >> $BUILD;echo "Start :  libmp3lame" >> $BUILD
 
 #libmp3lame
 
@@ -68,7 +87,7 @@ make
 make install
 make distclean
 
-
+date +"%r" >> $BUILD;echo "Start :  libopus" >> $BUILD
 #libopus
 #Opus audio decoder and encoder.
 #Requires ffmpeg to be configured with --enable-libopus.
@@ -84,7 +103,7 @@ make install
 make distclean
 
 
-
+date +"%r" >> $BUILD;echo "Start :  libogg" >> $BUILD
 #libogg
 
 #Ogg bitstream library. Required by libtheora and libvorbis.
@@ -98,7 +117,7 @@ make
 make install
 make distclean
 
-
+date +"%r" >> $BUILD;echo "Start :  libvorbis" >> $BUILD
 #libvorbis
 #Vorbis audio encoder. Requires libogg.
 #Requires ffmpeg to be configured with --enable-libvorbis. 
@@ -112,11 +131,9 @@ make install
 make distclean
 
 
-
+date +"%r" >> $BUILD;echo "Start :  libvpx" >> $BUILD
 #libvpx
-
 #VP8/VP9 video encoder.
-
 #Requires ffmpeg to be configured with --enable-libvpx.
 
 cd ~/ffmpeg_sources
@@ -128,7 +145,7 @@ make install
 make clean
 
 
-
+date +"%r" >> $BUILD;echo "Start :  FFmpeg" >> $BUILD
 #FFmpeg
 
 cd ~/ffmpeg_sources
@@ -149,7 +166,7 @@ hash -r
 
 
 
-
+date +"%r" >> $BUILD;echo "Start :  php-ffmpeg" >> $BUILD
 ## install php-ffmpeg
 #yum -y install php-gd php-devel
 #tar -xjf ffmpeg-php*
@@ -168,6 +185,7 @@ hash -r
 #[ffmpeg]
 #extension=ffmpeg.so
 #And restart httpd/apache
-echo -e '[ffmpeg]\nextension=ffmpeg.so' >> /local/lib/php.ini
-service httpd graceful
+#echo -e '[ffmpeg]\nextension=ffmpeg.so' >> /local/lib/php.ini
+#service apache2 graceful
 
+date +"%r" >> $BUILD;echo "done :  service apache2 graceful" >> $BUILD
