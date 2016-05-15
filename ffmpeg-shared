@@ -1,0 +1,2 @@
+
+echo '/root/ffmpeg_build/lib' >> /etc/ld.so.conf
