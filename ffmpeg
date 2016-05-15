@@ -1,8 +1,7 @@
 # MOre details https://trac.ffmpeg.org/wiki/CompilationGuide/Centos
 #By DjAmol Group www.djamol.com
 #git clone http://github.com/djamol/DjAmol-VPS-INSTALLER.git; cd DjAmol-VPS-INSTALLER
-# background run command 
-# command &</dev/null &
+#  Shared Disable in this bash script
 yum -y remove libvpx libogg libvorbis libtheora libx264 x264 ffmpeg ffmpeg-devel
 yum update
 
