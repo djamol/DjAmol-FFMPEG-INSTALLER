@@ -102,7 +102,6 @@ mkdir /etc/ssl/private/
 #chmod o= /etc/ssl/private/dovecot.pem
 
 openssl req -new -x509 -days 3650 -nodes -out /etc/ssl/certs/postfix.pem -keyout /etc/ssl/private/postfix.pem
-chmod o= /etc/ssl/private/postfix.pem
 postconf -e smtpd_tls_cert_file=/etc/ssl/certs/postfix.pem
 postconf -e smtpd_tls_key_file=/etc/ssl/private/postfix.pem
 #service dovecot restart
