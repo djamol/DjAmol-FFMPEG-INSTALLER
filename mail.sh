@@ -73,3 +73,22 @@ sales@andreagrandi.com youremail@live.com
 
  postmap /etc/postfix/virtual
 /etc/init.d/postfix reload
+
+
+
+################  All Emails for to one Email Address ##################
+
+#Create /etc/postfix/virtual-regexp with the following content:
+/.+@.+/ email@gmail.com
+
+#Edit /etc/postfix/main.cf and add regexp:/etc/postfix/virtual-regexp to the virtual_maps configuration. The end result might look like this in main.cf:
+
+virtual_alias_maps = hash:/etc/postfix/virtual, regexp:/etc/postfix/virtual-regexp
+
+#Build the mapfile by typing command:
+
+postmap /etc/postfix/virtual-regexp
+
+#This also requires a virtual.db to exist. If it doesn't create an empty file called virtual and run :
+
+touch /etc/postfix/virtual && postmap /etc/postfix/virtual
