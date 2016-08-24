@@ -13,11 +13,12 @@ yum -y install postfix
 
 #
 #
-           edit /etc/postfix/main.cf
-Then you need to edit /etc/postfix/main.cf customizing myhostname with your domain name and 
-add virtual_alias_maps and virtual_alias_domains parameters. Please also check that mynetworks is 
-configured exactly as I did, or you will make your mail server vulnerable to spam bots. 
-You can see my complete configuration here:
+#           edit /etc/postfix/main.cf
+#Then you need to edit /etc/postfix/main.cf customizing myhostname with your domain name and 
+#add virtual_alias_maps and virtual_alias_domains parameters. Please also check that mynetworks is 
+#configured exactly as I did, or you will make your mail server vulnerable to spam bots. 
+#andreagrandi.it change to your domain in configuration setting
+#You can see my complete configuration here:
 
 myhostname = andreagrandi.it
 smtpd_banner = $myhostname ESMTP $mail_name (Ubuntu)
@@ -57,13 +58,13 @@ inet_interfaces = all
 
 
 
-Add your email aliases
+#Add your email aliases
 
-Edit /etc/postfix/virtual file and add your aliases, one per line, like in this example:
+#Edit /etc/postfix/virtual file and add your aliases, one per line, like in this example:
 
 
-info@yourdomain.com youremail@gmail.com
-sales@yourdomain.com youremail@gmail.
+info@andreagrandi.com youremail@gmail.com
+sales@andreagrandi.com youremail@live.com
 
 
 
