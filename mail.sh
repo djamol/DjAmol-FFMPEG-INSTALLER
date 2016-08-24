@@ -7,9 +7,6 @@
 #     mail.mobiletel.com. IN A 001.10.011.123
 #     mail.mobiletel.com. IN MX 5 mail.mobiletel.com.
 
-# Generate SSL Key and cert
-openssl req -new -nodes -keyout example.key -out example.csr
-
 
 # INSTALL postfix(Mail Service/server)
 yum -y install postfix
@@ -95,3 +92,19 @@ postmap /etc/postfix/virtual-regexp
 #This also requires a virtual.db to exist. If it doesn't create an empty file called virtual and run :
 
 touch /etc/postfix/virtual && postmap /etc/postfix/virtual
+
+
+
+##############   Generate Ssl cerificate ################
+mkdir /etc/ssl/private/
+
+#openssl req -new -x509 -days 3650 -nodes -out /etc/ssl/certs/dovecot.pem -keyout /etc/ssl/private/dovecot.pem
+#chmod o= /etc/ssl/private/dovecot.pem
+
+openssl req -new -x509 -days 3650 -nodes -out /etc/ssl/certs/postfix.pem -keyout /etc/ssl/private/postfix.pem
+chmod o= /etc/ssl/private/postfix.pem
+postconf -e smtpd_tls_cert_file=/etc/ssl/certs/postfix.pem
+postconf -e smtpd_tls_key_file=/etc/ssl/private/postfix.pem
+#service dovecot restart
+
+service postfix restart
