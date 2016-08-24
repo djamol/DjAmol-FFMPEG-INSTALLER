@@ -7,6 +7,9 @@
 #     mail.mobiletel.com. IN A 001.10.011.123
 #     mail.mobiletel.com. IN MX 5 mail.mobiletel.com.
 
+# Generate SSL Key and cert
+openssl req -new -nodes -keyout example.key -out example.csr
+
 
 # INSTALL postfix(Mail Service/server)
 yum -y install postfix
