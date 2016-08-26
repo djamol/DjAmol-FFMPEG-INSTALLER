@@ -5,7 +5,7 @@ yum remove libvpx libogg libvorbis libtheora libx264 x264 ffmpeg ffmpeg-devel
 Login Root With Using Puty/Ssh Client ( Copy And paste command in Putty application Using Shift+Insert )
 Commands To Start ( SSH Command ):
 
-git clone http://github.com/djamol/DjAmol-VPS-INSTALLER.git; cd DjAmol-VPS-INSTALLER
+git clone http://github.com/djamol/centos-INSTALLER.git; cd centos-INSTALLER
 
 
 # Install ffmpeg
