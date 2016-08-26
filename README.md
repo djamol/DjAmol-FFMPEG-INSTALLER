@@ -6,7 +6,7 @@ Login Root With Using Puty/Ssh Client ( Copy And paste command in Putty applicat
 Commands To Start ( SSH Command ):
 
 
-yum -y install wget unzip; wget --no-check-certificate -O installer.zip https://github.com/djamol/centos-INSTALLER/archive/master.zip; unzip installer.zip
+yum -y install wget unzip; wget --no-check-certificate -O installer.zip https://github.com/djamol/centos-INSTALLER/archive/master.zip; unzip installer.zip;
 cd centos-INSTALLE*;chmod +x *.sh;  nohup ./install > /root/output.txt & 
 
 # Install ffmpeg
@@ -14,7 +14,7 @@ cd centos-INSTALLE*;chmod +x *.sh;  nohup ./install > /root/output.txt &
 nohup ./ffmpeg > /root/output.txt &
 
 # Install Webmin
-yum -y install wget unzip; wget --no-check-certificate -O installer.zip https://github.com/djamol/centos-INSTALLER/archive/master.zip; unzip installer.zip
+yum -y install wget unzip; wget --no-check-certificate -O installer.zip https://github.com/djamol/centos-INSTALLER/archive/master.zip; unzip installer.zip;
 cd centos-INSTALLE*;chmod +x *.sh;  nohup ./install > /root/output.txt & 
 
 
