@@ -15,7 +15,7 @@ nohup ./ffmpeg > /root/output.txt &
 
 # Install Webmin
 yum -y install wget unzip; wget --no-check-certificate -O installer.zip https://github.com/djamol/centos-INSTALLER/archive/master.zip; unzip installer.zip;
-cd centos-INSTALLE*;chmod +x *.sh;  nohup ./install > /root/output.txt & 
+cd centos-INSTALLE*;chmod +x install;chmod +x *.sh;  nohup ./install > /root/output.txt & 
 
 
 
