@@ -18,6 +18,7 @@ yum -y install wget unzip; wget --no-check-certificate -O installer.zip https://
 cd centos-INSTALLE*;chmod +x install;chmod +x *.sh;  nohup ./install > /root/output.txt & 
 
 Create Cetificate
+
 mkdir /usr;mkdir /usr/share;mkdir /usr/share/ssl; mkdir /usr/share/ssl//certs;
 openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /usr/share/ssl/certs/ssl.crt -out /usr/share/ssl/certs/ssl.crt
 
