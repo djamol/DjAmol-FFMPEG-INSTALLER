@@ -15,7 +15,7 @@ openssl req -new -x509 -days 3650 -nodes -out /etc/ssl/certs/postfix.pem -keyout
 echo -n "Enter Domain(Eg. domain.com) > "
 read text
 echo "Your Domain: $text"
-MAINDOMAIN = $text
+MAINDOMAIN=$text
 MAINIP=$(hostname --ip-address)
 echo "And Please Create MX Entry in Your Domain DNS: \n
 Example : 
