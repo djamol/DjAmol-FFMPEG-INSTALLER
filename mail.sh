@@ -12,7 +12,7 @@
 yum -y install postfix
 mkdir /etc;mkdir /etc/ssl;mkdir /etc/ssl/certs;;mkdir /etc/ssl/private;
 openssl req -new -x509 -days 3650 -nodes -out /etc/ssl/certs/postfix.pem -keyout /etc/ssl/private/postfix.pem
-echo -n "Enter some text > "
+echo -n "Enter Domain(Eg. domain.com) > "
 read text
 echo "Your Domain: $text"
 MAINDOMAIN = $text
