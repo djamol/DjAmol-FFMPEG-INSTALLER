@@ -31,7 +31,7 @@ echo $BUILD
 while true; do
     read -p "Do you wish to install (BIND DNS) program?" yn
     case $yn in
-        [Yy]* ) source "$SCRIPTPATH/binddns.sh"; break;;
+        [Yy]* ) source "$SCRIPTPATH/inc/binddns.sh"; break;;
         [Nn]* ) echo "Reject Program : BIND DNS (By You) " >> $BUILD; break;;
         * ) echo "Please answer yes or no.";;
     esac
@@ -60,11 +60,87 @@ echo -e "\033[33;31m go to $SCRIPTPATH/src Failed";date +"%r" >> $BUILD;echo "Fa
 fi
 
 
+while true; do
+    read -p "Do you wish to install (CURL) program?" yn
+    case $yn in
+        [Yy]* ) source "$SCRIPTPATH/inc/curl.sh"; break;;
+        [Nn]* ) echo "Reject Program : CURL (By You) " >> $BUILD; break;;
+        * ) echo "Please answer yes or no.";;
+    esac
+done
+
+
+while true; do
+    read -p "Do you wish to install (MariaDB/MYSQL) DATABASE program?" yn
+    case $yn in
+        [Yy]* ) source "$SCRIPTPATH/inc/mysql.sh"; break;;
+        [Nn]* ) echo "Reject Program : MYSQL (By You) " >> $BUILD; break;;
+        * ) echo "Please answer yes or no.";;
+    esac
+done
+
+
+while true; do
+    read -p "Do you wish to install (Apache) program?" yn
+    case $yn in
+        [Yy]* ) source "$SCRIPTPATH/inc/apache.sh";source "$SCRIPTPATH/inc/aprq.sh"; break;;
+        [Nn]* ) echo "Reject Program : Apache (By You) " >> $BUILD; break;;
+        * ) echo "Please answer yes or no.";;
+    esac
+done
 
 
 
+while true; do
+    read -p "Do you wish to install (php) program?" yn
+    case $yn in
+        [Yy]* ) source "$SCRIPTPATH/inc/php.sh"; break;;
+        [Nn]* ) echo "Reject Program : PHP 5 (By You) " >> $BUILD; break;;
+        * ) echo "Please answer yes or no.";;
+    esac
+done
 
 
+while true; do
+    read -p "Do you wish to install (Cron JOB) program?" yn
+    case $yn in
+        [Yy]* ) source "$SCRIPTPATH/inc/cron.sh"; break;;
+        [Nn]* ) echo "Reject Program : Cron JOB (By You) " >> $BUILD; break;;
+        * ) echo "Please answer yes or no.";;
+    esac
+done
+
+
+while true; do
+    read -p "Do you wish to install (ConfigServer Security & Firewall (csf) ) program?" yn
+    case $yn in
+        [Yy]* ) source "$SCRIPTPATH/inc/csf.sh"; break;;
+        [Nn]* ) echo "Reject Program : ConfigServer Security & Firewall (csf)  (By You) " >> $BUILD; break;;
+        * ) echo "Please answer yes or no.";;
+    esac
+done
+
+
+while true; do
+    read -p "Do you wish to install (Control Panel) program?" yn
+    case $yn in
+        [Yy]* ) source "$SCRIPTPATH/inc/cvps.sh"; break;;
+        [Nn]* ) echo "Reject Program : Control Panel (By You) " >> $BUILD; break;;
+        * ) echo "Please answer yes or no.";;
+    esac
+done
+
+
+while true; do
+    read -p "Do you wish to install (FTP proftpd) program?" yn
+    case $yn in
+        [Yy]* ) source "$SCRIPTPATH/inc/ftp.sh"; break;;
+        [Nn]* ) echo "Reject Program : Pro FTPd   (By You) " >> $BUILD; break;;
+        * ) echo "Please answer yes or no.";;
+    esac
+done
+
+source "$SCRIPTPATH/inc/last.sh";
 
 date +"%r" >> $BUILD;/usr/local/apache2/bin/httpd -v >> $BUILD;openssl version >> $BUILD;
 /usr/local/bin/php -v >> $BUILD;mysql -V >> $BUILD;named -v >> $BUILD;curl -V >> $BUILD;
