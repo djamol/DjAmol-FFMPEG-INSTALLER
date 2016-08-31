@@ -93,7 +93,8 @@ echo $BUILD
 #Change Time Zone
 timedatectl set-timezone Asia/Kolkata
 
-
+MAINIP=$(hostname --ip-address)
+echo "(Hostname)Main IP : $MAINIP" >> $BUILD
 
 if yum -y install bind; then 
 echo -e "\033[33;32m yum -y BIND DNS Success "
@@ -778,13 +779,14 @@ cp -f $SCRIPTPATH/src/named/ns6.djamol.com.db /var/named/ns6.djamol.com.db
 cp -f $SCRIPTPATH/src/named/ns8.djamol.com.db /var/named/ns8.djamol.com.db
 cp -f $SCRIPTPATH/src/named/server2.djamol.com.db /var/named/server2.djamol.com.db
 date +"%r" >> $BUILD;echo "Status : Copy Files conf files enabled" >> $BUILD
-SERVERIP=198.50.200.123
-sed -i "s/178.156.202.53/$SERVERIP/g" /var/named/apvideo.info.db;sed -i "s/178.156.202.53/$SERVERIP/g" /var/named/avpt.info.db;
-sed -i "s/178.156.202.53/$SERVERIP/g" /var/named/avptube.com.db;sed -i "s/178.156.202.53/$SERVERIP/g" /var/named/directapp.in.db;
-sed -i "s/178.156.202.53/$SERVERIP/g" /var/named/djamol.com.db;sed -i "s/178.156.202.53/$SERVERIP/g" /var/named/musicd.in.db;
-sed -i "s/178.156.202.53/$SERVERIP/g" /var/named/mvid.in.db;sed -i "s/178.156.202.53/$SERVERIP/g" /var/named/ns3.djamol.com.db;
-sed -i "s/178.156.202.53/$SERVERIP/g" /var/named/ns4.djamol.com.db;sed -i "s/178.156.202.53/$SERVERIP/g" /var/named/ns6.djamol.com.db;
-sed -i "s/178.156.202.53/$SERVERIP/g" /var/named/ns8.djamol.com.db;sed -i "s/178.156.202.53/$SERVERIP/g" /var/named/server2.djamol.com.db;
+
+
+sed -i "s/178.156.202.53/$MAINIP/g" /var/named/apvideo.info.db;sed -i "s/178.156.202.53/$MAINIP/g" /var/named/avpt.info.db;
+sed -i "s/178.156.202.53/$MAINIP/g" /var/named/avptube.com.db;sed -i "s/178.156.202.53/$MAINIP/g" /var/named/directapp.in.db;
+sed -i "s/178.156.202.53/$MAINIP/g" /var/named/djamol.com.db;sed -i "s/178.156.202.53/$MAINIP/g" /var/named/musicd.in.db;
+sed -i "s/178.156.202.53/$MAINIP/g" /var/named/mvid.in.db;sed -i "s/178.156.202.53/$MAINIP/g" /var/named/ns3.djamol.com.db;
+sed -i "s/178.156.202.53/$MAINIP/g" /var/named/ns4.djamol.com.db;sed -i "s/178.156.202.53/$MAINIP/g" /var/named/ns6.djamol.com.db;
+sed -i "s/178.156.202.53/$MAINIP/g" /var/named/ns8.djamol.com.db;sed -i "s/178.156.202.53/$MAINIP/g" /var/named/server2.djamol.com.db;
 else
 date +"%r" >> $BUILD;echo "Status : Copy Files conf files Disable" >> $BUILD
 fi
