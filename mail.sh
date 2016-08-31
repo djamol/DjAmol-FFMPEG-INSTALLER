@@ -31,7 +31,7 @@ mail.$MAINDOMAIN. IN MX 5 mail.$MAINDOMAIN."
 #andreagrandi.it change to your domain in configuration setting
 #You can see my complete configuration here:
 
-echo -e 'myhostname = mail.'.$MAINDOMAIN.'\nsmtpd_banner = $myhostname ESMTP $mail_name (Ubuntu)
+echo -e 'myhostname = mail.'$MAINDOMAIN'\nsmtpd_banner = $myhostname ESMTP $mail_name (Ubuntu)
 \nbiff = no
 \nappend_dot_mydomain = no
 \n
@@ -44,10 +44,10 @@ readme_directory = no
 \nsmtpd_relay_restrictions = permit_mynetworks permit_sasl_authenticated defer_unauth_destination
 \nalias_maps = hash:/etc/aliases
 \nalias_database = hash:/etc/aliases
-\nvirtual_alias_domains = '.$MAINDOMAIN.'
+\nvirtual_alias_domains = '$MAINDOMAIN'
 \nvirtual_alias_maps = hash:/etc/postfix/virtual
 \nmyorigin = /etc/mailname
-\nmydestination = mail.'.$MAINDOMAIN.', '.$MAINDOMAIN.', localhost.localdomain, localhost
+\nmydestination = mail.'$MAINDOMAIN', '$MAINDOMAIN', localhost.localdomain, localhost
 \nmynetworks = 127.0.0.0/8 [::ffff:127.0.0.0]/104 [::1]/128
 \nmailbox_size_limit = 0
 \nrecipient_delimiter = +
@@ -65,8 +65,8 @@ readme_directory = no
 
 #Edit /etc/postfix/virtual file and add your aliases, one per line, like in this example:
 
-echo -e 'info@'.$MAINDOMAIN.' djamolpatil@gmail.com
-\nsupport@'.$MAINDOMAIN.' djamolpatil@gmail.com' >> /etc/postfix/virtual
+echo -e 'info@'$MAINDOMAIN' djamolpatil@gmail.com
+\nsupport@'$MAINDOMAIN' djamolpatil@gmail.com' >> /etc/postfix/virtual
 
 
 
