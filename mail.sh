@@ -20,7 +20,7 @@ MAINIP=$(hostname --ip-address)
 echo "And Please Create MX Entry in Your Domain DNS: \n
 Example : 
 mail.$MAINDOMAIN. IN A $MAINIP
-mail.$MAINDOMAIN. IN MX 0 mail.$MAINDOMAIN."
+mail.$MAINDOMAIN. IN MX 5 mail.$MAINDOMAIN."
 
 #
 #
