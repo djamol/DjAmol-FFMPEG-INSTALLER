@@ -16,7 +16,7 @@ echo -n "Enter some text > "
 read text
 echo "Your Domain: $text"
 MAINDOMAIN = $text
-MAINIP = hostname --ip-address
+MAINIP=$(hostname --ip-address)
 echo "And Please Create MX Entry in Your Domain DNS: \n
 Example : 
 mail.$MAINDOMAIN. IN A $MAINIP
