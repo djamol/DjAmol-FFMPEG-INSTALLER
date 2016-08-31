@@ -1,0 +1,72 @@
+echo -n "Enter Your Main Domain(Eg. domain.com) > "
+read text
+echo "Main Domain: $text"
+MAINDOMAIN=$text
+MAINIP=$(hostname --ip-address)
+
+while true; do
+    read -p "Your System Main Ip is : $MAINIP?" yn
+    case $yn in
+        [Yy]* )  echo "Main IP Detect"; break;;
+        [Nn]* ) echo -n "Enter Server Ipv4(Eg. 001.100.200.300) > ";read text;MAINIP=$text;break;;#exit;;
+        * ) echo "Please answer yes or no.";;
+    esac
+done
+echo "Main IP: $MAINIP";
+# Webmin Setting
+weba=admin;webp=admin;webport=2083;
+SCRIPT=$(readlink -f "$0")
+# Absolute path this script is in, thus /home/user/bin
+SCRIPTPATH=$(dirname "$SCRIPT")
+#echo $SCRIPTPATH
+
+mkdir $SCRIPTPATH/log
+BUILDDIR=$SCRIPTPATH/log/
+BUILDFILE=$RANDOM.txt
+BUILD=$BUILDDIR$BUILDFILE
+
+echo $BUILD
+
+
+while true; do
+    read -p "Do you wish to install (BIND DNS) program?" yn
+    case $yn in
+        [Yy]* ) source "$SCRIPTPATH/binddns.sh"; break;;
+        [Nn]* ) echo "Reject Program : BIND DNS (By You) " >> $BUILD; break;;
+        * ) echo "Please answer yes or no.";;
+    esac
+done
+
+if yum -y groupinstall "Development Tools"; then 
+echo -e "\033[33;32m yum -y groupinstall ----Development Tools Success ";date +"%r" >> $BUILD;echo "Success : Development Tools Install" >> $BUILD
+else
+echo -e "\033[33;31m yum -y groupinstall ----Development Tools Failed";date +"%r" >> $BUILD;echo "Failed : Development Tools Install" >> $BUILD
+fi
+if yum -y install sudo; then 
+echo -e "\033[33;32m Sudo Success";date +"%r" >> $BUILD;echo "Success : Sudo Install" >> $BUILD
+else
+echo -e "\033[33;31m Sudo Failed";date +"%r" >> $BUILD;echo "Failed : Sudo Install" >> $BUILD
+fi
+echo -e "\033[33;34m Blue"
+if mkdir $SCRIPTPATH/src; then 
+echo -e "\033[33;32m making dir src Success";date +"%r" >> $BUILD;echo "Success : src Making dir in $SCRIPTPATH/" >> $BUILD
+else
+echo -e "\033[33;31m making dir Failed";date +"%r" >> $BUILD;echo "Failed : src making dir $SCRIPTPATH/" >> $BUILD
+fi
+if cd $SCRIPTPATH/src; then 
+echo -e "\033[33;32m go to $SCRIPTPATH/src Success";date +"%r" >> $BUILD;echo "Success : Go To SRC dir $SCRIPTPATH/src" >> $BUILD
+else
+echo -e "\033[33;31m go to $SCRIPTPATH/src Failed";date +"%r" >> $BUILD;echo "Failed : Go To SRC dir $SCRIPTPATH/src" >> $BUILD
+fi
+
+
+
+
+
+
+
+
+date +"%r" >> $BUILD;/usr/local/apache2/bin/httpd -v >> $BUILD;openssl version >> $BUILD;
+/usr/local/bin/php -v >> $BUILD;mysql -V >> $BUILD;named -v >> $BUILD;curl -V >> $BUILD;
+
+
