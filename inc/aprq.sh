@@ -50,6 +50,7 @@ make
 make install
 ln -s /usr/local/ssl/bin/openssl /usr/bin/openssl
 
+cd $SCRIPTPATH/src
 FILE=apr-1.5.2.tar.gz
 if [ ! -f $FILE ]
 then
@@ -68,6 +69,7 @@ else
 echo -e "\033[33;31m extract apr Failed"date +"%r" >> $BUILD;echo "Failed : Extract $FILE" >> $BUILD
 fi
 
+cd $SCRIPTPATH/src
 FILE=apr-util-1.5.4.tar.gz
 if [ ! -f $FILE ]
 then
