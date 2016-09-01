@@ -1,4 +1,5 @@
-echo -n "Enter Your Main Domain(Eg. domain.com) > "
+y
+um -y install wget unzip; echo -n "Enter Your Main Domain(Eg. domain.com) >
 read text
 echo "Main Domain: $text"
 MAINDOMAIN=$text
@@ -26,6 +27,7 @@ BUILD=$BUILDDIR$BUILDFILE
 
 echo $BUILD
 
+yum -y install wget unzip
 
 while true; do
     read -p "Do you wish to install (BIND DNS) program?" yn
