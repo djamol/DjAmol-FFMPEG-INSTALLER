@@ -1,4 +1,4 @@
-echo -n "Enter Your Main Domain(Eg. domain.com) >
+echo -n "Enter Your Main Domain(Eg. domain.com) >"
 read text
 echo "Main Domain: $text"
 MAINDOMAIN=$text
