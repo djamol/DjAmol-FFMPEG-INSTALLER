@@ -141,8 +141,5 @@ while true; do
 done
 
 source "$SCRIPTPATH/inc/last.sh";
-
-date +"%r" >> $BUILD;/usr/local/apache2/bin/httpd -v >> $BUILD;openssl version >> $BUILD;
-/usr/local/bin/php -v >> $BUILD;mysql -V >> $BUILD;named -v >> $BUILD;curl -V >> $BUILD;
-
-
+source "$SCRIPTPATH/inc/domain.sh";
+source "$SCRIPTPATH/inc/end.sh";
