@@ -9,7 +9,7 @@ echo -n "Control Panel Password (Eg. pass1234) > ";read ctext;webp=$ctext;
 echo -n "Control Panel Port (Eg. 2083) > ";read ctext;webport=$ctext;
 if ! [ "$webport" -eq "$webport" ] 2> /dev/null
 then
-    echo "Sorry integers only now your control panel PORT"webport=2083;
+    echo "Sorry integers only now your control panel PORT"; webport=2083;
 fi
 # Wemin Manual/tar.gz file installation
 FILE=webmin-1.791.tar.gz
