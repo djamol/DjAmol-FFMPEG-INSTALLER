@@ -6,7 +6,7 @@ while true; do
         [Yy]* )  echo "."; 
         
         
-echo -n "Enter Your Additional Domain seprate by comma(,)(Eg. domain.com,domain.in,three.in) > "
+echo -n "Enter Your Domain seprate by comma(,) For Enable https(Eg. domain.com,domain.in,three.in) > "
 read dstring
 echo "Request By You Domains: $dstring (...Wait..)"
 
