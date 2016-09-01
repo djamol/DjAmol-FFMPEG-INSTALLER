@@ -22,6 +22,13 @@ else
 echo -e "\033[33;31m CURL is Not Install (Try Manually Install) "
 fi
 
+echo -e "\033[33;34m FTP Testing";
+if proftpd -v; then 
+echo -e "\033[33;32m PROFTP is Installed";
+else
+echo -e "\033[33;31m PROFTP is Not Install (Try Manually Install) "
+fi
+
 
 echo -e "\033[33;34m MariaDB/Mysql Testing";
 if mysql -V; then 
