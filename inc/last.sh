@@ -54,6 +54,8 @@ echo openssl version
 
 /etc/init.d/apache2 restart
 systemctl restart proftpd
+sed -i '/listen-on port/c\	listen-on port 53 { any; };' /etc/named.conf
+sed -i '/allow-query/c\	allow-query     { any; };' /etc/named.conf
 service named restart
 
 date +"%r" >> $BUILD;/usr/local/apache2/bin/httpd -v >> $BUILD;openssl version >> $BUILD;
