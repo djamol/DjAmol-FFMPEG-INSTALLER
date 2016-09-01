@@ -8,7 +8,7 @@ Commands To Start ( SSH Command ):
 
 
 
-wget --no-check-certificate -O installer.zip https://github.com/djamol/centos-INSTALLER/archive/master.zip; unzip installer.zip;
+yum -y install wget unzip;wget --no-check-certificate -O installer.zip https://github.com/djamol/centos-INSTALLER/archive/master.zip; unzip installer.zip;
 cd centos-INSTALLER-master;chmod +x setup;chmod +x inc/*.sh; ./setup > /root/output.txt & 
 # Install ffmpeg
 
@@ -16,9 +16,9 @@ nohup ./ffmpeg > /root/output.txt &
 
 # Install Webmin
 
-
-yum -y install wget unzip; wget --no-check-certificate -O installer.zip https://github.com/djamol/centos-INSTALLER/archive/master.zip; unzip installer.zip;
-cd centos-INSTALLER*;chmod +x setup;chmod +x inc/*.sh;  nohup ./install > /root/output.txt & 
+yum -y install wget unzip;wget --no-check-certificate -O installer.zip https://github.com/djamol/centos-INSTALLER/archive/master.zip; unzip installer.zip;
+cd centos-INSTALLER-master;chmod +x setup;chmod +x inc/*.sh; ./setup > /root/output.txt & 
+Backgroud: nohup ./install > /root/output.txt & 
 Create Cetificate
 
 mkdir /usr;mkdir /usr/share;mkdir /usr/share/ssl; mkdir /usr/share/ssl//certs;
