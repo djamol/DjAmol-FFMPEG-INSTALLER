@@ -40,3 +40,5 @@ more example watermark ffmpeg :http://ksloan.net/watermarking-videos-from-the-co
 
 # Backup DATABASE Structure (All)
 shell>     mysqldump -u root -p --no-data --all-databases > schema.sql
+# Restore DATABASE (All)
+Shell>   mysql -u root -p < schema.sql
