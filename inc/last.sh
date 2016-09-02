@@ -51,6 +51,10 @@ echo named -v
 echo curl -V
 #OPEN SSL VERSION
 echo openssl version
+
+cp -f $SCRIPTPATH/conf/apache.conf /etc/webmin/apache/config
+cp -f $SCRIPTPATH/conf/httpd.conf /usr/local/apache2/conf/httpd.conf
+
 echo -e '<VirtualHost '$MAINIP':80>\nServerName '$MAINDOMAIN'\nServerAlias www.'$MAINDOMAIN'\nDocumentRoot /home/www\nServerAdmin webmaster@djamol.com\n</VirtualHost>' >> /usr/local/apache2/conf/httpd.conf
 echo -e '<VirtualHost '$MAINIP':443>\nServerName '$MAINDOMAIN'\nServerAlias www.'$MAINDOMAIN'\nDocumentRoot /home/www\n<IfModule mod_ssl.c>\nSSLEngine on\n        SSLCertificateFile /usr/share/ssl/certs/ssl.crt\n        SSLCertificateKeyFile /usr/share/ssl/certs/ssl.crt\n    </IfModule>\n</VirtualHost>\n' >> /usr/local/apache2/conf/httpd.conf
 
@@ -63,5 +67,3 @@ echo -e '$TTL 14400\n@      86400	IN      SOA     ns1.'$MAINDOMAIN'. djamolpatil
 echo -e '$TTL 14400\n@      86400	IN      SOA     ns1.'$MAINDOMAIN'. djamolpatil.gmail.com. (\n		2016033003	; serial, todays date+todays\n		3600		; refresh, seconds\n		7200		; retry, seconds\n		1209600		; expire, seconds\n		86400 )		; minimum, seconds\n\n'$MAINDOMAIN'. 86400 IN NS ns1.'$MAINDOMAIN'.\n'$MAINDOMAIN'. 86400 IN NS ns2.'$MAINDOMAIN'.\n\n\n'$MAINDOMAIN'. IN A '$MAINIP'\nmail.'$MAINDOMAIN'. IN A '$MAINIP'\nns1.'$MAINDOMAIN'. IN A '$MAINIP'\nns2.'$MAINDOMAIN'. IN A '$MAINIP'\n'$MAINDOMAIN'. IN MX 5 '$MAINDOMAIN'.\n\n\nwww IN CNAME '$MAINDOMAIN'.\nftp IN CNAME '$MAINDOMAIN'.\nmobile IN CNAME '$MAINDOMAIN'.\nwap IN CNAME '$MAINDOMAIN'.\n' >> /var/named/$MAINDOMAIN.db
 echo -e 'zone "ns1.'$MAINDOMAIN'" {	type master;	file "/var/named/ns1.'$MAINDOMAIN'.db";};\nzone "ns2.'$MAINDOMAIN'" {	type master;	file "/var/named/ns2.'$MAINDOMAIN'.db";};\nzone "'$MAINDOMAIN'" {	type master;	file "/var/named/'$MAINDOMAIN'.db";};' >> /etc/named.main.zones
 
-cp -f $SCRIPTPATH/conf/apache.conf /etc/webmin/apache/config
-cp -f $SCRIPTPATH/conf/httpd.conf /usr/local/apache2/conf/httpd.conf
