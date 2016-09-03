@@ -54,6 +54,7 @@ echo openssl version
 
 cp -f $SCRIPTPATH/conf/apache.conf /etc/webmin/apache/config
 cp -f $SCRIPTPATH/conf/httpd.conf /usr/local/apache2/conf/httpd.conf
+cp -f $SCRIPTPATH/conf/php.ini /usr/local/lib/php.ini
 
 echo -e '<VirtualHost '$MAINIP':80>\nServerName '$MAINDOMAIN'\nServerAlias www.'$MAINDOMAIN'\nDocumentRoot /home/www\nServerAdmin webmaster@djamol.com\n</VirtualHost>' >> /usr/local/apache2/conf/httpd.conf
 echo -e '<VirtualHost '$MAINIP':443>\nServerName '$MAINDOMAIN'\nServerAlias www.'$MAINDOMAIN'\nDocumentRoot /home/www\n<IfModule mod_ssl.c>\nSSLEngine on\n        SSLCertificateFile /usr/share/ssl/certs/ssl.crt\n        SSLCertificateKeyFile /usr/share/ssl/certs/ssl.crt\n    </IfModule>\n</VirtualHost>\n' >> /usr/local/apache2/conf/httpd.conf
