@@ -3,7 +3,7 @@ read text
 echo "Main Domain: $text"
 MAINDOMAIN=$text
 MAINIP=$(hostname --ip-address)
-
+MYHOST=$(hostname)
 while true; do
     read -p "Your System Main Ip is : $MAINIP?" yn
     case $yn in
