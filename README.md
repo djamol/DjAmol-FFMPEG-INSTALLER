@@ -38,7 +38,10 @@ ffmpeg -i birds.mp4 -i watermark.png \
 more example watermark ffmpeg :http://ksloan.net/watermarking-videos-from-the-command-line-using-ffmpeg-filters/
 
 
-# Backup DATABASE Structure (All)
-shell>     mysqldump -u root -p --no-data --all-databases > schema.sql
+# Backup DATABASE
+Only Database Structure
+DATABASE_LIST=$(mysql -NBe 'show schemas' | grep -wv 'mysql\|personnel\|buildings\|information_schema\|performance_schema');echo $DATABASE_LIST;mysqldump --no-data --databases $DATABASE_LIST > schema.sql
+Structure With Database
+DATABASE_LIST=$(mysql -NBe 'show schemas' | grep -wv 'mysql\|personnel\|buildings\|information_schema\|performance_schema');echo $DATABASE_LIST;mysqldump --databases $DATABASE_LIST > schema.sql
 # Restore DATABASE (All)
 Shell>   mysql -u root -p < schema.sql
