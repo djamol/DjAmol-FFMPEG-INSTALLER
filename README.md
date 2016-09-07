@@ -39,12 +39,6 @@ more example watermark ffmpeg :http://ksloan.net/watermarking-videos-from-the-co
 
 
 # Backup DATABASE
-Only Database Structure
-
-DATABASE_LIST=$(mysql -NBe 'show schemas' | grep -wv 'mysql\|personnel\|buildings\|information_schema\|performance_schema');echo $DATABASE_LIST;mysqldump --no-data --databases $DATABASE_LIST > schema.sql
-
-Structure With Database
-
-DATABASE_LIST=$(mysql -NBe 'show schemas' | grep -wv 'mysql\|personnel\|buildings\|information_schema\|performance_schema');echo $DATABASE_LIST;mysqldump --databases $DATABASE_LIST > schema.sql
+Commands : https://github.com/djamol/centos-INSTALLER/blob/master/database_backup.sh
 # Restore DATABASE (All)
 Shell>   mysql -u root -p < schema.sql
