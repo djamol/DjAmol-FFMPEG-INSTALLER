@@ -12,7 +12,7 @@ yum -y install wget unzip;wget --no-check-certificate -O installer.zip https://g
 cd centos-INSTALLER-master;chmod +x setup;chmod +x inc/*.sh; ./setup > /root/output.txt & 
 #Server/VPS Information
 
-wget https://raw.githubusercontent.com/djamol/centos-INSTALLER/master/server.info.sh -O – -o /dev/null|bash
+wget https://raw.githubusercontent.com/djamol/centos-INSTALLER/master/server.info.sh;sh server.info.sh
 
 # Install ffmpeg
 
