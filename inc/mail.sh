@@ -72,7 +72,6 @@ echo -e 'info@'$MAINDOMAIN' '$MAINE'
 
 
 service postfix start
-service sendmail start
 postmap /etc/postfix/virtual
 service postfix reload
 
