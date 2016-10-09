@@ -10,7 +10,7 @@ DATABASE_LIST=$(mysql -NBe 'show schemas' | grep -wv 'mysql\|personnel\|building
 
 
 # SQL Commands
-//delete all records/row
-DELETE FROM `table`
-//null value delete rows only example
-DELETE FROM `table` WHERE `gmc` ='null';
+#//delete all records/row
+# DELETE FROM `table`
+#//null value delete rows only example
+# DELETE FROM `table` WHERE `gmc` ='null';
