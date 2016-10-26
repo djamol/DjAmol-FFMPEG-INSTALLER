@@ -46,3 +46,7 @@ more example watermark ffmpeg :http://ksloan.net/watermarking-videos-from-the-co
 Commands : https://github.com/djamol/centos-INSTALLER/blob/master/database_backup.sh
 # Restore DATABASE (All)
 Shell>   mysql -u root -p < schema.sql
+
+# Find in Files String in( Directory,subdirectory all files )
+cd /home/directoy; grep -nr 'yourString*'  
+// /home/directory location directory, find string,word yourString* (* means after yourString any thing word character)
