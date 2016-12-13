@@ -1,4 +1,9 @@
-    echo "Domain Added (MAIN):$MAINDOMAIN (Domain Directory:/home/www)"
+# HIDE Apache Version,PHP,Openssl details on http 
+#Example : Apache/2.4.18 (Unix) OpenSSL/1.0.2g PHP/5.6.20 To only Show ("apache")
+echo -e '\nServerSignature Off\nServerTokens Prod\n' >> /usr/local/apache2/conf/httpd.conf
+
+
+echo "Domain Added (MAIN):$MAINDOMAIN (Domain Directory:/home/www)"
 
 while true; do
     read -p "Do You Want Add More Domains?" yn
