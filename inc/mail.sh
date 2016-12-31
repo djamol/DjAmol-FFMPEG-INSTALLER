@@ -75,6 +75,7 @@ echo -e 'info@'$MAINDOMAIN' '$MAINE'
 service postfix start
 postmap /etc/postfix/virtual
 service postfix reload
+yum install mailx # Required for mail command system
 
 
 ################  All Emails for to one Email Address ##################
