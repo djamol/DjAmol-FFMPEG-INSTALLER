@@ -6,6 +6,9 @@ DATABASE_LIST=$(mysql -NBe 'show schemas' | grep -wv 'mysql\|personnel\|building
 DATABASE_LIST=$(mysql -NBe 'show schemas' | grep -wv 'mysql\|personnel\|buildings\|information_schema\|performance_schema');echo $DATABASE_LIST;mysqldump --no-data --databases $DATABASE_LIST > structure.sql
 
 
+#Restore/Install/Dump sql file
+mysql -uroot -p < database_backup.sql
+
 #Dump table backup in gz file
 
 mysqldump db_name table_name | gzip > table_name.sql.gz
