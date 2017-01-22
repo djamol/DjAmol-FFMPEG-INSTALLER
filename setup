@@ -1,4 +1,3 @@
-sudo yum install perl perl-CPAN perl-Net-SSLeay perl-IO-Socket-SSL
 echo -n "Enter Your Main Domain(Eg. domain.com) >"
 read text
 echo "Main Domain: $text"
@@ -144,4 +143,6 @@ done
 
 source "$SCRIPTPATH/inc/last.sh";
 source "$SCRIPTPATH/inc/domain.sh";
+yum -y install perl perl-CPAN perl-Net-SSLeay perl-IO-Socket-SSL
 source "$SCRIPTPATH/inc/end.sh";
+
