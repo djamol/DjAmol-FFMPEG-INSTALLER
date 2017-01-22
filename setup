@@ -1,3 +1,4 @@
+sudo yum install perl perl-CPAN perl-Net-SSLeay perl-IO-Socket-SSL
 echo -n "Enter Your Main Domain(Eg. domain.com) >"
 read text
 echo "Main Domain: $text"
