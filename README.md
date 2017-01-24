@@ -15,11 +15,11 @@ cd centos-INSTALLER-master;chmod +x setup;chmod +x inc/*.sh; ./setup > /root/out
 wget https://raw.githubusercontent.com/djamol/centos-INSTALLER/master/server.info.sh;sh server.info.sh
 
 # Run This Script (With SSH command)
-*Install Centos Minimal Version Os in Virtual/Dedicated Server
-Login SSH With root username and password
-Then Type This Command at ssh
-yum -y install wget unzip;wget --no-check-certificate -O installer.zip https://github.com/djamol/centos-INSTALLER/archive/master.zip; unzip installer.zip; cd centos-INSTALLER-master;chmod +x setup;chmod +x inc/*.sh;
-./setup
+*Install Centos Minimal Version Os in Virtual/Dedicated Server<br />
+Login SSH With root username and password<br />
+Then Type This Command at ssh<br />
+yum -y install wget unzip;wget --no-check-certificate -O installer.zip https://github.com/djamol/centos-INSTALLER/archive/master.zip; unzip installer.zip; cd centos-INSTALLER-master;chmod +x setup;chmod +x inc/*.sh;<br />
+./setup<br />
 
 # Install ffmpeg
 
