@@ -27,7 +27,7 @@ BUILD=$BUILDDIR$BUILDFILE
 echo $BUILD
 
 
-
+echo -e "\e[32m########################################\n####   BIND DNS Software       #########\n########################################"
 while true; do
     read -p "Do you wish to install (BIND DNS) program?" yn
     case $yn in
@@ -59,7 +59,7 @@ else
 echo -e "\033[33;31m go to $SCRIPTPATH/src Failed";date +"%r" >> $BUILD;echo "Failed : Go To SRC dir $SCRIPTPATH/src" >> $BUILD
 fi
 
-
+echo -e "\e[32m########################################\n####   Curl Software           #########\n########################################"
 while true; do
     read -p "Do you wish to install (CURL) program?" yn
     case $yn in
@@ -69,7 +69,7 @@ while true; do
     esac
 done
 
-
+echo -e "\e[32m########################################\n####   MariaDB/MySQL Software  #########\n########################################"
 while true; do
     read -p "Do you wish to install (MariaDB/MYSQL) DATABASE program?" yn
     case $yn in
@@ -79,7 +79,7 @@ while true; do
     esac
 done
 
-
+echo -e "\e[32m########################################\n####   Apache2.4 Server Soft.  #########\n########################################"
 while true; do
     read -p "Do you wish to install (Apache) program?" yn
     case $yn in
@@ -91,7 +91,7 @@ done
 
 mkdir /usr;mkdir /usr/share;mkdir /usr/share/ssl; mkdir /usr/share/ssl//certs; openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /usr/share/ssl/certs/ssl.crt -out /usr/share/ssl/certs/ssl.crt
 
-
+echo -e "\e[32m########################################\n####   PHP 5 Package/Software  #########\n########################################"
 while true; do
     read -p "Do you wish to install (php) program?" yn
     case $yn in
@@ -101,7 +101,7 @@ while true; do
     esac
 done
 
-
+echo -e "\e[34m########################################\n####   Cron JOB Software       #########\n########################################"
 while true; do
     read -p "Do you wish to install (Cron JOB) program?" yn
     case $yn in
@@ -112,6 +112,7 @@ while true; do
 done
 
 
+echo -e "\e[34m########################################\n####ConfigServer Security & Firewall####\n########################################"
 while true; do
     read -p "Do you wish to install (ConfigServer Security & Firewall (csf) ) program?" yn
     case $yn in
@@ -121,7 +122,7 @@ while true; do
     esac
 done
 
-
+echo -e "\e[34m########################################\n####  Webmin Control Panel #############\n########################################"
 while true; do
     read -p "Do you wish to install (Control Panel) program?" yn
     case $yn in
@@ -131,7 +132,7 @@ while true; do
     esac
 done
 
-
+echo -e "\e[34m########################################\n####  ProFTP FTP Solution  #############\n########################################"
 while true; do
     read -p "Do you wish to install (FTP proftpd) program?" yn
     case $yn in
@@ -141,7 +142,7 @@ while true; do
     esac
 done
 
-
+echo -e "\e[34m########################################\n####  PostFix Mail Solution  ###########\n########################################"
 while true; do
     read -p "Do you wish to install (Mail Forward And Sendmail )Postfix program?" yn
     case $yn in
