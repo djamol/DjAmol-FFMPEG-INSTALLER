@@ -141,6 +141,17 @@ while true; do
     esac
 done
 
+
+while true; do
+    read -p "Do you wish to install (Mail Forward And Sendmail )Postfix program?" yn
+    case $yn in
+        [Yy]* ) source "$SCRIPTPATH/inc/postfix.sh"; break;;
+        [Nn]* ) echo "Reject Program : PostFix   (By You) " >> $BUILD; break;;
+        * ) echo "Please answer yes or no.";;
+    esac
+done
+
+
 source "$SCRIPTPATH/inc/last.sh";
 source "$SCRIPTPATH/inc/domain.sh";
 yum -y install perl perl-CPAN perl-Net-SSLeay perl-IO-Socket-SSL
