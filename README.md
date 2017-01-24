@@ -17,9 +17,9 @@ wget https://raw.githubusercontent.com/djamol/centos-INSTALLER/master/server.inf
 # Run This Script (With SSH command)
 &#x1F536;Install Centos Minimal Version Os in Virtual/Dedicated Server<br />
 &#x1F536;Login SSH With root username and password<br />
-&#x1F53D;Then Type This Command at ssh<br /><font color="blue">
+&#x1F53D;Then Type This Command at ssh<br /><code>
 yum -y install wget unzip;wget --no-check-certificate -O installer.zip https://github.com/djamol/centos-INSTALLER/archive/master.zip; unzip installer.zip; cd centos-INSTALLER-master;chmod +x setup;chmod +x inc/*.sh;
-</font>
+</code>
 <br />
 ./setup<br />
 
