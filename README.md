@@ -19,13 +19,11 @@ wget https://raw.githubusercontent.com/djamol/centos-INSTALLER/master/server.inf
 &#x1F536;Login SSH With root username and password<br />
 &#x1F53D;Then Type This Command at ssh<br /><code>
 yum -y install wget unzip;wget --no-check-certificate -O installer.zip https://github.com/djamol/centos-INSTALLER/archive/master.zip; unzip installer.zip; cd centos-INSTALLER-master;chmod +x setup;chmod +x inc/*.sh;
-</code>
-<br />
-./setup<br />
+./setup</code>
 
 # Install ffmpeg
 
-nohup ./ffmpeg > /root/output.txt &
+<code>nohup ./ffmpeg > /root/output.txt &</code>
 
 # Install Webmin
 
