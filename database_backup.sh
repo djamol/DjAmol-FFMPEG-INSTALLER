@@ -30,8 +30,12 @@ mysql -Nse 'show tables' DATABASE_NAME | while read table; do mysql -e "truncate
 
 
 
+
+
 # SQL Commands
 #//delete all records/row
 # DELETE FROM `table`
 #//null value delete rows only example
 # DELETE FROM `table` WHERE `gmc` ='null';
+# For currently connection working in time mysql con. list show
+#show full processlist;
