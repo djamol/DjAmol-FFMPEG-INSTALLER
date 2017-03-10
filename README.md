@@ -57,3 +57,6 @@ Shell>   mysql -u root -p < schema.sql
 # Find in Files String in( Directory,subdirectory all files )
 cd /home/directoy; grep -nr 'yourString*'  
 // /home/directory location directory, find string,word yourString* (* means after yourString any thing word character)
+
+# repo files and update package/install clean cache with yum
+ yum clean all; yum update; yum clean all; yum update;yum clean all; yum update;
