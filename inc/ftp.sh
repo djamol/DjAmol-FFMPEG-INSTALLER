@@ -4,7 +4,8 @@
 # djamolpatil@gmail.com
 
 ## Pro ftpd installation
-rpm -ivh http://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-8.noarch.rpm
+#rpm -ivh http://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-8.noarch.rpm
+rpm -ivh http://ftp.astral.ro/mirrors/fedora/pub/epel/epel-release-latest-7.noarch.rpm
 yum -y install proftpd proftpd-utils
 cp -f $SCRIPTPATH/conf/proftpd.conf /etc/proftpd.conf
  mkdir /etc/proftpd; touch /etc/proftpd/passwd.vhosts;chmod 640 /etc/proftpd/passwd.vhosts
