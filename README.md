@@ -56,6 +56,7 @@ Shell>   mysql -u root -p < schema.sql
 
 # Find in Files String in( Directory,subdirectory all files )
 cd /home/directoy; grep -nr 'yourString*'  
+grep -r --include=*.txt 'searchterm' ./  ...or case-insensitive version... grep -r -i --include=*.txt 'searchterm' ./
 // /home/directory location directory, find string,word yourString* (* means after yourString any thing word character)
 
 # repo files and update package/install clean cache with yum
