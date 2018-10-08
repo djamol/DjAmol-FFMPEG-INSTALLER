@@ -61,3 +61,15 @@ grep -r --include=*.txt 'searchterm' ./  ...or case-insensitive version... grep 
 
 # repo files and update package/install clean cache with yum
  yum clean all; yum update; yum clean all; yum update;yum clean all; yum update;
+
+
+
+One approach could be using find change in subdirectory and all directory in current:
+#for directories
+
+find . -type d -print0 | xargs -0 chmod 0755
+
+#for files( all files in current)
+
+find . -type f -print0 | xargs -0 chmod 0644
+
