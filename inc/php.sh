@@ -32,6 +32,8 @@ else
 	#if rpm -ivh $SCRIPTPATH/src/epel-release-7-6.noarch.rpm; then 
 	# Remove Epel if error Error: xz compression not available in yum install package command
 	#yum remove epel-release;rm -rf /var/cache/yum/x86_64/6/epel
+	wget http://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+	rpm -ivh epel-release-latest-7.noarch.rpm
 	echo -e "\033[33;31m Epel Feoraproject update Failed";date +"%r" >> $BUILD;echo "Failed : Epel RPM " >> $BUILD
 	#fi
 fi
