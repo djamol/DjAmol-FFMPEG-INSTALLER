@@ -1,4 +1,4 @@
-# DjAmol-FFMPEG-INSTALLER
+# DjAmol-PHP+Apache+OpenSSL+Curl+FFMPEG+More-INSTALLER
 Firstly remove old version using command :
 yum remove libvpx libogg libvorbis libtheora libx264 x264 ffmpeg ffmpeg-devel
 
