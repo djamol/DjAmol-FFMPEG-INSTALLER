@@ -101,6 +101,13 @@ fi
 ./configure --prefix=/usr/local --disable-fileinfo --disable-opcache --enable-bcmath --enable-calendar --enable-ftp --enable-mbstring --enable-soap --enable-zip --enable-gd-native-ttf --enable-libxml --enable-pdo --enable-sockets --with-gettext --with-apxs2=/usr/local/apache2/bin/apxs --with-curl=/opt/curl-ssl --with-freetype-dir=/usr --with-gd --with-jpeg-dir==/usr --with-kerberos  --with-libxml-dir=/opt/libmcrypt/ --with-mysql --with-mysqli --with-mysql-sock=/var/lib/mysql/mysql.sock --with-openssl=/usr/local/ssl --with-pcre-regex=/usr/local/pcre --with-pdo-mysql --with-pdo-sqlite --with-pic --with-png-dir=/usr --with-xpm-dir=/usr --with-zlib --with-zlib-dir=/usr
 make
 
+echo -e "
+  █    █ █    █ ▓    █    █████      █  █▓▓█  ▓█████  ████  █        ▓████  ████▒  █████  
+  ▒ █ ░█ ▓ ██ █    █ █    ▒   █▒     █  ░▓▓█▓ ▓ █▓ █     █▓ ▓        ▓      ░  ▓█ ▒ ▓█ █  
+  █ █░▓█ █ ▓█ █ █▓░█ █    █▓  █  ▒   █ ██  █▓ █ █▓ █ ██  █▒ █        █     ██  ▓█ █ ▓█ █  
+  █████  ▓█████  █████  █ █████  ████▓ ▓▒  █  █    █  ████  █████    █████  ████  █    █  
+                                                                                          
+											  ";
 while true; do
     read -p "Do you wish to Run PHP5 Test program?" yn
     case $yn in
