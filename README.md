@@ -50,6 +50,12 @@ Shell>   mysql -u root -p < schema.sql
 cd /home/directoy; grep -nr 'yourString*'  
 grep -r --include=*.txt 'searchterm' ./  ...or case-insensitive version... grep -r -i --include=*.txt 'searchterm' ./
 // /home/directory location directory, find string,word yourString* (* means after yourString any thing word character)
+---Find And Replace String or word
+cd /home/directoy; grep -rl FindString | xargs sed -i 's/FindString/ReplaceString/g'
+
+example: find google.in string and replace with yahoo.com
+cd /home/directoy; grep -rl google.in | xargs sed -i 's/google.in/yahoo.com/g'
+
 
 # repo files and update package/install clean cache with yum
  yum clean all; yum update; yum clean all; yum update;yum clean all; yum update;
