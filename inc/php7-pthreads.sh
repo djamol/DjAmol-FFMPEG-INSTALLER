@@ -3,16 +3,17 @@
 mkdir -p /etc/php7
 mkdir -p /etc/php7/cli
 
-git clone https://github.com/php/php-src.git -b PHP-7.0.17 --depth=1
-cd php-src/ext
-git clone https://github.com/krakjoe/pthreads -b master pthreads
-
+#git clone https://github.com/php/php-src.git -b PHP-7.0.17 --depth=1
+#cd php-src/ext
+#git clone https://github.com/krakjoe/pthreads -b master pthreads
+wget http://am1.php.net/get/php-7.1.25.tar.gz/from/this/mirror
 cd ..
 
-./buildconf --force
+#./buildconf --force
 mkdir -p /usr/local/php7
 mkdir -p /usr/local/php7/cli
 yum -y install libxslt-devel;
+tar -xzf mirror;
 ./configure --prefix=/usr/local/php7 --with-apxs2=/usr/local/apache2/bin/apxs --with-freetype-dir=/usr --disable-short-tags --enable-xml --enable-cli -with-openssl=/usr/local/ssl --with-pcre-regex=/usr/local/pcre  --with-zlib --with-zlib-dir=/usr --enable-bcmath --with-bz2 --with-curl=/opt/curl-ssl --enable-exif --with-gd --enable-intl --with-mysqli --enable-pcntl --with-pdo-mysql --enable-soap --enable-sockets --with-xmlrpc --enable-zip  --with-jpeg-dir --with-png-dir --enable-json --enable-hash --enable-mbstring --with-mcrypt --enable-libxml --with-libxml-dir=/opt/libmcrypt/ --enable-ctype --enable-calendar --enable-dom --enable-fileinfo --with-mhash  --enable-opcache --enable-phar --enable-simplexml --with-xsl --with-pear --with-config-file-path=/usr/local/php7/cli
 
 #./configure --prefix=/etc/php7 --with-bz2 --with-zlib --enable-zip --disable-cgi \
