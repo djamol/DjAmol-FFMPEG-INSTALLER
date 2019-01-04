@@ -25,7 +25,7 @@ else
 echo -e "\033[33;31m extract pcre Failed";date +"%r" >> $BUILD;echo "Failed : Extract $FILE" >> $BUILD
 fi
 cd pcre-8.37
-./configure --prefix=/usr/local/pcre
+./configure --prefix=/usr/local/pcre  --enable-utf8 --enable-unicode-properties 
 make
 make install
 #
