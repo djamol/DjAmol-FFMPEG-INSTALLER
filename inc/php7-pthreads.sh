@@ -10,8 +10,12 @@ git clone https://github.com/krakjoe/pthreads -b master pthreads
 cd ..
 
 ./buildconf --force
+mkdir -p /usr/local/php7
+mkdir -p /usr/local/php7/cli
+yum -y install libxslt-devel;
+./configure --prefix=/usr/local/php7 --with-apxs2=/usr/local/apache2/bin/apxs --with-freetype-dir=/usr --disable-short-tags --enable-xml --enable-cli -with-openssl=/usr/local/ssl --with-pcre-regex=/usr/local/pcre  --with-zlib --with-zlib-dir=/usr --enable-bcmath --with-bz2 --with-curl=/opt/curl-ssl --enable-exif --with-gd --enable-intl --with-mysqli --enable-pcntl --with-pdo-mysql --enable-soap --enable-sockets --with-xmlrpc --enable-zip  --with-jpeg-dir --with-png-dir --enable-json --enable-hash --enable-mbstring --with-mcrypt --enable-libxml --with-libxml-dir=/opt/libmcrypt/ --enable-ctype --enable-calendar --enable-dom --enable-fileinfo --with-mhash  --enable-opcache --enable-phar --enable-simplexml --with-xsl --with-pear --with-config-file-path=/usr/local/php7/cli
 
-./configure --prefix=/etc/php7 --with-bz2 --with-zlib --enable-zip --disable-cgi \
+#./configure --prefix=/etc/php7 --with-bz2 --with-zlib --enable-zip --disable-cgi \
    --enable-soap --enable-intl --with-mcrypt --with-openssl --with-readline --with-curl \
    --enable-ftp --enable-mysqlnd --with-mysqli=mysqlnd --with-pdo-mysql=mysqlnd \
    --enable-sockets --enable-pcntl --with-pspell --with-enchant --with-gettext \
