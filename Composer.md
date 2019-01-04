@@ -1,6 +1,13 @@
 #Install Composer :
 
 curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer
+
+'All settings correct for using Composer
+Downloading...
+
+Composer (version 1.8.0) successfully installed to: /usr/local/bin/composer
+Use it: php /usr/local/bin/composer'
+
 #sudo chown -R $USER $HOME/.composer
 #Now you are ready to create your first Laravel app. Test web Server
 
