@@ -66,15 +66,16 @@ readme_directory = no
 
 #Edit /etc/postfix/virtual file and add your aliases, one per line, like in this example:
 
-echo -e 'info@'$MAINDOMAIN' djamolpatil@gmail.com
-\nsupport@'$MAINDOMAIN' djamolpatil@gmail.com
-\n#I want to forward an email from domain1.com to domain2.com using /etc/aliases
+echo -e '\n#I want to forward an email from domain1.com to domain2.com using /etc/aliases
 \n#The incoming email has the following syntax: mail+somerandomstring@domain1.com and should #be forwarded to mail+somerandomstring@domain2.com
 \n#Solved it using regex in the virtual alias table in postfix "hash" to "regexp" /etc/postfix/main.cf>>
 \n#virtual_alias_maps = regexp:/etc/postfix/virtual
 \n#/etc/postfix/virtual>>
 \n#/^mail+([^@]*)@domain1.com/ mail+$(1)@domain2.com
 \n#/^mail+([^@]*)@djamol.com/ googleuser@gmail.com
+\ninfo@'$MAINDOMAIN' djamolpatil@gmail.com
+\nsupport@'$MAINDOMAIN' djamolpatil@gmail.com
+\n#/^ticket+([^@]*)@'$MAINDOMAIN'/ djamolpatil@gmail.com
 ' >> /etc/postfix/virtual
 
 
