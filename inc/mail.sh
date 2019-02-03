@@ -74,7 +74,7 @@ echo -e '\n#I want to forward an email from domain1.com to domain2.com using /et
 \n#/^mail+([^@]*)@domain1.com/ mail+$(1)@domain2.com
 \n#/^mail+([^@]*)@djamol.com/ googleuser@gmail.com
 \n/^ticket+([^@]*)@'$MAINDOMAIN'/ '$MAINE'
-info@'$MAINDOMAIN' '$MAINE'
+\ninfo@'$MAINDOMAIN' '$MAINE'
 \nsupport@'$MAINDOMAIN' '$MAINE'' >> /etc/postfix/virtual
 
 
