@@ -46,7 +46,7 @@ readme_directory = no
 \nalias_maps = hash:/etc/aliases
 \nalias_database = hash:/etc/aliases
 \nvirtual_alias_domains = '$MAINDOMAIN'
-\nvirtual_alias_maps = regexp:/etc/postfix/virtual
+\nvirtual_alias_maps =  hash:/etc/postfix/virtual, regexp:/etc/postfix/virtual-regexp
 \nmyorigin = /etc/mailname
 \nmydestination = mail.'$MAINDOMAIN', '$MAINDOMAIN', localhost.localdomain, localhost
 \nmynetworks = 127.0.0.0/8 [::ffff:127.0.0.0]/104 [::1]/128
@@ -65,6 +65,12 @@ readme_directory = no
 
 #Edit /etc/postfix/virtual file and add your aliases, one per line, like in this example:
 echo -n "Enter Your Main Email Account(Eg. mymail@gmail.com[Gmail,Yahoo]) > ";read text;MAINE=$text;
+touch /etc/postfix/virtual
+touch /etc/postfix/virtual-regexp
+
+echo -e 'info@'$MAINDOMAIN' '$MAINE'
+\nsupport@'$MAINDOMAIN' '$MAINE'' >> /etc/postfix/virtual
+
 
 echo -e '\n#I want to forward an email from domain1.com to domain2.com using /etc/aliases
 \n#The incoming email has the following syntax: mail+somerandomstring@domain1.com and should #be forwarded to mail+somerandomstring@domain2.com
@@ -74,14 +80,14 @@ echo -e '\n#I want to forward an email from domain1.com to domain2.com using /et
 \n#/^mail+([^@]*)@domain1.com/ mail+$(1)@domain2.com
 \n#/^mail+([^@]*)@djamol.com/ googleuser@gmail.com
 \n/^ticket+([^@]*)@'$MAINDOMAIN'/ '$MAINE'
-\ninfo@'$MAINDOMAIN' '$MAINE'
-\nsupport@'$MAINDOMAIN' '$MAINE'' >> /etc/postfix/virtual
+' >> /etc/postfix/virtual-regexp
 
 
 
 
 service postfix start
 postmap /etc/postfix/virtual
+postmap /etc/postfix/virtual-regexp
 service postfix reload
 yum install mailx # Required for mail command system
 
