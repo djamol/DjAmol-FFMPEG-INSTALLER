@@ -8,6 +8,19 @@
 #     mail.mobiletel.com. IN MX 5 mail.mobiletel.com.
 
 
+
+
+
+#I want to forward an email from domain1.com to domain2.com using /etc/aliases
+#The incoming email has the following syntax: mail+somerandomstring@domain1.com and should #be forwarded to mail+somerandomstring@domain2.com
+
+#Solved it using regex in the virtual alias table in postfix' /etc/postfix/main.cf>>
+#virtual_alias_maps = regexp:/etc/postfix/virtual
+#/etc/postfix/virtual>>
+#/^mail+([^@]*)@domain1.com/ mail+$(1)@domain2.com
+ #/^mail+([^@]*)@djamol.com/ mailname@domain2.com
+
+
 # INSTALL postfix(Mail Service/server)
 yum -y install sendmail
 service sendmail start
