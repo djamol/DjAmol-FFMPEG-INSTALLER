@@ -57,6 +57,20 @@ example: find google.in string and replace with yahoo.com
 cd /home/directoy; grep -rl google.in | xargs sed -i 's/google.in/yahoo.com/g'
 
 
+
+If you have list of files you can use
+
+replace "old_string" "new_string" -- file_name1 file_name2 file_name3
+
+If you have all files you can use
+
+replace "old_string" "new_string" -- *
+
+If you have list of files with extension, you can use
+
+replace "old_string" "new_string" -- *.extension
+
+
 # repo files and update package/install clean cache with yum
  yum clean all; yum update; yum clean all; yum update;yum clean all; yum update;
 
