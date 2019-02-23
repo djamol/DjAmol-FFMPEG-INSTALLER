@@ -1,6 +1,33 @@
-cd $SRC_Source
+
+cd $SCRIPTPATH/src
+FILE=php.tar.gz
+if [ ! -f $FILE ]
+then
+   echo -e "\033[33;34m file " $FILE " does not exist.";
+		if wget http://us2.php.net/get/php-5.6.20.tar.gz/from/this/mirror -O $FILE; then 
+		echo -e "\033[33;32m php download Success";date +"%r" >> $BUILD;echo "Success : Download File $FILE" >> $BUILD
+		else
+		echo -e "\033[33;31m php download Failed";date +"%r" >> $BUILD;echo "Failed : Download File $FILE" >> $BUILD
+		fi
+else
+		echo -e "\033[33;32m file " $FILE " exists.";date +"%r" >> $BUILD;echo "Status : Already Exist $FILE" >> $BUILD
+fi
+
+FILE=php-litespeed-6.6.tgz
+if [ ! -f $FILE ]
+then
+   echo -e "\033[33;34m file " $FILE " does not exist.";
+		if wget http://djamol.com/nginx/php-litespeed-6.6.tgz -O php-litespeed-6.6.tgz -O $FILE; then 
+		echo -e "\033[33;32m php download Success";date +"%r" >> $BUILD;echo "Success : Download File $FILE" >> $BUILD
+		else
+		echo -e "\033[33;31m php download Failed";date +"%r" >> $BUILD;echo "Failed : Download File $FILE" >> $BUILD
+		fi
+else
+		echo -e "\033[33;32m file " $FILE " exists.";date +"%r" >> $BUILD;echo "Status : Already Exist $FILE" >> $BUILD
+fi
+
 ##&&&&&& extract php files
-wget -c http://djamol.com/nginx/php-litespeed-6.6.tgz -O php-litespeed-6.6.tgz
+#wget -c http://djamol.com/nginx/php-litespeed-6.6.tgz -O php-litespeed-6.6.tgz
 [ -f /etc/redhat-release ] && yum install -y autoconf213 || apt-get install autoconf2.13 -y
 
 [ ! -s /usr/local/lsws/phpbuild ] && mkdir -p /usr/local/lsws/phpbuild
