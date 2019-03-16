@@ -103,6 +103,15 @@ make
 #./configure --prefix=/usr/local/php7/usr --with-config-file-path=/usr/local/php7/usr/etc --disable-fileinfo --disable-opcache --enable-bcmath --enable-calendar --enable-ftp --enable-mbstring --enable-soap --enable-zip --enable-gd-native-ttf --enable-libxml --enable-pdo --enable-sockets --with-gettext --with-apxs2=/usr/local/apache2/bin/apxs --with-curl=/opt/curl-ssl --with-freetype-dir=/usr --with-gd --with-jpeg-dir==/usr --with-kerberos --with-libxml-dir=/opt/libmcrypt/  --with-mysqli --with-mysql-sock=/var/lib/mysql/mysql.sock --with-openssl=/usr/local/ssl  --with-pcre-regex=/usr/local/pcre --with-pdo-mysql --with-pdo-sqlite --with-pic --with-png-dir=/usr --with-xpm-dir=/usr --with-zlib --with-zlib-dir=/usr 
 #./configure --prefix=/usr/local  --disable-fileinfo --disable-opcache --enable-bcmath --enable-calendar --enable-ftp --enable-mbstring --enable-soap --enable-zip --enable-gd-native-ttf --enable-libxml --enable-pdo --enable-sockets --with-gettext --with-apxs2=/usr/local/apache2/bin/apxs --with-curl=/opt/curl-ssl --with-freetype-dir=/usr --with-gd --with-jpeg-dir==/usr --with-kerberos --with-libxml-dir=/opt/libmcrypt/  --with-mysqli --with-mysql-sock=/var/lib/mysql/mysql.sock --with-openssl=/usr/local/ssl  --with-pcre-regex=/usr/local/pcre --with-pdo-mysql --with-pdo-sqlite --with-pic --with-png-dir=/usr --with-xpm-dir=/usr --with-zlib --with-zlib-dir=/usr 
 
+
+####
+#Configure enable phpize for adding phpextension such as redis php-ffmpeg memcached and many more
+#
+#yum install openssl-devel
+#./configure --prefix=/usr/local/lsws/lsphp5 --disable-fileinfo --disable-opcache --enable-bcmath --enable-calendar --enable-ftp --enable-mbstring --enable-soap --enable-zip --enable-gd-native-ttf --enable-libxml --enable-pdo --enable-sockets --with-gettext --with-curl=/opt/curl-ssl --with-freetype-dir=/usr --with-gd --with-jpeg-dir==/usr --with-kerberos --with-libxml-dir=/opt/libmcrypt/ --with-mysql --with-mysqli --with-mysql-sock=/var/lib/mysql/mysql.sock --with-openssl  --with-pdo-mysql --with-pdo-sqlite --with-pic --with-png-dir=/usr --with-xpm-dir=/usr --with-zlib --with-zlib-dir=/usr --with-libdir=lib64 --enable-shmop --enable-sysvsem --enable-sysvshm --with-iconv --enable-inline-optimization --with-mhash --enable-xml --disable-rpath --enable-mbregex --enable-pcntl --with-ldap-sasl --with-xmlrpc --disable-debug --with-apxs2=/usr/local/apache2/bin/apxs; #--with-ldap
+####
+
+
 echo -e "
   █    █ █    █ ▓    █    █████      █  █▓▓█  ▓█████  ████  █        ▓████  ████▒  █████  
   ▒ █ ░█ ▓ ██ █    █ █    ▒   █▒     █  ░▓▓█▓ ▓ █▓ █     █▓ ▓        ▓      ░  ▓█ ▒ ▓█ █  
