@@ -1,6 +1,6 @@
 SCRIPTPATH=$(dirname "$SCRIPT")
 ##SRC_Source="/src"
-PWD_DIR=$SCRIPTPATH/conf
+PWD_DIR=$SCRIPTPATH/conf/origin/conf
 cpu_num=`cat /proc/cpuinfo | grep processor | wc -l`
 
  sh $SCRIPTPATH/inc/openlite/jemalloc.sh 2>&1 | tee -a openl-jemalloc.txt
