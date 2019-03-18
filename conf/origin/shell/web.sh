@@ -31,10 +31,10 @@ cp $PWD_DIR/conf/index.html /home/wwwroot/default/index.html
 sed -i "s/{ip}/$IP/g" /home/wwwroot/default/index.html
 
 
-[ ! -s $SRC_DIR/phpMyAdmin-4.1.14-all-languages.tar.gz ] && wget -c http://downloads.sourceforge.net/project/phpmyadmin/phpMyAdmin/4.1.14/phpMyAdmin-4.1.14-all-languages.tar.gz -O $SRC_DIR/phpMyAdmin-4.1.14-all-languages.tar.gz
+[ ! -s $SRC_DIR/phpMyAdmin-4.1.14-english.tar.gz ] && wget -c http://downloads.sourceforge.net/project/phpmyadmin/phpMyAdmin/4.1.14/phpMyAdmin-4.1.14-english.tar.gz -O $SRC_DIR/phpMyAdmin-4.1.14-english.tar.gz
 
 cd $SRC_DIR
-tar zxf phpMyAdmin-4.1.14-all-languages.tar.gz
-mv phpMyAdmin-4.1.14-all-languages /home/wwwroot/default/phpmyadmin/
+tar zxf phpMyAdmin-4.1.14-english.tar.gz
+mv phpMyAdmin-4.1.14-english /home/wwwroot/default/phpmyadmin/
 
 chown -R www:www /home/wwwroot/
