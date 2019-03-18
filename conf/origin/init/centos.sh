@@ -50,7 +50,7 @@ yum clean all
 
 #set timezone
 rm -rf /etc/localtime
-ln -s /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+ln -s /usr/share/zoneinfo/Asia/Kolkata /etc/localtime
 
 ntpdate pool.ntpdate.org
 echo "01 1 * * * root ntpdate pool.ntpdate.org /etc/cron.daily" >> /etc/crontab

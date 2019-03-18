@@ -4,20 +4,8 @@
 # 
 # 
 #
-# Version: Ver 0.4
-# Created: 2014-03-31
-# Updated: 2014-04-05
-# Changed: 修复安装后无法登陆LiteSpeed后台问题
-# Updated: 2014-04-13
-# Changed: 修复安装出错问题, 将make clean移到前面
-# Updated: 2014-04-29
-# Changed: 增加Debian支持
-# Updated: 2014-05-09
-# Changed: 更新数据库驱动为mysqlnd驱动
-# Updated: 2014-06-13
-# Changed: 修复Debian、Ubuntu下默认指向dash问题
 
-[ ! -s $SRC_DIR/php-5.3.28.tar.gz ] && wget -c http://www.php.net/distributions/php-5.3.28.tar.gz -O $SRC_DIR/php-5.3.28.tar.gz
+[ ! -s $SRC_DIR/php-5.6.20.tar.gz ] && wget -c http://www.php.net/distributions/php-5.6.20.tar.gz -O $SRC_DIR/php-5.6.20.tar.gz
 
 [ ! -s $SRC_DIR/php-litespeed-6.6.tgz ]&& wget -c http://www.litespeedtech.com/packages/lsapi/php-litespeed-6.6.tgz -O $SRC_DIR/php-litespeed-6.6.tgz
 
@@ -27,10 +15,10 @@
 
 cd $SRC_DIR
 tar zxf php-litespeed-6.6.tgz
-tar zxf php-5.3.28.tar.gz
-mv $SRC_DIR/litespeed $SRC_DIR/php-5.3.28/sapi/litespeed/
-mv $SRC_DIR/php-5.3.28 /usr/local/lsws/phpbuild
-cd /usr/local/lsws/phpbuild/php-5.3.28
+tar zxf php-5.6.20.tar.gz
+mv $SRC_DIR/litespeed $SRC_DIR/php-5.6.20/sapi/litespeed/
+mv $SRC_DIR/php-5.6.20 /usr/local/lsws/phpbuild
+cd /usr/local/lsws/phpbuild/php-5.6.20
 
 make clean
 touch ac*
@@ -55,22 +43,22 @@ make -k install
 
 [ ! -s /usr/local/lsws/lsphp5/lib ] && mkdir -p /usr/local/lsws/lsphp5/lib
 
-yes | cp -rf /usr/local/lsws/phpbuild/php-5.3.28/php.ini-production /usr/local/lsws/lsphp5/lib/php.ini
+yes | cp -rf /usr/local/lsws/phpbuild/php-5.6.20/php.ini-production /usr/local/lsws/lsphp5/lib/php.ini
 
 cd /usr/local/lsws/fcgi-bin
 
-[ -e "lsphp-5.3.28" ] && mv -s lsphp-5.3.28 lsphp-5.3.28.bak
+[ -e "lsphp-5.6.20" ] && mv -s lsphp-5.6.20 lsphp-5.6.20.bak
 
-cp /usr/local/lsws/phpbuild/php-5.3.28/sapi/litespeed/php lsphp-5.3.28
-ln -sf lsphp-5.3.28 lsphp5
-ln -sf lsphp-5.3.28 lsphp55
-chmod a+x lsphp-5.3.28
-chown -R lsadm:lsadm /usr/local/lsws/phpbuild/php-5.3.28
+cp /usr/local/lsws/phpbuild/php-5.6.20/sapi/litespeed/php lsphp-5.6.20
+ln -sf lsphp-5.6.20 lsphp5
+ln -sf lsphp-5.6.20 lsphp55
+chmod a+x lsphp-5.6.20
+chown -R lsadm:lsadm /usr/local/lsws/phpbuild/php-5.6.20
 
 sed -i 's/post_max_size = 8M/post_max_size = 50M/g' /usr/local/lsws/lsphp5/lib/php.ini
 sed -i 's/short_open_tag = Off/short_open_tag = On/g' /usr/local/lsws/lsphp5/lib/php.ini
 sed -i 's/upload_max_filesize = 2M/upload_max_filesize = 50M/g' /usr/local/lsws/lsphp5/lib/php.ini
-sed -i 's/;date.timezone =/date.timezone = Asia\/Shanghai/g' /usr/local/lsws/lsphp5/lib/php.ini
+sed -i 's/;date.timezone =/date.timezone = Asia\/Kolkata/g' /usr/local/lsws/lsphp5/lib/php.ini
 sed -i 's/disable_functions =.*/disable_functions = passthru,exec,system,chroot,chgrp,chown,shell_exec,proc_open,proc_get_status,ini_alter,ini_restore,dl,openlog,syslog,readlink,symlink,popepassthru,stream_socket_server/g' /usr/local/lsws/lsphp5/lib/php.ini
 sed -i 's/display_errors = On/display_errors = Off/g' /usr/local/lsws/lsphp5/lib/php.ini
 sed -i 's/expose_php = On/expose_php = Off/g' /usr/local/lsws/lsphp5/lib/php.ini

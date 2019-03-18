@@ -19,7 +19,7 @@
 error_reporting(0); //抑制所有错误信息
 @header("content-Type: text/html; charset=utf-8"); //语言强制
 ob_start();
-date_default_timezone_set('Asia/Shanghai');//此句用于消除时间差
+date_default_timezone_set('Asia/Kolkata');//此句用于消除时间差
 
 $title = '雅黑PHP探针[简体版]';
 $version = "v0.4.7"; //版本号
