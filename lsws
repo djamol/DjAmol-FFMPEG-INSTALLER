@@ -88,8 +88,8 @@ echo -e "\033[32m$webecho user name: $webuser\033[0m"
 
 #set litespeed user password
 echo "Please input the user password of $webecho:"
-read -p "(Default user password: llnmp.com): " webpass
-[ -z "$webpass" ] && webpass="llnmp.com"
+read -p "(Default user password: amol.com): " webpass
+[ -z "$webpass" ] && webpass="amol.com"
 echo -e "\033[32m$webecho user password: $webpass\033[0m"
 
 #set admin email
@@ -143,8 +143,8 @@ echo -e "\033[32m$dbecho already installed!\033[0m"
 
 #set mysql root password
 echo "Please input the root password of $dbecho:"
-read -p "(Default root password: llnmp.com): " dbpass
-[ -z "$dbpass" ] && dbpass="llnmp.com"
+read -p "(Default root password: amol.com): " dbpass
+[ -z "$dbpass" ] && dbpass="amol.com"
 echo -e "\033[32m$dbecho root password: $dbpass\033[0m"
 
 #select php version
@@ -241,12 +241,12 @@ fi
 
 if [ "$pureftpd_install" = "y" ]; then
     echo "Please input password of User manager:"
-    read -p "(Default password: llnmp.com): " ftpmanagerpwd
-    [ -z "$ftpmanagerpwd" ] && ftpmanagerpwd="llnmp.com"
+    read -p "(Default password: amol.com): " ftpmanagerpwd
+    [ -z "$ftpmanagerpwd" ] && ftpmanagerpwd="amol.com"
 
     echo "Please input password of mysql ftp user:"
-    read -p "(Default password: llnmp.com): " mysqlftppwd
-    [ -z "$mysqlftppwd" ] && mysqlftppwd="llnmp.com"
+    read -p "(Default password: amol.com): " mysqlftppwd
+    [ -z "$mysqlftppwd" ] && mysqlftppwd="amol.com"
 
     echo -e "\033[32mPureftpd already installed!\033[0m"
 fi
