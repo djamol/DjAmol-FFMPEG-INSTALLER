@@ -65,10 +65,10 @@ echo "Main IP: $MAINIP";
 echo "Please select a web server:"
 echo -e "\t\033[32m1\033[0m. Install LiteSpeed"
 echo -e "\t\033[32m2\033[0m. Install OpenLiteSpeed"
-read -p "(Default LiteSpeed): " web_select
+read -p "(Default OpenLiteSpeed): " web_select
 
 if [ "$web_select" != 1 -a "$web_select" != 2 ]; then
-    web_select=1
+    web_select=2
 fi
 
 [ "$web_select" = 1 ] && webecho="LiteSpeed"
