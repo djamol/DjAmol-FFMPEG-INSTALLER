@@ -1,8 +1,8 @@
 #!/bin/bash
 #
-# Author: Shuang.Ca <ylqjgm@gmail.com>
-# Home: http://llnmp.com
-# Blog: http://shuang.ca
+# 
+# 
+# 
 #
 # Version: Ver 0.4
 # Created: 2014-05-18
@@ -17,19 +17,19 @@ fi
 
 clear
 echo "====================================================================="
-echo -e "\033[32mLLNMP V$VERSION for CentOS/RedHat, Debian, Ubuntu Linux VPS Written by Shuang.Ca\033[0m"
+echo -e "\033[32mLLNMP V$VERSION for CentOS/RedHat, Debian, Ubuntu Linux VPS Written by djamol.com\033[0m"
 echo "====================================================================="
 echo -e "\033[32mA tool to auto-compile & install LiteSpeed(OpenLiteSpeed)+MySQL(MariaDB)+PHP on Linux\033[0m"
 echo ""
-echo -e "\033[32mFor more information please visit http://shuang.ca/\033[0m"
+echo -e "\033[32mFor more information please visit http://djamol.com/\033[0m"
 echo "====================================================================="
 
 #Domain name
-domain="shuang.ca"
+domain="djamol.com"
 echo "Please input domain:"
-read -p "(Default domain: shuang.ca):" domain
+read -p "(Default domain: djamol.com):" domain
 if [ "$domain" = "" ]; then
-  domain="shuang.ca"
+  domain="djamol.com"
 fi
 
 if [ ! -f "//usr/local/lsws/conf/$domain.xml" ]; then
@@ -47,7 +47,7 @@ fi
 read -p "Do you want to add more domain name? (y/n)" add_more_domainame
     
 if [ "$add_more_domainame" = 'y' ] || [ "$add_more_domainame" = 'Y' ]; then
-  echo "Please input domain name,example(www.shuang.ca,blog.shuang.ca,img.shuang.ca)"
+  echo "Please input domain name,example(www.djamol.com,blog.djamol.com,img.djamol.com)"
   read -p "Please use \",\" between each domain:" moredomain
   echo "==========================="
   echo domain list="$moredomain"

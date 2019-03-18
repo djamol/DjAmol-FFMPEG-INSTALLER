@@ -1,8 +1,8 @@
 #!/bin/bash
 #
-# Author: Shuang.Ca <ylqjgm@gmail.com>
-# Home: http://llnmp.com
-# Blog: http://shuang.ca
+# 
+# 
+# 
 #
 # Version: Ver 0.4
 # Created: 2014-03-31
@@ -121,7 +121,7 @@ log_format default '\$remote_addr - \$remote_user [\$time_local] "\$request" '
 
 server {
     listen 80;
-    server_name shuang.ca;
+    server_name djamol.com;
     index index.html index.htm index.php;
     root /home/wwwroot/default;
 

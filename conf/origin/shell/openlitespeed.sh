@@ -1,7 +1,7 @@
 #!/bin/bash
 #
-# Author: Shuang.Ca <ylqjgm@gmail.com>
-# Blog: http://shuang.ca
+# 
+# 
 #
 # Version: Ver 0.4
 # Created: 2014-03-31

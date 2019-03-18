@@ -1,8 +1,8 @@
 #!/bin/bash
 #
-# Author: Shuang.Ca <ylqjgm@gmail.com>
-# Home: http://llnmp.com
-# Blog: http://shuang.ca
+# 
+# 
+# 
 #
 # Version: Ver 0.4
 # Created: 2014-02-07
@@ -25,10 +25,10 @@
 
 #define var
 VERSION="0.4"
-PWD_DIR=`pwd`
-SRC_DIR=$PWD_DIR/src
-SH_DIR=$PWD_DIR/shell
-LOG_FILE=$PWD_DIR/install.log
+SCRIPTPATH=$(dirname "$SCRIPT")
+SRC_DIR=$SCRIPTPATH/src/openlite
+SH_DIR=$SCRIPTPATH/conf/origin/shell
+LOG_FILE=$SCRIPTPATH/log/install.log
 
 export PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin
 
@@ -40,11 +40,11 @@ fi
 
 clear
 echo "====================================================================="
-echo -e "\033[32mLLNMP V$VERSION for CentOS/RedHat, Debian, Ubuntu Linux VPS Written by Shuang.Ca\033[0m"
+echo -e "\033[32mLLNMP V$VERSION for CentOS/RedHat, Debian, Ubuntu Linux VPS Written by djamol.com\033[0m"
 echo "====================================================================="
 echo -e "\033[32mA tool to auto-compile & install LiteSpeed(OpenLiteSpeed)+MySQL(MariaDB)+PHP on Linux\033[0m"
 echo ""
-echo -e "\033[32mFor more information please visit http://shuang.ca/\033[0m"
+echo -e "\033[32mFor more information please visit http://djamol.com/\033[0m"
 echo "====================================================================="
 
 #check main ip address
@@ -364,10 +364,10 @@ cp $PWD_DIR/conf/vhost.sh /root/vhost.sh
 chmod +x /root/vhost.sh
 
 echo "====================================================================="
-echo -e "\033[32mLLNMP V$VERSION for CentOS/RedHat, Debian, Ubuntu Linux VPS Written by Shuang.Ca\033[0m"
+echo -e "\033[32mLLNMP V$VERSION for CentOS/RedHat, Debian, Ubuntu Linux VPS Written by djamol.com\033[0m"
 echo "====================================================================="
 echo ""
-echo "For more information please visit http://shuang.ca/"
+echo "For more information please visit http://djamol.com/"
 echo ""
 echo "$webecho admin name: $webuser"
 echo "$webecho admin password: $webpass"
