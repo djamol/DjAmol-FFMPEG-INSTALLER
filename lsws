@@ -47,23 +47,19 @@ echo ""
 echo -e "\033[32mFor more information please visit http://djamol.com/\033[0m"
 echo "====================================================================="
 
-#check main ip address
-IP=`ifconfig | grep 'inet addr:' | grep -v '127.0.*' | cut -d: -f2 | awk '{print $1}' | sed 1q`
-while :
-do
-    read -p "Is $IP your main ip?[y/n]: " right_ip
-    if [ "$right_ip" != "y" -a "$right_ip" != "n" ]; then
-        echo -e "\033[31mInput error! Please only input y or n\033[0m"
-    fi
-
-    [ "$right_ip" = "y" ] && break
-
-    if [ "$right_ip" = "n" ]; then
-        read -p "Please input your main ip: " new_ip
-        IP=$new_ip
-        [ ! -z "$IP" ] && break
-    fi
+MAINIP=$(hostname --ip-address)
+MYHOST=$(hostname)
+while true; do
+    read -p "Your System Main Ip is : $MAINIP?" yn
+    case $yn in
+        [Yy]* )  echo "Main IP Detect"; break;;
+        [Nn]* ) echo -n "Enter Server Ipv4(Eg. 001.100.200.300) > ";read text;MAINIP=$text;break;;#exit;;
+        * ) echo "Please answer yes or no.";;
+    esac
 done
+
+echo "Main IP: $MAINIP";
+
 
 #select web server
 echo "Please select a web server:"
