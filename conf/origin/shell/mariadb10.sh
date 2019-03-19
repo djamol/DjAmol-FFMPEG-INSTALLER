@@ -10,6 +10,7 @@
 useradd -M -s /sbin/nologin mysql
 rm -f /etc/my.cnf
 mkdir -p /data/mysql
+cd $SRC_DIR
 
 [ "$jemalloc_install" = "y" ] && COMMAND="-DCMAKE_EXE_LINKER_FLAGS='-ljemalloc'"
 
