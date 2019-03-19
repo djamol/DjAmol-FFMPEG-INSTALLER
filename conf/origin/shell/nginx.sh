@@ -23,6 +23,7 @@
 # Changed: 去除主IP限定
 # Updated: 2014-06-13
 # Changed: 修复Debian、Ubuntu下默认指向dash问题
+cd $SRC_DIR
 
 [ "$jemalloc_install" = "y" ] && COMMAND="--with-ld-opt='-ljemalloc'"
 
