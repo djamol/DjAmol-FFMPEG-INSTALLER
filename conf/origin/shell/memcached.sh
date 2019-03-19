@@ -18,8 +18,10 @@
 # Changed: 更新Memcached到1.4.19
 # Updated: 2014-05-15
 # Changed: 更新Memcached到1.4.20
+cd $SRC_DIR
 
 useradd -M -s /sbin/nologin memcached
+cd $SRC_DIR
 
 [ ! -s $SRC_DIR/memcached-1.4.20.tar.gz ] && wget -c http://www.memcached.org/files/memcached-1.4.20.tar.gz -O $SRC_DIR/memcached-1.4.20.tar.gz
 
