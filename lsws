@@ -30,7 +30,7 @@ SRC_DIR=$SCRIPTPATH/src/openlite
 SRC_OLD=$SCRIPTPATH/src
 SH_DIR=$SCRIPTPATH/conf/origin/shell
 LOG_FILE=$SCRIPTPATH/log/install.log
-
+PWD_DIR=$SCRIPTPATH/conf/origin
 export PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin
 
 #check if user is not root
