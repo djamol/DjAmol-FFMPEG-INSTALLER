@@ -30,7 +30,7 @@
 
 useradd -M -s /sbin/nologin www
 mkdir -p /home/wwwroot/default
-
+cd $SRC_DIR
 centosversion=$(cat /etc/redhat-release | grep -o [0-9] | sed 1q)
 if [ "$centosversion" = "5" ]; then
     rpm -ivh http://rpms.litespeedtech.com/centos/litespeed-repo-1.1-1.el5.noarch.rpm
