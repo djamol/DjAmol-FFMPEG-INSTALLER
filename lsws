@@ -146,16 +146,16 @@ echo -e "\033[32m$dbecho root password: $dbpass\033[0m"
 
 #select php version
 echo "Please select a PHP Version:"
-echo -e "\t\033[32m1\033[0m. Install PHP 5.3"
+echo -e "\t\033[32m1\033[0m. Install PHP 5.6"
 echo -e "\t\033[32m2\033[0m. Install PHP 5.4"
 echo -e "\t\033[32m3\033[0m. Install PHP 5.5"
-read -p "(Default PHP 5.3): " php_select
+read -p "(Default PHP 5.6): " php_select
 
 if [ "$php_select" != 1 -a "$php_select" != 2 -a "$php_select" != 3 ]; then
     php_select=1
 fi
 
-[ "$php_select" = 1 ] && phpecho="PHP 5.3"
+[ "$php_select" = 1 ] && phpecho="PHP 5.6"
 [ "$php_select" = 2 ] && phpecho="PHP 5.4"
 [ "$php_select" = 3 ] && phpecho="PHP 5.5"
 
@@ -325,7 +325,7 @@ if [ "$php_select" = 2 ]; then
 elif [ "$php_select" = 3 ]; then
     . $SH_DIR/php55.sh 2>&1 | tee -a $LOG_FILE
 else
-    . $SH_DIR/php53.sh 2>&1 | tee -a $LOG_FILE
+    . $SH_DIR/php56.sh 2>&1 | tee -a $LOG_FILE
 fi
 
 #redis
