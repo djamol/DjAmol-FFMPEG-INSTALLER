@@ -211,6 +211,15 @@ fi
 
 [ "$redis_install" = "y" ] && echo -e "\033[32mRedis already installed!\033[0m"
 
+#install bindns cronjob
+read -p "Do you want install BindDNS & Cronjob?(Default y) [y/n]: " bind_install
+
+if [ "$bind_install" != "y" -a "$bind_install" != "n" ]; then
+    bind_install="y"
+fi
+
+[ "$bind_install" = "y" ] && echo -e "\033[32mBindAndCron already installed!\033[0m"
+
 #install memcache
 read -p "Do you want install memcached?(Default y) [y/n]: " memcache_install
 
@@ -335,6 +344,13 @@ if [ "$cache_install" = "y" ]; then
     [ "$cache_select" = 2 ] && . $SH_DIR/apcu.sh 2>&1 | tee -a $LOG_FILE
     [ "$cache_select" = 3 ] && . $SH_DIR/xcache.sh 2>&1 | tee -a $LOG_FILE
 fi
+
+#bindDNSandcronjob
+if [ "$bind_install" = "y" ]; then
+    . $SH_DIR/binddns.sh 2>&1 | tee -a $LOG_FILE
+    . $SH_DIR/cron.sh 2>&1 | tee -a $LOG_FILE
+fi
+
 
 #zend
 if [ "$zend_install" = "y" ]; then
