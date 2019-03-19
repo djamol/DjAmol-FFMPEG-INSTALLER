@@ -30,7 +30,7 @@ cp $PWD_DIR/conf/index.html /home/wwwroot/default/index.html
 
 sed -i "s/{ip}/$IP/g" /home/wwwroot/default/index.html
 
-
+cd $SRC_DIR
 [ ! -s $SRC_DIR/phpMyAdmin-4.1.14-english.tar.gz ] && wget -c http://downloads.sourceforge.net/project/phpmyadmin/phpMyAdmin/4.1.14/phpMyAdmin-4.1.14-english.tar.gz -O $SRC_DIR/phpMyAdmin-4.1.14-english.tar.gz
 
 cd $SRC_DIR
