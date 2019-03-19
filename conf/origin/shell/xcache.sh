@@ -6,7 +6,7 @@
 #
 # Version: Ver 0.4
 # Created: 2014-03-31
-
+cd $SRC_DIR
 [ ! -s $SRC_DIR/xcache-3.1.0.tar.gz ] && wget -c http://xcache.lighttpd.net/pub/Releases/3.1.0/xcache-3.1.0.tar.gz -O $SRC_DIR/xcache-3.1.0.tar.gz
 
 cd $SRC_DIR
