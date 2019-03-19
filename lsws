@@ -27,6 +27,7 @@
 VERSION="0.4"
 SCRIPTPATH=$(dirname "$SCRIPT")
 SRC_DIR=$SCRIPTPATH/src/openlite
+SRC_OLD=$SCRIPTPATH/src
 SH_DIR=$SCRIPTPATH/conf/origin/shell
 LOG_FILE=$SCRIPTPATH/log/install.log
 
