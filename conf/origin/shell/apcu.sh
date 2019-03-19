@@ -10,6 +10,7 @@
 # Changed: 增加apcu.php
 # Updated: 2014-06-13
 # Changed: 升级apcu到4.0.6
+cd $SRC_DIR
 
 [ ! -s $SRC_DIR/apcu-4.0.6.tgz ] && wget -c http://pecl.php.net/get/apcu-4.0.6.tgz -O $SRC_DIR/apcu-4.0.6.tgz
 
