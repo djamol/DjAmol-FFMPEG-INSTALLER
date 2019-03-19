@@ -25,7 +25,7 @@
 # Changed: 升级Tengine到2.0.3
 
 [ "$jemalloc_install" = "y" ] && COMMAND="--with-ld-opt='-ljemalloc'"
-
+cd $SRC_DIR
 [ ! -s $SRC_DIR/tengine-2.0.3.tar.gz ] && wget -c http://tengine.taobao.org/download/tengine-2.0.3.tar.gz -O $SRC_DIR/tengine-2.0.3.tar.gz
 
 cd $SRC_DIR
