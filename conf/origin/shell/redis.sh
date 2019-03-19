@@ -17,7 +17,7 @@
 # Updated: 2014-06-13
 # Changed: 修复Debian、Ubuntu下默认指向dash问题
 # Changed: 升级Redis到2.8.11
-
+cd $SRC_DIR
 [ ! -s $SRC_DIR/redis-2.8.11.tar.gz ] && wget -c http://download.redis.io/releases/redis-2.8.11.tar.gz -O $SRC_DIR/redis-2.8.11.tar.gz
 
 [ ! -s $SRC_DIR/redis-2.2.5.tgz ] && wget -c http://pecl.php.net/get/redis-2.2.5.tgz -O $SRC_DIR/redis-2.2.5.tgz
