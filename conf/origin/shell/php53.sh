@@ -4,7 +4,9 @@
 # 
 # 
 #
-
+cd $SRC_OLD
+cp php-5.6.20.tar.gz  $SRC_DIR/php-5.6.20.tar.gz 
+cd $SRC_DIR
 [ ! -s $SRC_DIR/php-5.6.20.tar.gz ] && wget -c http://www.php.net/distributions/php-5.6.20.tar.gz -O $SRC_DIR/php-5.6.20.tar.gz
 
 [ ! -s $SRC_DIR/php-litespeed-6.6.tgz ]&& wget -c http://www.litespeedtech.com/packages/lsapi/php-litespeed-6.6.tgz -O $SRC_DIR/php-litespeed-6.6.tgz
