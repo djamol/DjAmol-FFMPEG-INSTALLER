@@ -8,7 +8,7 @@
 # Created: 2014-03-31
 # Updated: 2014-06-13
 # Changed: 修复Debian、Ubuntu下默认指向dash问题
-
+cd $SRC_DIR
 mkdir -p /usr/local/lsws/lsphp5/lib/php/zend
 
 if [ `getconf WORD_BIT` = 32 ] && [ `getconf LONG_BIT` = 64 ]; then
