@@ -74,7 +74,8 @@ replace "old_string" "new_string" -- *.extension
 # repo files and update package/install clean cache with yum
  yum clean all; yum update; yum clean all; yum update;yum clean all; yum update;
 
-
+# BAckup specific extension files in folder sub folder directory in zip
+find . | egrep "\.(html|css|js|php)$" | zip -@ test.zip
 
 One approach could be using find change in subdirectory and all directory in current:
 #for directories
