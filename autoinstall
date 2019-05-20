@@ -93,8 +93,43 @@ while true; do
     esac
 done
 
+echo -e "\e[32m########################################\n####   Curl Software           #########\n########################################"
+while true; do
+    read -p "Do you wish to install (CURL) program?" yn
+    case $yn in
+        [Yy]* ) CURL="true"; break;;
+        [Nn]* ) echo "Reject Program : CURL (By You) " >> $BUILD; break;;
+        * ) echo "Please answer yes or no.";;
+    esac
+done
+
+
+echo -e "\e[32m########################################\n####   MariaDB/MySQL Software  #########\n########################################"
+while true; do
+    read -p "Do you wish to install (MariaDB/MYSQL) DATABASE program?" yn
+    case $yn in
+        [Yy]* ) DB="true"; break;;
+        [Nn]* ) echo "Reject Program : MYSQL (By You) " >> $BUILD; break;;
+        * ) echo "Please answer yes or no.";;
+    esac
+done
+
+echo -e "\e[32m########################################\n####   Apache2.4 Server Soft.  #########\n########################################"
+while true; do
+    read -p "Do you wish to install (Apache) program?" yn
+    case $yn in
+        [Yy]* ) Apache="true";source "$SCRIPTPATH/inc/apache.sh"; break;;
+        [Nn]* ) echo "Reject Program : Apache (By You) " >> $BUILD; break;;
+        * ) echo "Please answer yes or no.";;
+    esac
+done
+
 set -a
 TESTVARIABLE=hellohelloheloo
+BIND=$BIND
+CURL=$CURL
+DB=$DB
+Apache=$Apache
 # ...
 # Here put all the variables that will be marked for export
 # and that will be available from within test2 (and all other commands).
@@ -104,8 +139,8 @@ set +a
 
 # Here, even if test2 modifies TESTVARIABLE, you'll still have
  # TESTVARIABLE=hellohelloheloo
-./start.sh > FFMPEG-output.log 2>&1 &
-
+#./start.sh > FFMPEG-output.log 2>&1 &
+./auto > ServerInstaller-output.log 2>&1 &
 
 
 
