@@ -23,10 +23,8 @@ yum -y install wget unzip;wget --no-check-certificate -O installer.zip https://g
 
 # Install ffmpeg
 
-<code>./ffmpeg </code>
-OR 
-<code>yum -y install wget unzip;wget --no-check-certificate -O installer.zip https://github.com/djamol/FFMPEG-CENTOS/archive/master.zip; unzip installer.zip; cd FFMPEG-CENTOS-master;cd SharedFFMPEG;chmod +x *.sh; ./start.sh > FFMPEG-output.log 2>&1 &</code>
-More info at https://github.com/djamol/FFMPEG-CENTOS/blob/master/README.md
+Run command <code>./ffmpeg </code>
+OR More info at https://github.com/djamol/FFMPEG-CENTOS/blob/master/README.md
 
 # Install Webmin
 
