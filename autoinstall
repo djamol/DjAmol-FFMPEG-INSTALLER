@@ -211,6 +211,8 @@ set -a
 WEBA=$weba
 WEBP=$webp
 WEBO=$webo
+SCRIPTPATH=$SCRIPTPATH
+BUILD=$BUILD
 CAC=$btext
 CAS=$stext
 CAL=Aurangabad
