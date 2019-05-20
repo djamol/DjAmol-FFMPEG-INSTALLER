@@ -1,0 +1,18 @@
+echo -e '▒█░▒░▓█░█▒░▒▒█░█▓░▒░█▓   █████▒    ▓█ ▒█▓▓█▓ ██████ ▓████▒░█░      ░█████░▒████▓ ▓█████░ 
+ ░▓ █▓▓█ ▓ ██▒█░▓░▓█░█▓   ▓▒  █▓    ▒█ ▒▓▓▓█▓ ▓░█▓▒█░▓▒  █▓ ▓       ░█░  ▓ ▒▓  ▓█ ▓▒▓█▒█▒ 
+ ▒█▒█▓▓█░█▓▓█▒█▒█▓▓█▒█▓   █▓  █▓░▓░ ▓█ ██▒▒█▓░█▒█▓▒█░██  █▓░█▒  ░   ▒█▒ ░▓ ██  ██ █▓▓█░█▒ 
+ ░█████▓ ██████ ▓█████░▓█ █████░░█████ █▓  █▓░█▒░░▒█ ▓████▒░█████▒█▓ █████ ▒████▓ █▓░▒░█▒ ';
+echo -e "$GREEN 
+# Powered By DjAmol Group Inc         #
+# Email : Support@djamol.com          #
+# Website : www.djamol.com            #
+# Copyright By PatilWeb.com           #
+# IG:PatilWeb FB:PatilWeb TW:PatilWeb #
+$RESET";
+echo -e "\e[32m########################################\n####   BIND DNS Software       #########\n########################################"
+if [ $BIND = "true" ]
+        then
+                source "$SCRIPTPATH/inc/binddns.sh";
+        else
+                echo "Reject By USER Bind INstall"
+fi
