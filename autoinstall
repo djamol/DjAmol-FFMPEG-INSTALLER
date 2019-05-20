@@ -205,6 +205,37 @@ while true; do
 done
 
 
+echo "Domain Added (MAIN):$MAINDOMAIN (Domain Directory:/home/www)"
+while true; do
+    read -p "Do You Want Add More Domains?" yn
+    case $yn in
+        [Yy]* )  echo "."; 
+                
+echo -n "Enter Your Additional Domain seprate by comma(Eg. domain.com,domain.in,three.in) > "
+read dstring
+EXTRAD=$dstring;
+
+break;;
+        [Nn]* ) echo -e "You Select Cancel For More Domain Option";EXTRAD="no";break;;#exit;;
+        * ) echo "Please answer yes or no.";;
+    esac
+done
+
+
+while true; do
+    read -p "Do You Want Domain SSL https connection?" yn
+    case $yn in
+        [Yy]* )  echo "."; 
+echo -n "Enable https connection Domain seprate by comma(,)(Eg. domain.com,domain.in,three.in) > "
+read dstring
+EXTRADS=$dstring;
+break;;
+        [Nn]* ) echo -e "You Select Cancel SSL https";EXTRADS="no";break;;#exit;;
+        * ) echo "Please answer yes or no.";;
+    esac
+done
+
+
 set -a
 # Global Variable to access any bash other files run by this file
 #TESTVARIABLE=hellohelloheloo
@@ -233,7 +264,8 @@ PostFix=$PostFix
 MAINDOMAIN=$MAINDOMAIN
 MAINIP=$MAINIP
 MYHOST=$MYHOST
-
+EXTRAD=$EXTRAD
+EXTRADS=$EXTRADS
 # ...
 # Here put all the variables that will be marked for export
 # and that will be available from within test2 (and all other commands).
