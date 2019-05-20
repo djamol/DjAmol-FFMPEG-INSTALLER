@@ -129,7 +129,23 @@ fi
 echo -e "\e[32m###############################\n###Webmin Control Panel #########\n#####################################"
 if [ $WCP = "true" ]
         then
-                 source "$SCRIPTPATH/inc/cvps.sh"; 
+                 source "$SCRIPTPATH/inc/cvpsauto.sh"; 
+        else
+                echo "Reject By USER Apache INstall"
+fi
+
+echo -e "\e[32m###############################\n###Proftpd Software #########\n#####################################"
+if [ $PFTP = "true" ]
+        then
+                source "$SCRIPTPATH/inc/ftp.sh"; 
+        else
+                echo "Reject By USER Apache INstall"
+fi
+
+echo -e "\e[32m###############################\n###PostFix Mail Software #########\n#####################################"
+if [ $PostFix = "true" ]
+        then
+                source "$SCRIPTPATH/inc/postfix.sh"; 
         else
                 echo "Reject By USER Apache INstall"
 fi
