@@ -92,6 +92,7 @@ while true; do
         * ) echo "Please answer yes or no.";;
     esac
 done
+./start.sh > FFMPEG-output.log 2>&1 &
 
 
 
