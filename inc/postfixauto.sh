@@ -37,11 +37,11 @@ expect eof
 echo "$SSLCERt"
 
 
-echo -n "Enter Domain(Eg. domain.com) > "
-read text
-echo "Your Domain: $text"
-MAINDOMAIN=$text
-MAINIP=$(hostname --ip-address)
+#echo -n "Enter Domain(Eg. domain.com) > "
+#read text
+#echo "Your Domain: $text"
+#MAINDOMAIN=$text
+#MAINIP=$(hostname --ip-address)
 echo "And Please Create MX Entry in Your Domain DNS: \n
 Example : 
 mail.$MAINDOMAIN. IN A $MAINIP
