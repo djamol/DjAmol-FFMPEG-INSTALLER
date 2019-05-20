@@ -62,6 +62,8 @@ SCRIPT=$(readlink -f "$0")
 SCRIPTPATH=$(dirname "$SCRIPT")
 #echo $SCRIPTPATH
 
+BIND="n"; CURL="n"; DB="n"; Apache="n";
+
 
 mkdir $SCRIPTPATH/log
 BUILDDIR=$SCRIPTPATH/log/
@@ -118,18 +120,23 @@ echo -e "\e[32m########################################\n####   Apache2.4 Server
 while true; do
     read -p "Do you wish to install (Apache) program?" yn
     case $yn in
-        [Yy]* ) Apache="true";source "$SCRIPTPATH/inc/apache.sh"; break;;
+        [Yy]* ) Apache="true";break;;
         [Nn]* ) echo "Reject Program : Apache (By You) " >> $BUILD; break;;
         * ) echo "Please answer yes or no.";;
     esac
 done
 
 set -a
-TESTVARIABLE=hellohelloheloo
+# Global Variable to access any bash other files run by this file
+#TESTVARIABLE=hellohelloheloo
 BIND=$BIND
 CURL=$CURL
 DB=$DB
 Apache=$Apache
+MAINDOMAIN=$MAINDOMAIN
+MAINIP=$MAINIP
+MYHOST=$MYHOST
+
 # ...
 # Here put all the variables that will be marked for export
 # and that will be available from within test2 (and all other commands).
