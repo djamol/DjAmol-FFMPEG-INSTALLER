@@ -82,3 +82,18 @@ echo -e "$GREEN
 # Copyright By PatilWeb.com           #
 # IG:PatilWeb FB:PatilWeb TW:PatilWeb #
 $RESET";
+BIND="";
+echo -e "\e[32m########################################\n####   BIND DNS Software       #########\n########################################"
+while true; do
+    read -p "Do you wish to install (BIND DNS) program?" yn
+    case $yn in
+        [Yy]* ) BIND="true"; break;;
+        [Nn]* ) echo "Reject Program : BIND DNS (By You) " >> $BUILD; break;;
+        * ) echo "Please answer yes or no.";;
+    esac
+done
+
+
+
+
+
