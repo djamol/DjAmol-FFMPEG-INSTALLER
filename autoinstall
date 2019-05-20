@@ -126,9 +126,27 @@ while true; do
     esac
 done
 
+
+echo -n "Enter YOUR Country Code [XX] In Two Character e.g IN for India > ";read btext;
+echo -n "Enter Your State > ";read stext;
+echo -n "Enter Your City  > ";read ctext;
+echo -n "Enter Your Organization  > ";read otext;
+echo -n "Enter Your Organization  Unit > ";read outext;
+echo -n "Enter Your Server Name > ";read srvtext;
+echo -n "Enter Your Email ID > ";read etext;
+
+
+
 set -a
 # Global Variable to access any bash other files run by this file
 #TESTVARIABLE=hellohelloheloo
+CAC=$btext
+CAS=$stext
+CAL=Aurangabad
+CAO=$otext
+CAU=$outext
+CACM=$srvtext
+CAM=$etext
 BIND=$BIND
 CURL=$CURL
 DB=$DB
