@@ -92,6 +92,18 @@ while true; do
         * ) echo "Please answer yes or no.";;
     esac
 done
+
+set -a
+TESTVARIABLE=hellohelloheloo
+# ...
+# Here put all the variables that will be marked for export
+# and that will be available from within test2 (and all other commands).
+# If test2 modifies the variables, the modifications will never be
+# seen in the present script!
+set +a
+
+# Here, even if test2 modifies TESTVARIABLE, you'll still have
+ # TESTVARIABLE=hellohelloheloo
 ./start.sh > FFMPEG-output.log 2>&1 &
 
 
