@@ -19,14 +19,15 @@ cp php.ini-production /usr/local/lib/php.ini
 
 #start apache
 
-while true; do
-    read -p "Do you want to Start Apache program?" yn
-    case $yn in
-        [Yy]* ) /usr/local/apache2/bin/apachectl start;date +"%r" >> $BUILD;echo "Start Apache" >> $BUILD; break;;
-        [Nn]* ) date +"%r" >> $BUILD;echo "Reject By You : Please Start Manualy Apache Program" >> $BUILD; break;;
-        * ) echo "Please answer yes or no.";;
-    esac
-done
+#while true; do
+#    read -p "Do you want to Start Apache program?" yn
+#    case $yn in
+#        [Yy]* ) /usr/local/apache2/bin/apachectl start;date +"%r" >> $BUILD;echo "Start Apache" >> $BUILD; break;;
+#        [Nn]* ) date +"%r" >> $BUILD;echo "Reject By You : Please Start Manualy Apache Program" >> $BUILD; break;;
+#        * ) echo "Please answer yes or no.";;
+#    esac
+#done
+/usr/local/apache2/bin/apachectl start;date +"%r" >> $BUILD;echo "Start Apache" >> $BUILD; 
 
 
 #Install CronJOB
