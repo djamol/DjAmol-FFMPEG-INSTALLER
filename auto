@@ -26,3 +26,79 @@ if [ $BIND = "true" ]
         else
                 echo "Reject By USER Bind INstall"
 fi
+
+
+if yum -y groupinstall "Development Tools"; then 
+echo -e "\033[33;32m yum -y groupinstall ----Development Tools Success ";date +"%r" >> $BUILD;echo "Success : Development Tools Install" >> $BUILD
+else
+echo -e "\033[33;31m yum -y groupinstall ----Development Tools Failed";date +"%r" >> $BUILD;echo "Failed : Development Tools Install" >> $BUILD
+fi
+if yum -y install sudo; then 
+echo -e "\033[33;32m Sudo Success";date +"%r" >> $BUILD;echo "Success : Sudo Install" >> $BUILD
+else
+echo -e "\033[33;31m Sudo Failed";date +"%r" >> $BUILD;echo "Failed : Sudo Install" >> $BUILD
+fi
+echo -e "\033[33;34m Blue"
+if mkdir $SCRIPTPATH/src; then 
+echo -e "\033[33;32m making dir src Success";date +"%r" >> $BUILD;echo "Success : src Making dir in $SCRIPTPATH/" >> $BUILD
+else
+echo -e "\033[33;31m making dir Failed";date +"%r" >> $BUILD;echo "Failed : src making dir $SCRIPTPATH/" >> $BUILD
+fi
+if cd $SCRIPTPATH/src; then 
+echo -e "\033[33;32m go to $SCRIPTPATH/src Success";date +"%r" >> $BUILD;echo "Success : Go To SRC dir $SCRIPTPATH/src" >> $BUILD
+else
+echo -e "\033[33;31m go to $SCRIPTPATH/src Failed";date +"%r" >> $BUILD;echo "Failed : Go To SRC dir $SCRIPTPATH/src" >> $BUILD
+fi
+clear
+
+echo -e "\e[32m########################################\n####   CURL Software       #########\n########################################"
+if [ $CURL = "true" ]
+        then
+                source "$SCRIPTPATH/inc/curl.sh";
+        else
+                echo "Reject By USER CURL INstall"
+fi
+
+echo -e "\e[32m########################################\n####   MariaDB Software       #########\n########################################"
+if [ $DB = "true" ]
+        then
+                source "$SCRIPTPATH/inc/mysql.sh";
+        else
+                echo "Reject By USER MariaDB INstall"
+fi
+
+echo -e "\e[32m########################################\n####   Apache2.4 Server Soft       #########\n#####################################"
+if [ $DB = "true" ]
+        then
+              yum remove httpd -y; source "$SCRIPTPATH/inc/aprq.sh";source "$SCRIPTPATH/inc/apache.sh"; 
+        else
+                echo "Reject By USER Apache INstall"
+fi
+
+
+
+
+mkdir /usr;mkdir /usr/share;mkdir /usr/share/ssl; mkdir /usr/share/ssl//certs; 
+#CAC=IN #CAS=MAH #CAL=City #CAO="INDIA ORG" #CAU="DA Group" #CACM="serv.djamol.com" #CAM="nomail@djamol.com"
+
+SSLCERt=$(expect -c "
+set timeout 10
+  spawn openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /usr/share/ssl/certs/amol.key -out /usr/share/ssl/certs/amol.cert
+  expect \"Country Name*:\"
+  send \"$CAC\r\"
+  expect \"State*:\"
+  send \"$CAS\r\"
+  expect \"Locality*:\"
+  send \"$CAL\r\"
+  expect \"Organization Name*:\"
+  send \"$CAO\r\"
+  expect \"Organizational Unit*:\"
+  send \"$CAU\r\"
+  expect \"Common Name*:\"
+  send \"$CACM\r\"
+  expect \"Email*:\"
+  send \"$CAM\r\"
+
+expect eof
+")
+echo "$SSLCERt"
