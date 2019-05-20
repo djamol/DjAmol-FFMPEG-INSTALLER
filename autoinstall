@@ -62,7 +62,7 @@ SCRIPT=$(readlink -f "$0")
 SCRIPTPATH=$(dirname "$SCRIPT")
 #echo $SCRIPTPATH
 
-BIND="n"; CURL="n"; DB="n"; Apache="n";PHPe="n";CRON="n";CSSF="n";WCP="n"
+BIND="n"; CURL="n"; DB="n"; Apache="n";PHPe="n";CRON="n";CSSF="n";WCP="n";PFTP="n";PostFix="n";
 
 
 mkdir $SCRIPTPATH/log
@@ -126,6 +126,15 @@ while true; do
     esac
 done
 
+echo "Enter Below Details For openssl Certificate ";
+echo -n "Enter YOUR Country Code [XX] In Two Character e.g IN for India > ";read btext;
+echo -n "Enter Your State > ";read stext;
+echo -n "Enter Your City  > ";read ctext;
+echo -n "Enter Your Organization  > ";read otext;
+echo -n "Enter Your Organization  Unit > ";read outext;
+echo -n "Enter Your Server Name > ";read srvtext;
+echo -n "Enter Your Email ID > ";read etext;
+
 
 echo -e "\e[32m########################################\n####   PHP 5 Package/Software  #########\n########################################"
 while true; do
@@ -167,29 +176,41 @@ while true; do
     esac
 done
 
-echo "Enter Below Details For openssl Certificate ";
-echo -n "Enter YOUR Country Code [XX] In Two Character e.g IN for India > ";read btext;
-echo -n "Enter Your State > ";read stext;
-echo -n "Enter Your City  > ";read ctext;
-echo -n "Enter Your Organization  > ";read otext;
-echo -n "Enter Your Organization  Unit > ";read outext;
-echo -n "Enter Your Server Name > ";read srvtext;
-echo -n "Enter Your Email ID > ";read etext;
-
 echo -n "Control Panel Username (Eg. root) > ";read btext;weba=$btext;
 echo -n "Control Panel Password (Eg. pass1234) > ";read ctext;webp=$ctext;
 echo -n "Control Panel Port (Eg. 2083) > ";read ctext;webo=$ctext;
 if ! [ "$webo" -eq "$webo" ] 2> /dev/null
 then
-    echo "Sorry integers only now your control panel PORT"; webo=2083;
+    echo "Sorry integers only now your control panel PORT - default 2083"; webo=2083;
 fi
+
+echo -e "\e[34m########################################\n####  ProFTP FTP Solution  #############\n########################################"
+while true; do
+    read -p "Do you wish to install (FTP proftpd) program?" yn
+    case $yn in
+        [Yy]* ) PFTP="true"; break;;
+        [Nn]* ) echo "Reject Program : Pro FTPd   (By You) " >> $BUILD; break;;
+        * ) echo "Please answer yes or no.";;
+    esac
+done
+
+echo -e "\e[34m########################################\n####  PostFix Mail Solution  ###########\n########################################"
+while true; do
+    read -p "Do you wish to install (Mail Forward And Sendmail )Postfix program?" yn
+    case $yn in
+        [Yy]* ) PostFix="true"; break;;
+        [Nn]* ) echo "Reject Program : PostFix   (By You) " >> $BUILD; break;;
+        * ) echo "Please answer yes or no.";;
+    esac
+done
+
 
 set -a
 # Global Variable to access any bash other files run by this file
 #TESTVARIABLE=hellohelloheloo
-WEBA=$weba;
-WEBP=$webp;
-WEBO=$webo;
+WEBA=$weba
+WEBP=$webp
+WEBO=$webo
 CAC=$btext
 CAS=$stext
 CAL=Aurangabad
@@ -205,6 +226,8 @@ Apache=$Apache
 PHPe=$PHPe
 CRON=$CRON
 CSSF=$CSSF
+PFTP=$PFTP
+PostFix=$PostFix
 MAINDOMAIN=$MAINDOMAIN
 MAINIP=$MAINIP
 MYHOST=$MYHOST
