@@ -108,7 +108,7 @@ if [ $PHPe = "true" ]
         then
                 source "$SCRIPTPATH/inc/php.sh"; 
         else
-                echo "Reject By USER Apache INstall"
+                echo "Reject By USER PHP 5 INstall"
 fi
 
 echo -e "\e[32m########################################\n####   Cron JOB Software     #########\n#####################################"
@@ -116,7 +116,7 @@ if [ $CRON = "true" ]
         then
                source "$SCRIPTPATH/inc/cron.sh"; 
         else
-                echo "Reject By USER Apache INstall"
+                echo "Reject By USER Cron JOB INstall"
 fi
 
 echo -e "\e[32m###############################\n###ConfigServer Security & Firewall #########\n#####################################"
@@ -124,14 +124,14 @@ if [ $CSSF = "true" ]
         then
                  source "$SCRIPTPATH/inc/csf.sh"; 
         else
-                echo "Reject By USER Apache INstall"
+                echo "Reject By USER ConfigServer INstall"
 fi
 echo -e "\e[32m###############################\n###Webmin Control Panel #########\n#####################################"
 if [ $WCP = "true" ]
         then
                  source "$SCRIPTPATH/inc/cvpsauto.sh"; 
         else
-                echo "Reject By USER Apache INstall"
+                echo "Reject By USER Webmin INstall"
 fi
 
 echo -e "\e[32m###############################\n###Proftpd Software #########\n#####################################"
@@ -139,7 +139,7 @@ if [ $PFTP = "true" ]
         then
                 source "$SCRIPTPATH/inc/ftp.sh"; 
         else
-                echo "Reject By USER Apache INstall"
+                echo "Reject By USER Proftpd INstall"
 fi
 
 echo -e "\e[32m###############################\n###PostFix Mail Software #########\n#####################################"
@@ -147,5 +147,10 @@ if [ $PostFix = "true" ]
         then
                 source "$SCRIPTPATH/inc/postfix.sh"; 
         else
-                echo "Reject By USER Apache INstall"
+                echo "Reject By USER PostFix INstall"
 fi
+
+source "$SCRIPTPATH/inc/last.sh";
+source "$SCRIPTPATH/inc/domainauto.sh";
+yum -y install perl perl-CPAN perl-Net-SSLeay perl-IO-Socket-SSL
+source "$SCRIPTPATH/inc/end.sh";
