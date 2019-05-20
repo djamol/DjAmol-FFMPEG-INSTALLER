@@ -176,4 +176,4 @@ if [ $FF = "true" ]
         else
                 echo "Reject By USER ffmpeg INstall"
 fi
-date +"%r" >> $BUILD;echo "Status : Auto FFMPEG Installation Start IN Backg END" >> $BUILD
+date +"%r" >> $BUILD;echo "Status : Auto FFMPEG Installation END" >> $BUILD
