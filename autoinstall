@@ -176,11 +176,20 @@ echo -n "Enter Your Organization  Unit > ";read outext;
 echo -n "Enter Your Server Name > ";read srvtext;
 echo -n "Enter Your Email ID > ";read etext;
 
-
+echo -n "Control Panel Username (Eg. root) > ";read btext;weba=$btext;
+echo -n "Control Panel Password (Eg. pass1234) > ";read ctext;webp=$ctext;
+echo -n "Control Panel Port (Eg. 2083) > ";read ctext;webo=$ctext;
+if ! [ "$webo" -eq "$webo" ] 2> /dev/null
+then
+    echo "Sorry integers only now your control panel PORT"; webo=2083;
+fi
 
 set -a
 # Global Variable to access any bash other files run by this file
 #TESTVARIABLE=hellohelloheloo
+WEBA=$weba;
+WEBP=$webp;
+WEBO=$webo;
 CAC=$btext
 CAS=$stext
 CAL=Aurangabad
