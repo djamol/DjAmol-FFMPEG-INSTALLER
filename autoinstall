@@ -62,7 +62,7 @@ SCRIPT=$(readlink -f "$0")
 SCRIPTPATH=$(dirname "$SCRIPT")
 #echo $SCRIPTPATH
 
-BIND="n"; CURL="n"; DB="n"; Apache="n";PHPe="n";CRON="n";CSSF="n";WCP="n";PFTP="n";PostFix="n";
+BIND="n"; CURL="n"; DB="n"; Apache="n";PHPe="n";CRON="n";CSSF="n";WCP="n";PFTP="n";PostFix="n";FF="n";
 
 
 mkdir $SCRIPTPATH/log
@@ -315,6 +315,30 @@ while true; do
     esac
 done
 
+clear
+
+echo -e '▒█░▒░▓█░█▒░▒▒█░█▓░▒░█▓   █████▒    ▓█ ▒█▓▓█▓ ██████ ▓████▒░█░      ░█████░▒████▓ ▓█████░ 
+ ░▓ █▓▓█ ▓ ██▒█░▓░▓█░█▓   ▓▒  █▓    ▒█ ▒▓▓▓█▓ ▓░█▓▒█░▓▒  █▓ ▓       ░█░  ▓ ▒▓  ▓█ ▓▒▓█▒█▒ 
+ ▒█▒█▓▓█░█▓▓█▒█▒█▓▓█▒█▓   █▓  █▓░▓░ ▓█ ██▒▒█▓░█▒█▓▒█░██  █▓░█▒  ░   ▒█▒ ░▓ ██  ██ █▓▓█░█▒ 
+ ░█████▓ ██████ ▓█████░▓█ █████░░█████ █▓  █▓░█▒░░▒█ ▓████▒░█████▒█▓ █████ ▒████▓ █▓░▒░█▒ ';
+echo -e "$GREEN 
+# Powered By DjAmol Group Inc         #
+# Email : Support@djamol.com          #
+# Website : www.djamol.com            #
+# Copyright By PatilWeb.com           #
+# IG:PatilWeb FB:PatilWeb TW:PatilWeb #
+$RESET";
+echo -e "\e[34m########################################\n####  FFMPEG Software  ###########\n########################################"
+while true; do
+    read -p "Do you wish to install (Video FrameWork )FFMPEG program?" yn
+    case $yn in
+        [Yy]* ) FF="true"; break;;
+        [Nn]* ) echo "Reject Program : FFMPEG   (By You) " >> $BUILD; break;;
+        * ) echo "Please answer yes or no.";;
+    esac
+done
+
+
 
 clear
 echo -e '▒█░▒░▓█░█▒░▒▒█░█▓░▒░█▓   █████▒    ▓█ ▒█▓▓█▓ ██████ ▓████▒░█░      ░█████░▒████▓ ▓█████░ 
@@ -400,6 +424,7 @@ MAINIP=$MAINIP
 MYHOST=$MYHOST
 EXTRAD=$EXTRAD
 EXTRADS=$EXTRADS
+FF=$FF
 # ...
 # Here put all the variables that will be marked for export
 # and that will be available from within test2 (and all other commands).
@@ -415,7 +440,7 @@ chmod +x auto*;
 
 
 
-
+clear
 RED='\033[01;31m'
 RESET='\033[0m'
 GREEN='\033[01;32m'
