@@ -198,7 +198,7 @@ echo -e "\e[32m########################################\n####   Apache2.4 Server
 while true; do
     read -p "Do you wish to install (Apache) program?" yn
     case $yn in
-        [Yy]* ) source "$SCRIPTPATH/inc/aprq.sh";source "$SCRIPTPATH/inc/apache.sh"; break;;
+        [Yy]* ) yum remove httpd -y; source "$SCRIPTPATH/inc/aprq.sh";source "$SCRIPTPATH/inc/apache.sh"; break;;
         [Nn]* ) echo "Reject Program : Apache (By You) " >> $BUILD; break;;
         * ) echo "Please answer yes or no.";;
     esac
