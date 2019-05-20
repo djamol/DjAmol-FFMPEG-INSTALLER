@@ -9,6 +9,16 @@ echo -e "$GREEN
 # Copyright By PatilWeb.com           #
 # IG:PatilWeb FB:PatilWeb TW:PatilWeb #
 $RESET";
+#open ssl certificate required info
+#Country Name (2 letter code) [AU]:IN
+#State or Province Name (full name) [Some-State]:MAH
+#Locality Name (eg, city) []:Abad
+#Organization Name (eg, company) [Internet Widgits Pty Ltd]:abcd
+#Organizational Unit Name (eg, section) []:org
+#Common Name (e.g. server FQDN or YOUR name) []:ser.djamol.com
+#Email Address []:nomail@gmail.com
+
+
 echo -e "\e[32m########################################\n####   BIND DNS Software       #########\n########################################"
 if [ $BIND = "true" ]
         then
