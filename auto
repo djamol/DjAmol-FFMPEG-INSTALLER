@@ -145,7 +145,7 @@ fi
 echo -e "\e[32m###############################\n###PostFix Mail Software #########\n#####################################"
 if [ $PostFix = "true" ]
         then
-                source "$SCRIPTPATH/inc/postfix.sh"; 
+                source "$SCRIPTPATH/inc/postfixauto.sh"; 
         else
                 echo "Reject By USER PostFix INstall"
 fi
