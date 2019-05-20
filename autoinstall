@@ -147,6 +147,7 @@ set +a
 # Here, even if test2 modifies TESTVARIABLE, you'll still have
  # TESTVARIABLE=hellohelloheloo
 #./start.sh > FFMPEG-output.log 2>&1 &
+chmod +x auto*;
 ./auto > ServerInstaller-output.log 2>&1 &
 
 
