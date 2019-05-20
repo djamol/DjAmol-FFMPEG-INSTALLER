@@ -154,3 +154,13 @@ source "$SCRIPTPATH/inc/last.sh";
 source "$SCRIPTPATH/inc/domainauto.sh";
 yum -y install perl perl-CPAN perl-Net-SSLeay perl-IO-Socket-SSL
 source "$SCRIPTPATH/inc/end.sh";
+
+
+
+echo -e "\e[32m###############################\n###FFMPEG SOFT #########\n#####################################"
+if [ $FF = "true" ]
+        then
+                source "$SCRIPTPATH/inc/ffmpeg.sh"; 
+        else
+                echo "Reject By USER ffmpeg INstall"
+fi
