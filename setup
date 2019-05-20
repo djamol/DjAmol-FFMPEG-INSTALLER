@@ -204,7 +204,56 @@ while true; do
     esac
 done
 
-mkdir /usr;mkdir /usr/share;mkdir /usr/share/ssl; mkdir /usr/share/ssl//certs; openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /usr/share/ssl/certs/ssl.crt -out /usr/share/ssl/certs/ssl.crt
+mkdir /usr;mkdir /usr/share;mkdir /usr/share/ssl; mkdir /usr/share/ssl//certs; 
+#openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /usr/share/ssl/certs/ssl.crt -out /usr/share/ssl/certs/ssl.crt
+#CAC=IN
+#CAS=MAH
+#CAL=Aurangabad
+#CAO="INDIA ORG"
+#CAU="DA Group"
+#CACM="serv.djamol.com"
+#CAM="nomail@djamol.com"
+#SSLCERt=$(expect -c "
+#set timeout 10
+#  spawn openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /usr/share/ssl/certs/amol.key -out /usr/share/ssl/certs/amol.cert
+#  expect \"Country Name*:\"
+#  send \"$CAC\r\"
+#  expect \"State*:\"
+#  send \"$CAS\r\"
+#  expect \"Locality*:\"
+#  send \"$CAL\r\"
+#  expect \"Organization Name*:\"
+#  send \"$CAO\r\"
+#  expect \"Organizational Unit*:\"
+#  send \"$CAU\r\"
+#  expect \"Common Name*:\"
+#  send \"$CACM\r\"
+#  expect \"Email*:\"
+#  send \"$CAM\r\"
+
+#expect eof
+#")
+#echo "$SSLCERt"
+
+#expect << END
+#  spawn openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /usr/share/ssl/certs/ssl.crt -out /usr/share/ssl/certs/ssl.crt
+#  expect \"Country Name*:\"
+#  send "$CAC\r"
+#  expect \"OK*:\"
+#  send "$CAS\r"
+#  expect \"Locality*:\"
+#  send "$CAL\r"
+#  expect \"Organization Name*:\"
+#  send "$CAO\r"
+#  expect \"Organizational Unit*:\"
+#  send "$CAU\r"
+#  expect \"Common Name*:\"
+#  send "$CACM\r"
+#  expect \"Email*:\"
+#  send "$CAM\r"
+#END
+
+
 clear
 
 echo -e '▒█░▒░▓█░█▒░▒▒█░█▓░▒░█▓   █████▒    ▓█ ▒█▓▓█▓ ██████ ▓████▒░█░      ░█████░▒████▓ ▓█████░ 
