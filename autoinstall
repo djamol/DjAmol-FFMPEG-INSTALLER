@@ -62,7 +62,7 @@ SCRIPT=$(readlink -f "$0")
 SCRIPTPATH=$(dirname "$SCRIPT")
 #echo $SCRIPTPATH
 
-BIND="n"; CURL="n"; DB="n"; Apache="n";
+BIND="n"; CURL="n"; DB="n"; Apache="n";PHPe="n";CRON="n";CSSF="n";WCP="n"
 
 
 mkdir $SCRIPTPATH/log
@@ -127,6 +127,47 @@ while true; do
 done
 
 
+echo -e "\e[32m########################################\n####   PHP 5 Package/Software  #########\n########################################"
+while true; do
+    read -p "Do you wish to install (php) program?" yn
+    case $yn in
+        [Yy]* ) PHPe="true"; break;;
+        [Nn]* ) echo "Reject Program : PHP 5 (By You) " >> $BUILD; break;;
+        * ) echo "Please answer yes or no.";;
+    esac
+done
+echo -e "\e[34m########################################\n####   Cron JOB Software       #########\n########################################"
+while true; do
+    read -p "Do you wish to install (Cron JOB) program?" yn
+    case $yn in
+        [Yy]* ) CRON="n";="true"; break;;
+        [Nn]* ) echo "Reject Program : Cron JOB (By You) " >> $BUILD; break;;
+        * ) echo "Please answer yes or no.";;
+    esac
+done
+
+echo -e "\e[34m########################################\n####ConfigServer Security & Firewall####\n########################################"
+while true; do
+    read -p "Do you wish to install (ConfigServer Security & Firewall (csf) ) program?" yn
+    case $yn in
+        [Yy]* ) CSSF="true"; break;;
+        [Nn]* ) echo "Reject Program : ConfigServer Security & Firewall (csf)  (By You) " >> $BUILD; break;;
+        * ) echo "Please answer yes or no.";;
+    esac
+done
+
+
+echo -e "\e[34m########################################\n####  Webmin Control Panel #############\n########################################"
+while true; do
+    read -p "Do you wish to install (Control Panel) program?" yn
+    case $yn in
+        [Yy]* ) WCP="true"; break;;
+        [Nn]* ) echo "Reject Program : Control Panel (By You) " >> $BUILD; break;;
+        * ) echo "Please answer yes or no.";;
+    esac
+done
+
+echo "Enter Below Details For openssl Certificate ";
 echo -n "Enter YOUR Country Code [XX] In Two Character e.g IN for India > ";read btext;
 echo -n "Enter Your State > ";read stext;
 echo -n "Enter Your City  > ";read ctext;
@@ -150,7 +191,11 @@ CAM=$etext
 BIND=$BIND
 CURL=$CURL
 DB=$DB
+WCP=$WCP
 Apache=$Apache
+PHPe=$PHPe
+CRON=$CRON
+CSSF=$CSSF
 MAINDOMAIN=$MAINDOMAIN
 MAINIP=$MAINIP
 MYHOST=$MYHOST
