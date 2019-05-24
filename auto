@@ -99,6 +99,31 @@ set timeout 10
 expect eof
 ")
 echo "$SSLCERt"
+
+SSLHTTPS=$(expect -c "
+set timeout 10
+  spawn openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /usr/share/ssl/certs/ssl.crt -out /usr/share/ssl/certs/ssl.crt
+  expect \"Country Name*:\"
+  send \"$CAC\r\"
+  expect \"State*:\"
+  send \"$CAS\r\"
+  expect \"Locality*:\"
+  send \"$CAL\r\"
+  expect \"Organization Name*:\"
+  send \"$CAO\r\"
+  expect \"Organizational Unit*:\"
+  send \"$CAU\r\"
+  expect \"Common Name*:\"
+  send \"$CACM\r\"
+  expect \"Email*:\"
+  send \"$CAM\r\"
+
+expect eof
+")
+echo "$SSLHTTPS"
+
+
+
 date +"%r" >> $BUILD;echo "Status : Auto Apache SSL Cert END" >> $BUILD
 date +"%r" >> $BUILD;echo "Status : Auto PHP 5 Installation Start" >> $BUILD
 echo -e "\e[32m########################################\n####    PHP 5 Package/Software     #########\n#####################################"
