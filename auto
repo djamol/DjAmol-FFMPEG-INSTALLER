@@ -104,7 +104,7 @@ date +"%r" >> $BUILD;echo "Status : Auto PHP 5 Installation Start" >> $BUILD
 echo -e "\e[32m########################################\n####    PHP 5 Package/Software     #########\n#####################################"
 if [ $PHPe = "true" ]
         then
-                source "$SCRIPTPATH/inc/php.sh"; 
+                source "$SCRIPTPATH/inc/phpauto.sh"; 
         else
                 echo "Reject By USER PHP 5 INstall"
 fi
