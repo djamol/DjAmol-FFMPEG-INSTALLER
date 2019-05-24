@@ -493,4 +493,9 @@ echo -e "$GREEN
 Now Relax Installation is Started in Background
 But if you want check output then all output live store in
 ServerInstaller-output.log  File
+Command To Check LOG
+1)All-Command-OUPUT(Show on Console)
+  cat ServerInstaller-output.log;
+2)Status-OUPUT-Only(Show on Console)
+  cat log/*.txt;
 $RESET";
