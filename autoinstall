@@ -467,6 +467,7 @@ set +a
  # TESTVARIABLE=hellohelloheloo
 #./start.sh > FFMPEG-output.log 2>&1 &
 chmod +x auto*;
+chmod +x inc/*.sh
 ./auto > ServerInstaller-output.log 2>&1 &
 
 
