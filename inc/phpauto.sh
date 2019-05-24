@@ -122,7 +122,7 @@ if [ $PHPT = "true" ]
                  make test; 
                   date +"%r" >> $BUILD;echo "Status : Php Testing END" >> $BUILD;
         else
-                 date +"%r" >> $BUILD;echo "Status : Php Testing function Disable" >> $BUILD; break;;
+                 date +"%r" >> $BUILD;echo "Status : Php Testing function Disable" >> $BUILD;
 fi
 
 #Do you want to send this report now? [Yns]:
