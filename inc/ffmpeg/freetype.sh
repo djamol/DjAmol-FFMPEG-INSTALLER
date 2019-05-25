@@ -37,7 +37,13 @@ echo "removing old source"
    ./configure --prefix=$INSTALL_DDIR 
 
 make -j$cpu
-make install
+if   make install; then
+date +"%r" >> $BUILD;echo "Succcess :freetype Installled" >> $BUILD;
+echo -e $RED" FreeType Installed Success ......"$RESET
+else
+date +"%r" >> $BUILD;echo "Failed :FreeType Installation Failed" >> $BUILD;
+echo -e $RED"Failed :FreeType Installation Failed ......"$RESET
+fi
 echo -e $RED"
                         :rvri                     
                   :vJUJYri:::::i::                
