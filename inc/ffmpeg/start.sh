@@ -26,7 +26,9 @@ BUILD=$BUILDDIR$BUILDFILE
 # seen in the present script!
 set +a
 
-mkdir $INSTALL_SDIR/log
+#mkdir $INSTALL_SDIR/log
+mkdir -p /root/{djamolDEV/{ffmpeg/{log,file},src},path,notes,src}
+
 echo "Build Log File Path is  : ";echo $BUILD;
 date +"%r" >> $BUILD;echo "Status : FFMPEG Started" >> $BUILD; 
 
