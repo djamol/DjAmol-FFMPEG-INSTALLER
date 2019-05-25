@@ -38,7 +38,13 @@ echo "removing old source"
    ./configure --prefix=$INSTALL_DDIR
 
 make -j$cpu
-make install
+if   make install; then
+date +"%r" >> $BUILD;echo "Succcess :libvorbis Installled" >> $BUILD;
+echo -e $RED" libvorbis Installed Success ......"$RESET
+else
+date +"%r" >> $BUILD;echo "Failed :libvorbis Installation Failed" >> $BUILD;
+echo -e $RED"Failed :libvorbis Installation Failed ......"$RESET
+fi
 echo -e $RED"
                         :rvri                     
                   :vJUJYri:::::i::                
