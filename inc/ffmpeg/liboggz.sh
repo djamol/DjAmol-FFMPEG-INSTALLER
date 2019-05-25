@@ -34,7 +34,13 @@ tar -xvzf $_package
 cd liboggz-1.1.1/
 ./configure --prefix=$INSTALL_DDIR
 make -j$cpu
-make install
+if   make install; then
+date +"%r" >> $BUILD;echo "Succcess :liboggz Installled" >> $BUILD;
+echo -e $RED" liboggz Installed Success ......"$RESET
+else
+date +"%r" >> $BUILD;echo "Failed :liboggz Installation Failed" >> $BUILD;
+echo -e $RED"Failed :liboggz Installation Failed ......"$RESET
+fi
 ldconfig
 echo -e $RED"
                         :rvri                     
