@@ -31,6 +31,9 @@ echo -e $RED"Installation of $_package ....... started"$RESET
 ldconfig
 if [ -e "/etc/yum.conf" ];then
 yum -y install ruby
+date +"%r" >> $BUILD;echo "Succcess :ruby Installled" >> $BUILD;
+echo -e $RED" ruby Installed Success ......"$RESET
+
 fi
 if [ -e "/usr/bin/ruby" ]; then
 	ln -sf /usr/bin/ruby  /usr/loca/avpffmpeg/bin/ruby
@@ -45,7 +48,14 @@ else
    	cd ruby-1.8.7/
    	./configure --prefix=$INSTALL_DDIR
 	make 
-	make install
+if   make install; then
+date +"%r" >> $BUILD;echo "Succcess :ruby Installled" >> $BUILD;
+echo -e $RED" ruby Installed Success ......"$RESET
+else
+date +"%r" >> $BUILD;echo "Failed :ruby Installation Failed" >> $BUILD;
+echo -e $RED"Failed :ruby Installation Failed ......"$RESET
+fi
+
 fi
 echo -e $RED"
                         :rvri                     
