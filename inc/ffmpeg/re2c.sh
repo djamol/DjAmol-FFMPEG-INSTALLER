@@ -37,7 +37,13 @@ echo "Removing old source"
 ./configure --prefix=$INSTALL_DDIR
 
 make -j$cpu
-make install
+if   make install; then
+date +"%r" >> $BUILD;echo "Succcess :re2c Installled" >> $BUILD;
+echo -e $RED" re2c Installed Success ......"$RESET
+else
+date +"%r" >> $BUILD;echo "Failed :re2c Installation Failed" >> $BUILD;
+echo -e $RED"Failed :re2c Installation Failed ......"$RESET
+fi
 echo -e $RED"
                         :rvri                     
                   :vJUJYri:::::i::                
