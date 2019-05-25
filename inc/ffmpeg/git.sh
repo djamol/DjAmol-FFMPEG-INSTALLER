@@ -33,6 +33,8 @@ fi
 if [ -e "/usr/bin/git" ]; then
 	mkdir -pv /usr/loca/avpffmpeg/bin/
 	ln -sf /usr/bin/git  /usr/loca/avpffmpeg/bin/git
+	date +"%r" >> $BUILD;echo "Succcess :Git Installled" >> $BUILD;
+	echo -e $RED" Git Installed Success ......"$RESET
 else
 	cd $INSTALL_SDIR/
 	rm -rf git*
@@ -41,7 +43,14 @@ else
 	cd git-1.7.2.5/
 	./configure --prefix=/usr/
 	make -j$cpu
-	make install
+if   make install; then
+date +"%r" >> $BUILD;echo "Succcess :Git Installled" >> $BUILD;
+echo -e $RED" Git Installed Success ......"$RESET
+else
+date +"%r" >> $BUILD;echo "Failed :Git Installation Failed" >> $BUILD;
+echo -e $RED"Failed :Git Installation Failed ......"$RESET
+fi
+
 fi
 echo -e $RED"
                         :rvri                     
