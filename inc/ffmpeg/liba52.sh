@@ -43,7 +43,13 @@ else
 fi
 
 make -j$cpu
-make install
+if   make install; then
+date +"%r" >> $BUILD;echo "Succcess :liba52 Installled" >> $BUILD;
+echo -e $RED" liba52 Installed Success ......"$RESET
+else
+date +"%r" >> $BUILD;echo "Failed :liba52 Installation Failed" >> $BUILD;
+echo -e $RED"Failed :liba52 Installation Failed ......"$RESET
+fi
 echo -e $RED"
                         :rvri                     
                   :vJUJYri:::::i::                
