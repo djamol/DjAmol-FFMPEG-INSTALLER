@@ -35,7 +35,13 @@ tar -xvzf $_package
 cd libfishsound-1.0.0/
 ./configure --prefix=$INSTALL_DDIR --with-vorbis=/usr/loca/avpffmpeg  --with-FLAC=/usr/loca/avpffmpeg  --with-speex=/usr/loca/avpffmpeg
 make -j$cpu
-make install
+if   make install; then
+date +"%r" >> $BUILD;echo "Succcess :libfishsound Installled" >> $BUILD;
+echo -e $RED" libfishsound Installed Success ......"$RESET
+else
+date +"%r" >> $BUILD;echo "Failed :libfishsound Installation Failed" >> $BUILD;
+echo -e $RED"Failed :libfishsound Installation Failed ......"$RESET
+fi
 ldconfig
 echo -e $RED"
                         :rvri                     
