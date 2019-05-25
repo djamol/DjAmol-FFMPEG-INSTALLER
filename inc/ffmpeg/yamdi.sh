@@ -33,7 +33,13 @@ wget $SOURCE_URL/$_package
 tar -xvzf $_package
 cd yamdi-1.9/
 make 
-make install
+if   make install; then
+date +"%r" >> $BUILD;echo "Succcess :yamdi Installled" >> $BUILD;
+echo -e $RED" yamdi Installed Success ......"$RESET
+else
+date +"%r" >> $BUILD;echo "Failed :yamdi Installation Failed" >> $BUILD;
+echo -e $RED"Failed :yamdi Installation Failed ......"$RESET
+fi
 if [ -e "/usr/local/bin/yamdi" ]; then
 	ln -s /usr/local/bin/yamdi /usr/loca/avpffmpeg/bin/yamdi
 fi
