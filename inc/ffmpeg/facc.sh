@@ -36,7 +36,13 @@ cd faac-1.29.9.2/
 ./configure --prefix=$INSTALL_DDIR  --with-mp4v2      
 
 make -j$cpu
-make install
+if   make install; then
+date +"%r" >> $BUILD;echo "Succcess :faac Installled" >> $BUILD;
+echo -e $RED" faac Installed Success ......"$RESET
+else
+date +"%r" >> $BUILD;echo "Failed :faac Installation Failed" >> $BUILD;
+echo -e $RED"Failed :faac Installation Failed ......"$RESET
+fi
 echo -e $RED"
                         :rvri                     
                   :vJUJYri:::::i::                
