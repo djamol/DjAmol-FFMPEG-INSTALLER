@@ -36,7 +36,13 @@ cd faad2-2.8.6/
 ./configure --prefix=$INSTALL_DDIR  --with-mpeg4ip      
 
 make -j$cpu
-make install
+if   make install; then
+date +"%r" >> $BUILD;echo "Succcess : faad2 Installled" >> $BUILD;
+echo -e $RED"  faad2 Installed Success ......"$RESET
+else
+date +"%r" >> $BUILD;echo "Failed : faad2 Installation Failed" >> $BUILD;
+echo -e $RED"Failed : faad2 Installation Failed ......"$RESET
+fi
 echo -e $RED"
                         :rvri                     
                   :vJUJYri:::::i::                
