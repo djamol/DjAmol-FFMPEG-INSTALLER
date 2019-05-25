@@ -36,7 +36,8 @@ cd fdk-aac/
 	./configure  --prefix=$INSTALL_DDIR
 	make -j$cpu
 	if   make install; then
-echo -e $RED"Installed of fdk-aac ......"$RESET
+date +"%r" >> $BUILD;echo "Succcess :fdk-aac Installled" >> $BUILD;
+echo -e $RED" fdk-aac Success ......"$RESET
 else
  wget $SOURCE_URL/fdk-aac.tar.gz;
  tar xvzf fdk-aac.tar.gz;
@@ -44,7 +45,13 @@ cd fdk-aac/
 	./autogen.sh
 	./configure  --prefix=$INSTALL_DDIR
 	make -j$cpu
-	make install
+if   make install; then
+date +"%r" >> $BUILD;echo "Succcess :fdk-aac Installled" >> $BUILD;
+echo -e $RED" fdk-aac Success ......"$RESET
+else
+date +"%r" >> $BUILD;echo "Failed :fdk-aac Installation Failed" >> $BUILD;
+echo -e $RED"Failed :fdk-aac Installation Failed ......"$RESET
+fi
 fi
 echo -e $RED"
                         :rvri                     
