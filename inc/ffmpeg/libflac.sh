@@ -68,7 +68,13 @@ cd flac-1.3.2/
 ./configure --prefix=$INSTALL_DDIR
 
 make -j$cpu
-make install
+if   make install; then
+date +"%r" >> $BUILD;echo "Succcess :libflac Installled" >> $BUILD;
+echo -e $RED" libflac Installed Success ......"$RESET
+else
+date +"%r" >> $BUILD;echo "Failed :libflac Installation Failed" >> $BUILD;
+echo -e $RED"Failed :libflac Installation Failed ......"$RESET
+fi
 ldconfig
 echo -e $RED"Installation of $_package ....... Completed"$RESET
 sleep 2
