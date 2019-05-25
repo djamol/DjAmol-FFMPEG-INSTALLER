@@ -36,7 +36,13 @@ cd libxspf-1.2.0/
 ./configure --prefix=$INSTALL_DDIR --with-uriparser-lib=/usr/loca/avpffmpeg/lib/
 
 make -j$cpu
-make install
+if   make install; then
+date +"%r" >> $BUILD;echo "Succcess :libxspf Installled" >> $BUILD;
+echo -e $RED" libxspf Installed Success ......"$RESET
+else
+date +"%r" >> $BUILD;echo "Failed :libxspf Installation Failed" >> $BUILD;
+echo -e $RED"Failed :libxspf Installation Failed ......"$RESET
+fi
 ldconfig
 echo -e $RED"
                         :rvri                     
