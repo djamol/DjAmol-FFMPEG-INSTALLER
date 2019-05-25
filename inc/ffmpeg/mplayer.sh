@@ -39,7 +39,13 @@ cd MPlayer-1.3.0/
 		--extra-cflags=-I/usr/loca/avpffmpeg/include/ --extra-ldflags=-L/usr/loca/avpffmpeg/lib \
 		--with-freetype-config=/usr/loca/avpffmpeg/bin/freetype-config   --yasm=/usr/loca/avpffmpeg/bin/yasm --disable-gui
 make -j$cpu
-make install
+if   make install; then
+date +"%r" >> $BUILD;echo "Succcess :MPlayer Installled" >> $BUILD;
+echo -e $RED" MPlayer Installed Success ......"$RESET
+else
+date +"%r" >> $BUILD;echo "Failed :MPlayer Installation Failed" >> $BUILD;
+echo -e $RED"Failed :MPlayer Installation Failed ......"$RESET
+fi
 cp -f etc/codecs.conf $INSTALL_DDIR/etc/mplayer/codecs.conf
 ln -sf /usr/loca/avpffmpeg/bin/mplayer /usr/local/bin/mplayer
 ln -sf /usr/loca/avpffmpeg/bin/mplayer /usr/bin/mplayer
