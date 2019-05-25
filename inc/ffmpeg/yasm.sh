@@ -35,7 +35,13 @@ tar -xvzf $_package
 cd  yasm-1.3.0/
 	./configure --prefix=/usr/loca/avpffmpeg/ 
 make -j$cpu
-make install
+if   make install; then
+date +"%r" >> $BUILD;echo "Succcess :yasm Installled" >> $BUILD;
+echo -e $RED" yasm Installed Success ......"$RESET
+else
+date +"%r" >> $BUILD;echo "Failed :yasm Installation Failed" >> $BUILD;
+echo -e $RED"Failed :yasm Installation Failed ......"$RESET
+fi
 ln -sf /usr/loca/avpffmpeg/bin/yasm /usr/local/bin/yasm
 ldconfig
 echo -e $RED"
