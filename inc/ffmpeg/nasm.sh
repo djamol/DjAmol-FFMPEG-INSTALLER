@@ -35,6 +35,8 @@ yum -y install nasm
 fi
 if [ -e "/usr/bin/nasm" ]; then
 	ln -sf /usr/bin/nasm  /usr/loca/avpffmpeg/bin/nasm
+date +"%r" >> $BUILD;echo "Success :nasm Installled" >> $BUILD;
+echo -e $RED" nasm Installed Success ......"$RESET
 else
 	rm -vrf nasm*
 	wget $SOURCE_URL/$_package
@@ -42,7 +44,13 @@ else
 	cd  nasm-2.13.02/
 	./configure --prefix=/usr/loca/avpffmpeg/ 
 	make -j$cpu
-	make install
+if   make install; then
+date +"%r" >> $BUILD;echo "Sucess :nasm Installled" >> $BUILD;
+echo -e $RED" nasm Installed Success ......"$RESET
+else
+date +"%r" >> $BUILD;echo "Failed :nasm Installation Failed" >> $BUILD;
+echo -e $RED"Failed :nasm Installation Failed ......"$RESET
+fi
 	ln -sf /usr/loca/avpffmpeg/bin/nasm /usr/local/bin/nasm
 fi
 ldconfig
