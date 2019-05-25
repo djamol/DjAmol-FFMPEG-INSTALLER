@@ -34,6 +34,12 @@ tar -xvzf $_package
 cd vo-amrwbenc-0.1.3/
 	./configure  --prefix=$INSTALL_DDIR
 	make -j$cpu
-	make install
+if   make install; then
+date +"%r" >> $BUILD;echo "Succcess :vo-amrwbenc Installled" >> $BUILD;
+echo -e $RED" vo-amrwbenc Installed Success ......"$RESET
+else
+date +"%r" >> $BUILD;echo "Failed :vo-amrwbenc Installation Failed" >> $BUILD;
+echo -e $RED"Failed :vo-amrwbenc Installation Failed ......"$RESET
+fi
 echo -e $RED"Installation of $_package ....... Completed"$RESET
 sleep 2
