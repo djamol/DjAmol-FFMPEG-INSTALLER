@@ -36,7 +36,13 @@ echo "removing old source"
    cd amrwb-11.0.0.0/
    ./configure --prefix=$INSTALL_DDIR
 make -j$cpu
-make install
+if   make install; then
+date +"%r" >> $BUILD;echo "Succcess :amrwb Installled" >> $BUILD;
+echo -e $RED" amrwb Installed Success ......"$RESET
+else
+date +"%r" >> $BUILD;echo "Failed :amrwb Installation Failed" >> $BUILD;
+echo -e $RED"Failed :amrwb Installation Failed ......"$RESET
+fi
 echo -e $RED"
                         :rvri                     
                   :vJUJYri:::::i::                
