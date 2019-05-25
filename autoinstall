@@ -528,4 +528,9 @@ Command To Check LOG
   cat ServerInstaller-output.log;
 2)Status-OUPUT-Only(Show on Console)
   cat log/*.txt;
+&(if)  FFMPEG Installation Output
+  1) All-Output
+  cat FFMPEG-output.log;
+  2) Status Output ONly
+ cat /root/djamolDEV/ffmpeg/log/*.txt;
 $RESET";
