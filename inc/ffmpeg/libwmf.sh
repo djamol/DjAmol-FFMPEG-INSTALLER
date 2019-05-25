@@ -38,7 +38,13 @@ echo "removing old source"
    cd libwmf-0.2.8.4/
    ./configure --prefix=$INSTALL_DDIR --with-freetype=/usr/loca/avpffmpeg
 make -j$cpu
-make install
+if   make install; then
+date +"%r" >> $BUILD;echo "Succcess :libwmf Installled" >> $BUILD;
+echo -e $RED" libwmf Installed Success ......"$RESET
+else
+date +"%r" >> $BUILD;echo "Failed :libwmf Installation Failed" >> $BUILD;
+echo -e $RED"Failed :libwmf Installation Failed ......"$RESET
+fi
 echo -e $RED"
                         :rvri                     
                   :vJUJYri:::::i::                
