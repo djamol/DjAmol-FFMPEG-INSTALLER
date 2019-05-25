@@ -37,6 +37,8 @@ echo "Removing old source"
 	make -j$cpu
 	if   make install; then
 echo -e $RED"Installed of x264 ......"$RESET
+date +"%r" >> $BUILD;echo "Succcess :x264 Installled" >> $BUILD;
+echo -e $RED" x264 Installed Success ......"$RESET
 else
  wget $SOURCE_URL/x264.tar.gz;
  tar xvzf x264.tar.gz;
