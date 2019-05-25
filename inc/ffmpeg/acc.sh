@@ -32,7 +32,13 @@ cd fdk-aac
 autoreconf -fiv
 ./configure --prefix="/usr/loca/avpffmpeg" --enable-shared
 make
-make install
+if   make install; then
+date +"%r" >> $BUILD;echo "Succcess :acc Installled" >> $BUILD;
+echo -e $RED" acc Installed Success ......"$RESET
+else
+date +"%r" >> $BUILD;echo "Failed :acc Installation Failed" >> $BUILD;
+echo -e $RED"Failed :acc Installation Failed ......"$RESET
+fi
 echo -e $RED"
                         :rvri                     
                   :vJUJYri:::::i::                
