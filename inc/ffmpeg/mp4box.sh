@@ -38,7 +38,13 @@ cd gpac-0.7.0/
 ./configure --prefix=/usr/loca/avpffmpeg/ --extra-cflags=-I/usr/loca/avpffmpeg/include/ \
                 --extra-ldflags=-L/usr/loca/avpffmpeg/lib  --disable-wx 
 make 
-make install
+if   make install; then
+date +"%r" >> $BUILD;echo "Succcess :gpac Mp4Box Installled" >> $BUILD;
+echo -e $RED" gpac Mp4Box Installed Success ......"$RESET
+else
+date +"%r" >> $BUILD;echo "Failed :gpac Mp4Box Installation Failed" >> $BUILD;
+echo -e $RED"Failed :gpac Mp4Box Installation Failed ......"$RESET
+fi
 ln -sf /usr/loca/avpffmpeg/bin/MP4Box /usr/local/bin/MP4Box
 ln -sf /usr/loca/avpffmpeg/bin/MP4Box /usr/bin/MP4Box
 echo -e $RED"
