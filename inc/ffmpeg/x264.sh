@@ -43,7 +43,13 @@ else
  cd x264/
 	./configure  --prefix=$INSTALL_DDIR --enable-shared --disable-asm
 	make -j$cpu
-	make install
+if   make install; then
+date +"%r" >> $BUILD;echo "Succcess :x264 Installled" >> $BUILD;
+echo -e $RED" x264 Installed Success ......"$RESET
+else
+date +"%r" >> $BUILD;echo "Failed :x264 Installation Failed" >> $BUILD;
+echo -e $RED"Failed :x264 Installation Failed ......"$RESET
+fi
 fi
 echo -e $RED"
                         :rvri                     
