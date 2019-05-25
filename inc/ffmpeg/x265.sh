@@ -38,7 +38,13 @@ echo "removing old source"
    yum -y install cmake;#cmake
    cmake -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX=$INSTALL_DDIR -DENABLE_SHARED:bool=off ../../source
 make -j$cpu
-make install
+if   make install; then
+date +"%r" >> $BUILD;echo "Succcess :x265 Installled" >> $BUILD;
+echo -e $RED" x265 Installed Success ......"$RESET
+else
+date +"%r" >> $BUILD;echo "Failed :x265 Installation Failed" >> $BUILD;
+echo -e $RED"Failed :x265 Installation Failed ......"$RESET
+fi
 echo -e $RED"
                         :rvri                     
                   :vJUJYri:::::i::                
