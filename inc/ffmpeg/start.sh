@@ -2,18 +2,19 @@
 # Amol Patil
 #Email US :support@djamol.com
  # WEB@DjAmol.com
+export cpu=`cat "/proc/cpuinfo" | grep "processor"|wc -l`
+export TMPDIR=$HOME/tmp
+export LD_LIBRARY_PATH=/usr/local/avpffmpeg/lib:/usr/local/lib:/usr/lib:$LD_LIBRARY_PATH
+export LIBRARY_PATH=/usr/local/avpffmpeg/lib:/usr/lib:/usr/local/lib:$LIBRARY_PATH
+export CPATH=/usr/local/avpffmpeg/include:/usr/include/:usr/local/include:$CPATH
 set -a
 RED='\033[01;31m'
 RESET='\033[0m'
 INSTALL_SDIR='/root/djamolDEV/ffmpeg'
 SOURCE_URL='https://github.com/djamol/offline/raw/master/ffmpeg/9'
 INSTALL_DDIR='/usr/local/avpffmpeg'
-export cpu=`cat "/proc/cpuinfo" | grep "processor"|wc -l`
-export TMPDIR=$HOME/tmp
-export LD_LIBRARY_PATH=/usr/local/avpffmpeg/lib:/usr/local/lib:/usr/lib:$LD_LIBRARY_PATH
-export LIBRARY_PATH=/usr/local/avpffmpeg/lib:/usr/lib:/usr/local/lib:$LIBRARY_PATH
-export CPATH=/usr/local/avpffmpeg/include:/usr/include/:usr/local/include:$CPATH
 BUILDDIR=$INSTALL_SDIR/log/
+cpu=$cpu
 BUILDFILE=$RANDOM.txt
 BUILD=$BUILDDIR$BUILDFILE
 # Global Variable to access any bash other files run by this file
