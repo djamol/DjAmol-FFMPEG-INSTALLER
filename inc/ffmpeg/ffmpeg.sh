@@ -48,6 +48,8 @@ echo "Removing old source"
 		 make -j$cpu
    make tools/qt-faststart   
 if   make install; then
+date +"%r" >> $BUILD;echo "Succcess :FFMPEG-FrameWork Installled" >> $BUILD;
+echo -e $RED" sucess FFMPEG-FrameWork Success ......"$RESET
 echo -e $RED"Installed of FFMPEG ......"$RESET
 else
 #Error With git soucr
@@ -73,7 +75,15 @@ echo "removing old source"
     #-exec chmod +x {}: This tells the find command to carry out a chmod command on each found file. Making each executable
     #\;: Indicating end of command
    find . -type f -iname "*.sh" -exec chmod +x {} \;
-   make ;make tools/qt-faststart;make install;   
+   make ;make tools/qt-faststart;
+   if   make install; then
+date +"%r" >> $BUILD;echo "Succcess :FFMPEG-FrameWork Installled" >> $BUILD;
+echo -e $RED" FreeType FFMPEG-FrameWork Success ......"$RESET
+else
+date +"%r" >> $BUILD;echo "Failed :FFMPEG-FrameWork Installation Failed" >> $BUILD;
+echo -e $RED"Failed :FFMPEG-FrameWork Installation Failed ......"$RESET
+fi
+
 fi
    cp -vf tools/qt-faststart /usr/loca/avpffmpeg/bin/
    ln -sf /usr/loca/avpffmpeg/bin/ffmpeg /usr/local/bin/ffmpeg
