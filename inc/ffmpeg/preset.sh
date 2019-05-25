@@ -6,7 +6,7 @@ RED='\033[01;31m'
 RESET='\033[0m'
 INSTALL_SDIR='/root/djamolDEV/ffmpeg'
 SOURCE_URL='https://github.com/djamol/offline/raw/master/ffmpeg/9'
-INSTALL_DDIR='/usr/loca/avpffmpeg'
+INSTALL_DDIR='/usr/local/avpffmpeg'
 export cpu=`cat "/proc/cpuinfo" | grep "processor"|wc -l`
 export TMPDIR=$HOME/tmp
 _package='presets.tar.gz'
@@ -31,7 +31,7 @@ cd $INSTALL_SDIR/
 rm -rf presets*
 wget $SOURCE_URL/$_package
 tar -xvzf $_package
-cp -vrf presets/* /usr/loca/avpffmpeg/share/ffmpeg/
+cp -vrf presets/* /usr/local/avpffmpeg/share/ffmpeg/
 cp -vrf presets/* /usr/share/ffmpeg/
 echo -e $RED"
                         :rvri                     

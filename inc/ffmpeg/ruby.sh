@@ -6,7 +6,7 @@ RED='\033[01;31m'
 RESET='\033[0m'
 INSTALL_SDIR='/root/djamolDEV/ffmpeg'
 SOURCE_URL='https://github.com/djamol/offline/raw/master/ffmpeg/9'
-INSTALL_DDIR='/usr/loca/avpffmpeg'
+INSTALL_DDIR='/usr/local/avpffmpeg'
 echo -e '
  ▒█░▒░▓█░█▒░▒▒█░█▓░▒░█▓   █████▒    ▓█ ▒█▓▓█▓ ██████ ▓████▒░█░      ░█████░▒████▓ ▓█████░ 
  ░▓ █▓▓█ ▓ ██▒█░▓░▓█░█▓   ▓▒  █▓    ▒█ ▒▓▓▓█▓ ▓░█▓▒█░▓▒  █▓ ▓       ░█░  ▓ ▒▓  ▓█ ▓▒▓█▒█▒ 
@@ -36,7 +36,7 @@ echo -e $RED" ruby Installed Success ......"$RESET
 
 fi
 if [ -e "/usr/bin/ruby" ]; then
-	ln -sf /usr/bin/ruby  /usr/loca/avpffmpeg/bin/ruby
+	ln -sf /usr/bin/ruby  /usr/local/avpffmpeg/bin/ruby
 elif  [ -e "/usr/local/cpanel/scripts/installruby" ]; then
 	/usr/local/cpanel/scripts/installruby
 else

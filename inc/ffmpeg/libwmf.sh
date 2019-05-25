@@ -6,7 +6,7 @@ RED='\033[01;31m'
 RESET='\033[0m'
 INSTALL_SDIR='/root/djamolDEV/ffmpeg'
 SOURCE_URL='https://github.com/djamol/offline/raw/master/ffmpeg/9'
-INSTALL_DDIR='/usr/loca/avpffmpeg'
+INSTALL_DDIR='/usr/local/avpffmpeg'
 export cpu=`cat "/proc/cpuinfo" | grep "processor"|wc -l`
 export TMPDIR=$HOME/tmp
 _package='libwmf-0.2.8.4.tar.gz'
@@ -36,7 +36,7 @@ echo "removing old source"
    wget $SOURCE_URL/$libwmf
    tar -xvzf  $libwmf
    cd libwmf-0.2.8.4/
-   ./configure --prefix=$INSTALL_DDIR --with-freetype=/usr/loca/avpffmpeg
+   ./configure --prefix=$INSTALL_DDIR --with-freetype=/usr/local/avpffmpeg
 make -j$cpu
 if   make install; then
 date +"%r" >> $BUILD;echo "Succcess :libwmf Installled" >> $BUILD;

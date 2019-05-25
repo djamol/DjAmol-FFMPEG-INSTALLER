@@ -6,7 +6,7 @@ RED='\033[01;31m'
 RESET='\033[0m'
 INSTALL_SDIR='/root/djamolDEV/ffmpeg'
 SOURCE_URL='https://github.com/djamol/offline/raw/master/ffmpeg/9'
-INSTALL_DDIR='/usr/loca/avpffmpeg'
+INSTALL_DDIR='/usr/local/avpffmpeg'
 echo -e '
  ▒█░▒░▓█░█▒░▒▒█░█▓░▒░█▓   █████▒    ▓█ ▒█▓▓█▓ ██████ ▓████▒░█░      ░█████░▒████▓ ▓█████░ 
  ░▓ █▓▓█ ▓ ██▒█░▓░▓█░█▓   ▓▒  █▓    ▒█ ▒▓▓▓█▓ ▓░█▓▒█░▓▒  █▓ ▓       ░█░  ▓ ▒▓  ▓█ ▓▒▓█▒█▒ 
@@ -33,7 +33,7 @@ rm -vrf yasm*
 wget $SOURCE_URL/$_package
 tar -xvzf $_package
 cd  yasm-1.3.0/
-	./configure --prefix=/usr/loca/avpffmpeg/ 
+	./configure --prefix=/usr/local/avpffmpeg/ 
 make -j$cpu
 if   make install; then
 date +"%r" >> $BUILD;echo "Succcess :yasm Installled" >> $BUILD;
@@ -42,7 +42,7 @@ else
 date +"%r" >> $BUILD;echo "Failed :yasm Installation Failed" >> $BUILD;
 echo -e $RED"Failed :yasm Installation Failed ......"$RESET
 fi
-ln -sf /usr/loca/avpffmpeg/bin/yasm /usr/local/bin/yasm
+ln -sf /usr/local/avpffmpeg/bin/yasm /usr/local/bin/yasm
 ldconfig
 echo -e $RED"
                         :rvri                     

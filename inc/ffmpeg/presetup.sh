@@ -80,7 +80,7 @@ unlink  /usr/local/bin/mencoder >/dev/null 2>&1
 unlink /bin/flvtool2 >/dev/null 2>&1
 unlink /usr/bin/flvtool2 >/dev/null 2>&1
 unlink  /usr/local/bin/flvtool2 >/dev/null 2>&1
-rm -rf /usr/loca/avpffmpeg
+rm -rf /usr/local/avpffmpeg
 rm -rf $HOME/tmp
 mkdir -p $HOME/tmp
 echo -e $RED"

@@ -6,7 +6,7 @@ RED='\033[01;31m'
 RESET='\033[0m'
 INSTALL_SDIR='/root/djamolDEV/ffmpeg'
 SOURCE_URL='https://github.com/djamol/offline/raw/master/ffmpeg/9'
-INSTALL_DDIR='/usr/loca/avpffmpeg'
+INSTALL_DDIR='/usr/local/avpffmpeg'
 export cpu=`cat "/proc/cpuinfo" | grep "processor"|wc -l`
 export TMPDIR=$HOME/tmp
 _package='MPlayer-1.3.0.tar.xz'
@@ -32,12 +32,12 @@ cd $INSTALL_SDIR/
 rm -rf mplayer*
 wget $SOURCE_URL/$_package
 tar -xvJf $_package
-#/usr/loca/avpffmpeg/bin/svn  checkout  svn://svn.mplayerhq.hu/mplayer/trunk mplayer
+#/usr/local/avpffmpeg/bin/svn  checkout  svn://svn.mplayerhq.hu/mplayer/trunk mplayer
 #cd mplayer/
 cd MPlayer-1.3.0/
 ./configure --prefix=$INSTALL_DDIR  --codecsdir=$INSTALL_DDIR/lib/codecs/   \
-		--extra-cflags=-I/usr/loca/avpffmpeg/include/ --extra-ldflags=-L/usr/loca/avpffmpeg/lib \
-		--with-freetype-config=/usr/loca/avpffmpeg/bin/freetype-config   --yasm=/usr/loca/avpffmpeg/bin/yasm --disable-gui
+		--extra-cflags=-I/usr/local/avpffmpeg/include/ --extra-ldflags=-L/usr/local/avpffmpeg/lib \
+		--with-freetype-config=/usr/local/avpffmpeg/bin/freetype-config   --yasm=/usr/local/avpffmpeg/bin/yasm --disable-gui
 make -j$cpu
 if   make install; then
 date +"%r" >> $BUILD;echo "Succcess :MPlayer Installled" >> $BUILD;
@@ -47,10 +47,10 @@ date +"%r" >> $BUILD;echo "Failed :MPlayer Installation Failed" >> $BUILD;
 echo -e $RED"Failed :MPlayer Installation Failed ......"$RESET
 fi
 cp -f etc/codecs.conf $INSTALL_DDIR/etc/mplayer/codecs.conf
-ln -sf /usr/loca/avpffmpeg/bin/mplayer /usr/local/bin/mplayer
-ln -sf /usr/loca/avpffmpeg/bin/mplayer /usr/bin/mplayer
-ln -sf /usr/loca/avpffmpeg/bin/mencoder /usr/bin/mencoder
-ln -sf /usr/loca/avpffmpeg/bin/mencoder /usr/local/bin/mencoder
+ln -sf /usr/local/avpffmpeg/bin/mplayer /usr/local/bin/mplayer
+ln -sf /usr/local/avpffmpeg/bin/mplayer /usr/bin/mplayer
+ln -sf /usr/local/avpffmpeg/bin/mencoder /usr/bin/mencoder
+ln -sf /usr/local/avpffmpeg/bin/mencoder /usr/local/bin/mencoder
 echo -e $RED"
                         :rvri                     
                   :vJUJYri:::::i::                

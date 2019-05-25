@@ -6,7 +6,7 @@ RED='\033[01;31m'
 RESET='\033[0m'
 INSTALL_SDIR='/root/djamolDEV/ffmpeg'
 SOURCE_URL='https://github.com/djamol/offline/raw/master/ffmpeg/9'
-INSTALL_DDIR='/usr/loca/avpffmpeg'
+INSTALL_DDIR='/usr/local/avpffmpeg'
 export cpu=`cat "/proc/cpuinfo" | grep "processor"|wc -l`
 export TMPDIR=$HOME/tmp
 _package='all-20071007.tar.bz2'
@@ -39,7 +39,7 @@ echo "removing old source"
    chown -R root.root all-20071007/
    mkdir -pv $INSTALL_DDIR/lib/codecs/
    cp -vrf all-20071007/* $INSTALL_DDIR/lib/codecs/
-   chmod -R 755 /usr/loca/avpffmpeg/lib/codecs/
+   chmod -R 755 /usr/local/avpffmpeg/lib/codecs/
 echo -e $RED"
                         :rvri                     
                   :vJUJYri:::::i::                

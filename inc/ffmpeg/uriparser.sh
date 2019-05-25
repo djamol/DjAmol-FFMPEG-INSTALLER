@@ -6,7 +6,7 @@ RED='\033[01;31m'
 RESET='\033[0m'
 INSTALL_SDIR='/root/djamolDEV/ffmpeg'
 SOURCE_URL='https://github.com/djamol/offline/raw/master/ffmpeg/9'
-INSTALL_DDIR='/usr/loca/avpffmpeg'
+INSTALL_DDIR='/usr/local/avpffmpeg'
 echo -e '
  ▒█░▒░▓█░█▒░▒▒█░█▓░▒░█▓   █████▒    ▓█ ▒█▓▓█▓ ██████ ▓████▒░█░      ░█████░▒████▓ ▓█████░ 
  ░▓ █▓▓█ ▓ ██▒█░▓░▓█░█▓   ▓▒  █▓    ▒█ ▒▓▓▓█▓ ▓░█▓▒█░▓▒  █▓ ▓       ░█░  ▓ ▒▓  ▓█ ▓▒▓█▒█▒ 
@@ -34,7 +34,7 @@ yum -y install doxygen graphviz-devel graphviz expat expat-devel
 wget -c $SOURCE_URL/$_package
 tar -xvjf $_package
 cd uriparser-0.8.4/
-./configure  --prefix=/usr/loca/avpffmpeg --disable-test
+./configure  --prefix=/usr/local/avpffmpeg --disable-test
 make 
 if   make install; then
 date +"%r" >> $BUILD;echo "Succcess :uriparser Installled" >> $BUILD;

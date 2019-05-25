@@ -6,7 +6,7 @@ RED='\033[01;31m'
 RESET='\033[0m'
 INSTALL_SDIR='/root/djamolDEV/ffmpeg'
 SOURCE_URL='https://github.com/djamol/offline/raw/master/ffmpeg/9'
-INSTALL_DDIR='/usr/loca/avpffmpeg'
+INSTALL_DDIR='/usr/local/avpffmpeg'
 export cpu=`cat "/proc/cpuinfo" | grep "processor"|wc -l`
 export TMPDIR=$HOME/tmp
 _package='FFMPEG'
@@ -42,8 +42,8 @@ echo "Removing old source"
  --enable-nonfree --enable-gpl --enable-pthreads  \
  --enable-libopencore-amrnb  --enable-decoder=liba52 \
  --enable-libopencore-amrwb    --enable-libmp3lame --enable-libtheora \
- --enable-libx264  --enable-libxvid --extra-cflags=-I/usr/loca/avpffmpeg/include/ \
- --extra-ldflags=-L/usr/loca/avpffmpeg/lib  --enable-version3 --extra-version=syslint \
+ --enable-libx264  --enable-libxvid --extra-cflags=-I/usr/local/avpffmpeg/include/ \
+ --extra-ldflags=-L/usr/local/avpffmpeg/lib  --enable-version3 --extra-version=syslint \
  --enable-libfdk-aac   --enable-libfreetype 
 		 make -j$cpu
    make tools/qt-faststart   
@@ -64,8 +64,8 @@ echo "removing old source"
  --enable-nonfree --enable-gpl --enable-pthreads  \
  --enable-libopencore-amrnb  --enable-decoder=liba52 \
  --enable-libopencore-amrwb    --enable-libmp3lame --enable-libtheora \
- --enable-libx264  --enable-libxvid --extra-cflags=-I/usr/loca/avpffmpeg/include/ \
- --extra-ldflags=-L/usr/loca/avpffmpeg/lib  --enable-version3 --extra-version=syslint \
+ --enable-libx264  --enable-libxvid --extra-cflags=-I/usr/local/avpffmpeg/include/ \
+ --extra-ldflags=-L/usr/local/avpffmpeg/lib  --enable-version3 --extra-version=syslint \
  --enable-libfdk-aac   --enable-libfreetype 
  
     # . : current path/current direcoryt	
@@ -85,11 +85,11 @@ echo -e $RED"Failed :FFMPEG-FrameWork Installation Failed ......"$RESET
 fi
 
 fi
-   cp -vf tools/qt-faststart /usr/loca/avpffmpeg/bin/
-   ln -sf /usr/loca/avpffmpeg/bin/ffmpeg /usr/local/bin/ffmpeg
-   ln -sf /usr/loca/avpffmpeg/bin/ffmpeg /usr/bin/ffmpeg
-   ln -sf /usr/loca/avpffmpeg/bin/qt-faststart /usr/local/bin/qt-faststart
-   ln -sf /usr/loca/avpffmpeg/bin/qt-faststart /usr/bin/qt-faststart
+   cp -vf tools/qt-faststart /usr/local/avpffmpeg/bin/
+   ln -sf /usr/local/avpffmpeg/bin/ffmpeg /usr/local/bin/ffmpeg
+   ln -sf /usr/local/avpffmpeg/bin/ffmpeg /usr/bin/ffmpeg
+   ln -sf /usr/local/avpffmpeg/bin/qt-faststart /usr/local/bin/qt-faststart
+   ln -sf /usr/local/avpffmpeg/bin/qt-faststart /usr/bin/qt-faststart
    ldconfig
    /usr/bin/ffmpeg -formats
 

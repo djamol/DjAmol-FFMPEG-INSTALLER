@@ -6,7 +6,7 @@ RED='\033[01;31m'
 RESET='\033[0m'
 INSTALL_SDIR='/root/djamolDEV/ffmpeg'
 SOURCE_URL='https://github.com/djamol/offline/raw/master/ffmpeg/9'
-INSTALL_DDIR='/usr/loca/avpffmpeg'
+INSTALL_DDIR='/usr/local/avpffmpeg'
 export cpu=`cat "/proc/cpuinfo" | grep "processor"|wc -l`
 export TMPDIR=$HOME/tmp
 _package='libfishsound-1.0.0.tar.gz'
@@ -33,7 +33,7 @@ rm -rf libfish*
 wget $SOURCE_URL/$_package
 tar -xvzf $_package
 cd libfishsound-1.0.0/
-./configure --prefix=$INSTALL_DDIR --with-vorbis=/usr/loca/avpffmpeg  --with-FLAC=/usr/loca/avpffmpeg  --with-speex=/usr/loca/avpffmpeg
+./configure --prefix=$INSTALL_DDIR --with-vorbis=/usr/local/avpffmpeg  --with-FLAC=/usr/local/avpffmpeg  --with-speex=/usr/local/avpffmpeg
 make -j$cpu
 if   make install; then
 date +"%r" >> $BUILD;echo "Succcess :libfishsound Installled" >> $BUILD;

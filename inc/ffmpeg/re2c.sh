@@ -6,7 +6,7 @@ RED='\033[01;31m'
 RESET='\033[0m'
 INSTALL_SDIR='/root/djamolDEV/ffmpeg'
 SOURCE_URL='https://github.com/djamol/offline/raw/master/ffmpeg/9'
-INSTALL_DDIR='/usr/loca/avpffmpeg'
+INSTALL_DDIR='/usr/local/avpffmpeg'
 echo -e '
  ▒█░▒░▓█░█▒░▒▒█░█▓░▒░█▓   █████▒    ▓█ ▒█▓▓█▓ ██████ ▓████▒░█░      ░█████░▒████▓ ▓█████░ 
  ░▓ █▓▓█ ▓ ██▒█░▓░▓█░█▓   ▓▒  █▓    ▒█ ▒▓▓▓█▓ ▓░█▓▒█░▓▒  █▓ ▓       ░█░  ▓ ▒▓  ▓█ ▓▒▓█▒█▒ 
@@ -70,6 +70,6 @@ echo -e $RED"
                   :......ir.....                 
 "$RESET
 
-ln -s /usr/loca/avpffmpeg/bin/re2c /usr/local/bin/re2c
+ln -s /usr/local/avpffmpeg/bin/re2c /usr/local/bin/re2c
 echo -e $RED"Installation of $_package ....... Completed"$RESET
 sleep 2

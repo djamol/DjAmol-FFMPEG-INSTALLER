@@ -6,7 +6,7 @@ RED='\033[01;31m'
 RESET='\033[0m'
 INSTALL_SDIR='/root/djamolDEV/ffmpeg'
 SOURCE_URL='https://github.com/djamol/offline/raw/master/ffmpeg/9'
-INSTALL_DDIR='/usr/loca/avpffmpeg'
+INSTALL_DDIR='/usr/local/avpffmpeg'
 export cpu=`cat "/proc/cpuinfo" | grep "processor"|wc -l`
 export TMPDIR=$HOME/tmp
 _package='nasm-2.13.02.tar.gz'
@@ -34,7 +34,7 @@ if [ -e "/etc/yum.conf" ];then
 yum -y install nasm
 fi
 if [ -e "/usr/bin/nasm" ]; then
-	ln -sf /usr/bin/nasm  /usr/loca/avpffmpeg/bin/nasm
+	ln -sf /usr/bin/nasm  /usr/local/avpffmpeg/bin/nasm
 date +"%r" >> $BUILD;echo "Success :nasm Installled" >> $BUILD;
 echo -e $RED" nasm Installed Success ......"$RESET
 else
@@ -42,7 +42,7 @@ else
 	wget $SOURCE_URL/$_package
 	tar -xvzf $_package
 	cd  nasm-2.13.02/
-	./configure --prefix=/usr/loca/avpffmpeg/ 
+	./configure --prefix=/usr/local/avpffmpeg/ 
 	make -j$cpu
 if   make install; then
 date +"%r" >> $BUILD;echo "Sucess :nasm Installled" >> $BUILD;
@@ -51,7 +51,7 @@ else
 date +"%r" >> $BUILD;echo "Failed :nasm Installation Failed" >> $BUILD;
 echo -e $RED"Failed :nasm Installation Failed ......"$RESET
 fi
-	ln -sf /usr/loca/avpffmpeg/bin/nasm /usr/local/bin/nasm
+	ln -sf /usr/local/avpffmpeg/bin/nasm /usr/local/bin/nasm
 fi
 ldconfig
 echo -e $RED"

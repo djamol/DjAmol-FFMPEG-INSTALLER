@@ -6,7 +6,7 @@ RED='\033[01;31m'
 RESET='\033[0m'
 INSTALL_SDIR='/root/djamolDEV/ffmpeg'
 SOURCE_URL='https://github.com/djamol/offline/raw/master/ffmpeg/9'
-INSTALL_DDIR='/usr/loca/avpffmpeg'
+INSTALL_DDIR='/usr/local/avpffmpeg'
 export cpu=`cat "/proc/cpuinfo" | grep "processor"|wc -l`
 export TMPDIR=$HOME/tmp
 _package='gpac-0.7.0.tar.gz'
@@ -35,8 +35,8 @@ fi
 wget -c $SOURCE_URL/$_package
 tar -xvzf $_package
 cd gpac-0.7.0/
-./configure --prefix=/usr/loca/avpffmpeg/ --extra-cflags=-I/usr/loca/avpffmpeg/include/ \
-                --extra-ldflags=-L/usr/loca/avpffmpeg/lib  --disable-wx 
+./configure --prefix=/usr/local/avpffmpeg/ --extra-cflags=-I/usr/local/avpffmpeg/include/ \
+                --extra-ldflags=-L/usr/local/avpffmpeg/lib  --disable-wx 
 make 
 if   make install; then
 date +"%r" >> $BUILD;echo "Succcess :gpac Mp4Box Installled" >> $BUILD;
@@ -45,8 +45,8 @@ else
 date +"%r" >> $BUILD;echo "Failed :gpac Mp4Box Installation Failed" >> $BUILD;
 echo -e $RED"Failed :gpac Mp4Box Installation Failed ......"$RESET
 fi
-ln -sf /usr/loca/avpffmpeg/bin/MP4Box /usr/local/bin/MP4Box
-ln -sf /usr/loca/avpffmpeg/bin/MP4Box /usr/bin/MP4Box
+ln -sf /usr/local/avpffmpeg/bin/MP4Box /usr/local/bin/MP4Box
+ln -sf /usr/local/avpffmpeg/bin/MP4Box /usr/bin/MP4Box
 echo -e $RED"
                         :rvri                     
                   :vJUJYri:::::i::                

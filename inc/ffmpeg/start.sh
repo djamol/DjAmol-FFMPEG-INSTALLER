@@ -7,12 +7,12 @@ RED='\033[01;31m'
 RESET='\033[0m'
 INSTALL_SDIR='/root/djamolDEV/ffmpeg'
 SOURCE_URL='https://github.com/djamol/offline/raw/master/ffmpeg/9'
-INSTALL_DDIR='/usr/loca/avpffmpeg'
+INSTALL_DDIR='/usr/local/avpffmpeg'
 export cpu=`cat "/proc/cpuinfo" | grep "processor"|wc -l`
 export TMPDIR=$HOME/tmp
-export LD_LIBRARY_PATH=/usr/loca/avpffmpeg/lib:/usr/local/lib:/usr/lib:$LD_LIBRARY_PATH
-export LIBRARY_PATH=/usr/loca/avpffmpeg/lib:/usr/lib:/usr/local/lib:$LIBRARY_PATH
-export CPATH=/usr/loca/avpffmpeg/include:/usr/include/:usr/local/include:$CPATH
+export LD_LIBRARY_PATH=/usr/local/avpffmpeg/lib:/usr/local/lib:/usr/lib:$LD_LIBRARY_PATH
+export LIBRARY_PATH=/usr/local/avpffmpeg/lib:/usr/lib:/usr/local/lib:$LIBRARY_PATH
+export CPATH=/usr/local/avpffmpeg/include:/usr/include/:usr/local/include:$CPATH
 BUILDDIR=$INSTALL_SDIR/log/
 BUILDFILE=$RANDOM.txt
 BUILD=$BUILDDIR$BUILDFILE
@@ -91,10 +91,10 @@ fi
 date +"%r" >> $BUILD;echo "Status : Git Install END" >> $BUILD;
 date +"%r" >> $BUILD;echo "Status : subversion Install Started" >> $BUILD; 
 #Subversion client
-mkdir -pv /usr/loca/avpffmpeg/bin/
+mkdir -pv /usr/local/avpffmpeg/bin/
 ./subversion.sh
 
-if [ -e "/usr/loca/avpffmpeg/bin/svn" ]; then
+if [ -e "/usr/local/avpffmpeg/bin/svn" ]; then
         echo " "
 else
         echo " "
@@ -283,7 +283,7 @@ date +"%r" >> $BUILD;echo "Status : mPlayer FirstAttempt Install Started" >> $BU
 
 #mPlayer FirstAttempt
 ./mplayer.sh
-if [ -e "/usr/loca/avpffmpeg/bin/mplayer" ]; then
+if [ -e "/usr/local/avpffmpeg/bin/mplayer" ]; then
         echo " "
 else
         echo " "
@@ -300,7 +300,7 @@ date +"%r" >> $BUILD;echo "Status :33 MAIN FFMPEG FRAMEWORK Install Started" >> 
 echo -e "\e[32m########################################\n#### 33 MAIN FFMPEG FRAMEWORK #########\n#############################"
 #ffmpeg
 ./ffmpeg.sh
-if [ -e "/usr/loca/avpffmpeg/bin/ffmpeg" ]; then
+if [ -e "/usr/local/avpffmpeg/bin/ffmpeg" ]; then
 	date +"%r" >> $BUILD;echo "Success :33 MAIN FFMPEG FRAMEWORK" >> $BUILD;
         echo " "
 else
@@ -325,7 +325,7 @@ echo -e "\e[32m########################################\n#### 35 Mplayer  ######
 ./mplayer.sh
 date +"%r" >> $BUILD;echo "Status :35 Mplayer Install END" >> $BUILD;
 
-if [ -e "/usr/loca/avpffmpeg/bin/mplayer" ]; then
+if [ -e "/usr/local/avpffmpeg/bin/mplayer" ]; then
         echo " "
 	date +"%r" >> $BUILD;echo "Success  :35 Rebuilding Mplayer" >> $BUILD;
 else

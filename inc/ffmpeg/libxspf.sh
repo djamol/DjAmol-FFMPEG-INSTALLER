@@ -6,7 +6,7 @@ RED='\033[01;31m'
 RESET='\033[0m'
 INSTALL_SDIR='/root/djamolDEV/ffmpeg'
 SOURCE_URL='https://github.com/djamol/offline/raw/master/ffmpeg/9'
-INSTALL_DDIR='/usr/loca/avpffmpeg'
+INSTALL_DDIR='/usr/local/avpffmpeg'
 export cpu=`cat "/proc/cpuinfo" | grep "processor"|wc -l`
 export TMPDIR=$HOME/tmp
 _package='libxspf-1.2.0.tar.gz'
@@ -33,7 +33,7 @@ wget $SOURCE_URL/$_package
 tar -xvzf $_package
 
 cd libxspf-1.2.0/
-./configure --prefix=$INSTALL_DDIR --with-uriparser-lib=/usr/loca/avpffmpeg/lib/
+./configure --prefix=$INSTALL_DDIR --with-uriparser-lib=/usr/local/avpffmpeg/lib/
 
 make -j$cpu
 if   make install; then

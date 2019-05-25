@@ -6,7 +6,7 @@
 # --enable-libfdk-aac   --enable-libfreetype --enable-libopus  --enable-libvpx
 INSTALL_SDIR='/root/djamolDEV/ffmpeg'
 SOURCE_URL='https://github.com/djamol/offline/raw/master/ffmpeg/9'
-INSTALL_DDIR='/usr/loca/avpffmpeg'
+INSTALL_DDIR='/usr/local/avpffmpeg'
 clear
 echo -e '
  ▒█░▒░▓█░█▒░▒▒█░█▓░▒░█▓   █████▒    ▓█ ▒█▓▓█▓ ██████ ▓████▒░█░      ░█████░▒████▓ ▓█████░ 
@@ -30,7 +30,7 @@ curl -o  fdk-aac.tar.gz $SOURCE_URL/fdk-aac.tar.gz;
 tar xvzf fdk-aac.tar.gz;
 cd fdk-aac
 autoreconf -fiv
-./configure --prefix="/usr/loca/avpffmpeg" --enable-shared
+./configure --prefix="/usr/local/avpffmpeg" --enable-shared
 make
 if   make install; then
 date +"%r" >> $BUILD;echo "Succcess :acc Installled" >> $BUILD;
@@ -81,10 +81,10 @@ make distclean
 #Requires ffmpeg to be configured with --enable-libvpx.
 
 
-# ./configure --prefix=/usr/loca/avpffmpeg --enable-shared \
+# ./configure --prefix=/usr/local/avpffmpeg --enable-shared \
 # --enable-nonfree --enable-gpl --enable-pthreads  \
 # --enable-libopencore-amrnb  --enable-decoder=liba52 \
 # --enable-libopencore-amrwb    --enable-libmp3lame --enable-libtheora \
-# --enable-libx264  --enable-libxvid --extra-cflags=-I/usr/loca/avpffmpeg/include/ \
-# --extra-ldflags=-L/usr/loca/avpffmpeg/lib  --enable-version3 --extra-version=syslint \
+# --enable-libx264  --enable-libxvid --extra-cflags=-I/usr/local/avpffmpeg/include/ \
+# --extra-ldflags=-L/usr/local/avpffmpeg/lib  --enable-version3 --extra-version=syslint \
 # --enable-libfdk-aac   --enable-libfreetype 

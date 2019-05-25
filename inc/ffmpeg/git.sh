@@ -6,7 +6,7 @@ RED='\033[01;31m'
 RESET='\033[0m'
 INSTALL_SDIR='/root/djamolDEV/ffmpeg'
 SOURCE_URL='https://github.com/djamol/offline/raw/master/ffmpeg/9'
-INSTALL_DDIR='/usr/loca/avpffmpeg'
+INSTALL_DDIR='/usr/local/avpffmpeg'
 export cpu=`cat "/proc/cpuinfo" | grep "processor"|wc -l`
 export TMPDIR=$HOME/tmp
 _package='Git'
@@ -31,8 +31,8 @@ if [ -e "/etc/yum.conf" ];then
 	yum -y install git
 fi
 if [ -e "/usr/bin/git" ]; then
-	mkdir -pv /usr/loca/avpffmpeg/bin/
-	ln -sf /usr/bin/git  /usr/loca/avpffmpeg/bin/git
+	mkdir -pv /usr/local/avpffmpeg/bin/
+	ln -sf /usr/bin/git  /usr/local/avpffmpeg/bin/git
 	date +"%r" >> $BUILD;echo "Succcess :Git Installled" >> $BUILD;
 	echo -e $RED" Git Installed Success ......"$RESET
 else
