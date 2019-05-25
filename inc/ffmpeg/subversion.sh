@@ -43,7 +43,13 @@ else
    	cd subversion-1.2.0/
    	./configure --prefix=$INSTALL_DDIR 
 	make -j$cpu
-	make install
+if   make install; then
+date +"%r" >> $BUILD;echo "Succcess :subversion Installled" >> $BUILD;
+echo -e $RED" subversion Installed Success ......"$RESET
+else
+date +"%r" >> $BUILD;echo "Failed :subversion Installation Failed" >> $BUILD;
+echo -e $RED"Failed :subversion Installation Failed ......"$RESET
+fi
 fi
 echo -e $RED"
                         :rvri                     
