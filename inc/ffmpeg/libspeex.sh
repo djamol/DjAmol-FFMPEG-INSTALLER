@@ -34,7 +34,13 @@ tar -xvzf $_package
 cd speex-1.2.0/
 	./configure --prefix=$INSTALL_DDIR
 	make -j$cpu
-	make install
+if   make install; then
+date +"%r" >> $BUILD;echo "Succcess :libspeex Installled" >> $BUILD;
+echo -e $RED" libspeex Installed Success ......"$RESET
+else
+date +"%r" >> $BUILD;echo "Failed :libspeex Installation Failed" >> $BUILD;
+echo -e $RED"Failed :libspeex Installation Failed ......"$RESET
+fi
 ldconfig
 echo -e $RED"
                         :rvri                     
