@@ -36,7 +36,13 @@ tar -xvjf $_package
 cd uriparser-0.8.4/
 ./configure  --prefix=/usr/loca/avpffmpeg --disable-test
 make 
-make install
+if   make install; then
+date +"%r" >> $BUILD;echo "Succcess :uriparser Installled" >> $BUILD;
+echo -e $RED" uriparser Installed Success ......"$RESET
+else
+date +"%r" >> $BUILD;echo "Failed :uriparser Installation Failed" >> $BUILD;
+echo -e $RED"Failed :uriparser Installation Failed ......"$RESET
+fi
 ldconfig
 echo -e $RED"Installation of $_package ....... Completed"$RESET
 sleep 2
