@@ -35,7 +35,13 @@ echo "removing old source"
    	cd libogg-1.3.3/
 	./configure --prefix=$INSTALL_DDIR
 	make -j$cpu
-	make install
+if   make install; then
+date +"%r" >> $BUILD;echo "Succcess :libogg Installled" >> $BUILD;
+echo -e $RED" libogg Installed Success ......"$RESET
+else
+date +"%r" >> $BUILD;echo "Failed :libogg Installation Failed" >> $BUILD;
+echo -e $RED"Failed :libogg Installation Failed ......"$RESET
+fi
 echo -e $RED"
                         :rvri                     
                   :vJUJYri:::::i::                
