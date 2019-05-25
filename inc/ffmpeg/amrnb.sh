@@ -37,7 +37,13 @@ echo "removing old source"
    cd amrnb-11.0.0.0/
    ./configure --prefix=$INSTALL_DDIR
 make -j$cpu
-make install
+if   make install; then
+date +"%r" >> $BUILD;echo "Succcess :amrnb Installled" >> $BUILD;
+echo -e $RED" amrnb Installed Success ......"$RESET
+else
+date +"%r" >> $BUILD;echo "Failed :amrnb Installation Failed" >> $BUILD;
+echo -e $RED"Failed :amrnb Installation Failed ......"$RESET
+fi
 echo -e $RED"
                         :rvri                     
                   :vJUJYri:::::i::                
