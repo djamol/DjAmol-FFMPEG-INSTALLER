@@ -34,7 +34,13 @@ tar -xvzf $_package
 	cd vo-aacenc-0.1.3/
 	./configure --prefix=$INSTALL_DDIR
 	make -j$cpu
-	make install
+if   make install; then
+date +"%r" >> $BUILD;echo "Succcess :vo-aacenc Installled" >> $BUILD;
+echo -e $RED" vo-aacenc Installed Success ......"$RESET
+else
+date +"%r" >> $BUILD;echo "Failed :vo-aacenc Installation Failed" >> $BUILD;
+echo -e $RED"Failed :vo-aacenc Installation Failed ......"$RESET
+fi
 ldconfig
 echo -e $RED"
                         :rvri                     
