@@ -38,7 +38,13 @@ echo "removing old source"
    ./configure --prefix=$INSTALL_DDIR --enable-mp3x --enable-mp3rtp
 
 make -j$cpu
-make install
+if   make install; then
+date +"%r" >> $BUILD;echo "Succcess :lame Installled" >> $BUILD;
+echo -e $RED" lame Installed Success ......"$RESET
+else
+date +"%r" >> $BUILD;echo "Failed :lame Installation Failed" >> $BUILD;
+echo -e $RED"Failed :lame Installation Failed ......"$RESET
+fi
 echo -e $RED"
                         :rvri                     
                   :vJUJYri:::::i::                
