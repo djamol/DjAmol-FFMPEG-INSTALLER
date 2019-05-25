@@ -38,7 +38,13 @@ echo "removing old source"
    ./configure --prefix=$INSTALL_DDIR --with-ogg=$INSTALL_DDIR --with-vorbis=$INSTALL_DDIR
 
 make -j$cpu
-make install
+if   make install; then
+date +"%r" >> $BUILD;echo "Succcess :libtheora Installled" >> $BUILD;
+echo -e $RED" libtheora Installed Success ......"$RESET
+else
+date +"%r" >> $BUILD;echo "Failed :libtheora Installation Failed" >> $BUILD;
+echo -e $RED"Failed :libtheora Installation Failed ......"$RESET
+fi
 
 echo -e $RED"
                         :rvri                     
