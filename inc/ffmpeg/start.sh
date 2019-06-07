@@ -16,8 +16,8 @@ INSTALL_DDIR='/usr/local/avpffmpeg'
 BUILDDIR=$INSTALL_SDIR/log/
 cpu=$cpu
 BUILDFILE=$RANDOM.txt
-#BUILD=$BUILDDIR$BUILDFILE  ## New Log BUILD File
-BUILD=$ServBUILD  ## Append in server build log file
+BUILD=$BUILDDIR$BUILDFILE  ## New Log BUILD File
+#BUILD=$ServBUILD  ## Append in server build log file
 # Global Variable to access any bash other files run by this file
 #TESTVARIABLE=hellohelloheloo
 # ...
