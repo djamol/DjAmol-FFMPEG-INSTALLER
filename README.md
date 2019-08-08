@@ -68,7 +68,11 @@ If you have list of files with extension, you can use
 
 replace "old_string" "new_string" -- *.extension
 
-#scan only extension files and replace whole line .line start with ErrorDocument 401 all txt file only in /home folder and sub folder
+#scan only extension files and replace whole line .line start with 
+"ErrorDocument 401" 
+all txt file only 
+in /home folder and sub folder
+
 find /home/ -type f -name '*.txt' -readable -writable -exec sed -i "/^ErrorDocument 401/c\  " {} +
 
 
