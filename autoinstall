@@ -186,7 +186,7 @@ while true; do
 done
 
 echo "Enter Below Details For openssl Certificate ";
-echo -n "Enter YOUR Country Code [XX] In Two Character e.g IN for India > ";read btext;
+echo -n "Enter YOUR Country Code [XX] In Two Character e.g IN for India > ";read bCtext;
 echo -n "Enter Your State > ";read stext;
 echo -n "Enter Your City  > ";read cTtext;
 echo -n "Enter Your Organization  > ";read otext;
@@ -432,7 +432,7 @@ WEBP=$webp
 WEBO=$webo
 SCRIPTPATH=$SCRIPTPATH
 BUILD=$BUILD
-CAC=$btext
+CAC=$bCtext
 CAS=$stext
 CAL=$cTtext
 CAO=$otext
