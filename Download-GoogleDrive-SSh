@@ -1,0 +1,5 @@
+$ wget --save-cookies cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=FILEID' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/Code: \1\n/p'
+
+#Next, after we get the code (It will be output to the webpage, and output using sed above), use the following URL:
+
+$ wget --load-cookies cookies.txt 'https://docs.google.com/uc?export=download&confirm=CODE_FROM_ABOVE&id=FILEID'
